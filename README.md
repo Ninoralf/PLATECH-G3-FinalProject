@@ -1,5 +1,7 @@
 # Contributing Guidelines
 
+if there are compability issues download kripton.Toolkit in manage <nuget> then restart the microsoft studio  
+
 Thank you for your interest in contributing! Follow the steps below to contribute effectively.
 
 ## 🔹 Forking the Repository
