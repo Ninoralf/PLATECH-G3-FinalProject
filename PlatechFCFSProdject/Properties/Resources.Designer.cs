@@ -73,6 +73,16 @@ namespace PlatechFCFSProdject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exit_logo {
+            get {
+                object obj = ResourceManager.GetObject("exit logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap InputBackground {
             get {
                 object obj = ResourceManager.GetObject("InputBackground", resourceCulture);

@@ -64,11 +64,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\PlatechFCFS\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
       "projectName": "PlatechFCFSProdject",
-      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\PlatechFCFS\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
+      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\PlatechFCFS\\PlatechFCFSProdject\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
