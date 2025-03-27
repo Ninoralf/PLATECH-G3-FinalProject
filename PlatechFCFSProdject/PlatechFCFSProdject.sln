@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatechFCFSProdject", "PlatechFCFSProdject.csproj", "{B3E8B745-0179-4D00-88F5-D2A4927BD430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3E8B745-0179-4D00-88F5-D2A4927BD430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E8B745-0179-4D00-88F5-D2A4927BD430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E8B745-0179-4D00-88F5-D2A4927BD430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E8B745-0179-4D00-88F5-D2A4927BD430}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA7E325C-A2FD-4880-943A-8FDB0C35A7BF}
+	EndGlobalSection
+EndGlobal
