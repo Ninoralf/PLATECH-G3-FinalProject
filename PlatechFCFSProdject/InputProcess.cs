@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace PlatechFCFSProdject
 {
     public partial class InputProcess : Form
     {
+        List<Process> processList = new List<Process>();
         public InputProcess()
         {
             InitializeComponent();
@@ -22,7 +24,6 @@ namespace PlatechFCFSProdject
             TextBox txt = sender as TextBox;
             if (string.IsNullOrEmpty(txt.Text))
             {
-
                 MessageBox.Show("This field cannot be empty.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt.Focus();
                 return;
@@ -67,6 +68,9 @@ namespace PlatechFCFSProdject
 
         private void ChangeBackground()
         {
+            BackButton.Visible = false;
+            ContinueButs.Visible = false;
+            label1.Visible = false;
             int GoalLHeightWhitePanel = 701;
 
             Thread thread = new Thread(() =>
@@ -76,16 +80,22 @@ namespace PlatechFCFSProdject
 
                 while (FirstHeightWhitePanel < GoalLHeightWhitePanel)
                 {
-                    FirstHeightWhitePanel += 10;
+                    FirstHeightWhitePanel += 12;
                     Invoke((MethodInvoker)(() =>
                     {
                         WhitePanel.Height = FirstHeightWhitePanel;
                     }));
 
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
                 }
+                BackButton.Visible = true;
+                ContinueButs.Visible = true;
+                label1.Visible = true;
+                TextBoxInputPross.Visible = false;
+                ContinueButt.Visible = false;
+                
             });
-
+           
             thread.IsBackground = true;
             thread.Start();
         }
@@ -98,7 +108,7 @@ namespace PlatechFCFSProdject
 
             int processCount;
 
-            if (int.TryParse(kryptonTextBox1.Text, out processCount))
+            if (int.TryParse(TextBoxInputPross.Text, out processCount))
             {
                 if (processCount >= 2 && processCount <= 5)
                 {
@@ -175,7 +185,7 @@ namespace PlatechFCFSProdject
                         panel1.Controls.Add(row);
 
                     }
-                    LabelProcessNO.Text = kryptonTextBox1.Text;
+                    LabelProcessNO.Text = TextBoxInputPross.Text;
                     panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
                     ChangeBackground();
                 }
@@ -190,9 +200,6 @@ namespace PlatechFCFSProdject
                 ErrorLabel.Text = "Integers only, please try again!";
             }
         }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -201,9 +208,11 @@ namespace PlatechFCFSProdject
         {
             ErrorLabel.Text = "";
         }
-
         private void BackButton_Click(object sender, EventArgs e)
         {
+            BackButton.Visible = false;
+            ContinueButs.Visible = false;
+
             int GoalLHeightWhitePanel = 0;
 
             Thread thread = new Thread(() =>
@@ -219,80 +228,111 @@ namespace PlatechFCFSProdject
                         WhitePanel.Height = FirstHeightWhitePanel;
                     }));
 
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
+
                 }
+                TextBoxInputPross.Visible = true;
+                ContinueButt.Visible = true;
             });
 
             thread.IsBackground = true;
             thread.Start();
         }
-        Dictionary<string, (float BurstTime, float ArrivalTime)> processData = new Dictionary<string, (float, float)>();
+
+
+        bool allIsNotEmpty = false;
+       
+        
         private void GetProcessData()
         {
-          
-
             foreach (Control control in panel1.Controls)
             {
                 if (control is Panel rowPanel && rowPanel.Name.StartsWith("panelRow_"))
                 {
-                    string processID = "";
-                    float burstTime = 0;
-                    float arrivalTime = 0;
+                    Process proc = new Process();
 
                     foreach (Control txtControl in rowPanel.Controls)
-                    {
-
-                        if (string.IsNullOrEmpty(txtControl.Text)) {
-                            MessageBox.Show($"ASADAW.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-
-                        } else
+                    {             
+                        if (txtControl is TextBox txtBox)
                         {
-                            if (txtControl is TextBox txtBox)
+                            allIsNotEmpty = false;
+                            string[] parts = txtBox.Name.Split('_');
+                            int colIndex = int.Parse(parts[2]);
+
+                            string inputValue = txtBox.Text.Replace(" msec", "").Trim();
+
+                            if (string.IsNullOrEmpty(txtBox.Text))
                             {
 
-                                string[] parts = txtBox.Name.Split('_'); // Name format: txt_{i}_{j}
-                                int colIndex = int.Parse(parts[2]);
-                                string inputValue = txtBox.Text.Replace(" msec", "");
-
+                                MessageBox.Show($"TextBox field cannote be empty.",
+                                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtBox.Focus();
+                                return;
+                            }
+                            else {
                                 if (colIndex == 0)
                                 {
-                                    processID = txtBox.Text;
+                                    proc.ProcessID = txtBox.Text;
                                 }
                                 else
                                 {
 
                                     if (float.TryParse(inputValue, out float value))
                                     {
-                                        if (value > 20)
+                                        if (value > 20 || value < 0)
                                         {
-                                            MessageBox.Show($"Value in {processID} {txtBox.Name} cannot be more than 20.",
+                                            MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 20.",
                                                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             txtBox.Focus();
                                             return;
                                         }
-                                        if (colIndex == 1) burstTime = value;
-                                        if (colIndex == 2) arrivalTime = value;
+                                        if (colIndex == 1)
+                                        {
+                                            if (value > 20 || value < 2)
+                                            {
+                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 20 and less than 2.",
+                                                           "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                txtBox.Focus();
+                                                return;
+
+                                            }
+                                            else proc.BurstTime = value;
+                                        }
+                                        if (colIndex == 2) proc.ArrivalTime = value;
                                     }
+
+                                    
                                 }
+                                allIsNotEmpty = true;
                             }
-
-
+                           
                         }
-                       
                     }
-
-                    if (!string.IsNullOrEmpty(processID))
+                    var existing = processList.FirstOrDefault(p => p.ProcessID == proc.ProcessID);
+                    if (existing != null)
                     {
-                        processData[processID] = (burstTime, arrivalTime);   
+                        existing.BurstTime = proc.BurstTime;
+                        existing.ArrivalTime = proc.ArrivalTime;
+                    }
+                    else
+                    {
+                        processList.Add(proc);
                     }
                 }
-            }
-            
+            }    
         }
+
         private void ContinueButs_Click(object sender, EventArgs e)
         {
             GetProcessData();
+
+            if (allIsNotEmpty)
+            {
+                this.Hide();
+                Perform perform = new Perform();
+                perform.SetProcessList(processList);
+                perform.Show();
+            }
         }
 
 
@@ -357,6 +397,4 @@ namespace PlatechFCFSProdject
         //    }
         //}
     }
-
-
 }

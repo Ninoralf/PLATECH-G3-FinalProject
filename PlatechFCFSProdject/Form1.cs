@@ -52,24 +52,24 @@ namespace PlatechFCFSProdject
                 while (currentTitleHeight < GoalHeight)
                 {
 
-                    currentTitleHeight += 10;
+                    currentTitleHeight += 12;
                     Invoke((MethodInvoker)(() =>
                     {
                         TitlePanel.Height = currentTitleHeight;
                     }));
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
 
                 }
                 //=================================================
                 while (currentMemberHeight < MemberPanelGoal)
                 {
 
-                    currentMemberHeight += 10;
+                    currentMemberHeight += 12;
                     Invoke((MethodInvoker)(() =>
                     {
                         MemberPanel.Height = currentMemberHeight;
                     }));
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
                 }
 
                 Invoke((MethodInvoker)(() =>
@@ -103,7 +103,7 @@ namespace PlatechFCFSProdject
 
                 while (currentMemberHeight > MemberPanelGoal)
                 {
-                    currentMemberHeight -= 7;
+                    currentMemberHeight -= 10;
                     if (currentMemberHeight < MemberPanelGoal) currentMemberHeight = MemberPanelGoal;
 
                     Invoke((MethodInvoker)(() =>
@@ -111,14 +111,14 @@ namespace PlatechFCFSProdject
                         MemberPanel.Height = currentMemberHeight;
                     }));
 
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
                 }
 
                 //=================================================
 
                 while (currentTitleHeight > GoalHeight)
                 {
-                    currentTitleHeight -= 7;
+                    currentTitleHeight -= 10;
                     if (currentTitleHeight < GoalHeight) currentTitleHeight = GoalHeight;
 
                     Invoke((MethodInvoker)(() =>
@@ -126,7 +126,7 @@ namespace PlatechFCFSProdject
                         TitlePanel.Height = currentTitleHeight;
                     }));
 
-                    Thread.Sleep(4);
+                    Thread.Sleep(2);
                 }
 
 
