@@ -39,6 +39,7 @@
             panel2 = new Panel();
             button1 = new Button();
             ErrorLabel = new Label();
+            ContinueButs = new Krypton.Toolkit.KryptonButton();
             WhitePanel.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -89,13 +90,14 @@
             // WhitePanel
             // 
             WhitePanel.BackColor = Color.White;
+            WhitePanel.Controls.Add(ContinueButs);
             WhitePanel.Controls.Add(BackButton);
             WhitePanel.Controls.Add(LabelProcessNO);
             WhitePanel.Controls.Add(label3);
             WhitePanel.Controls.Add(panel1);
             WhitePanel.Location = new Point(1, 37);
             WhitePanel.Name = "WhitePanel";
-            WhitePanel.Size = new Size(1252, 0);
+            WhitePanel.Size = new Size(1252, 701);
             WhitePanel.TabIndex = 4;
             // 
             // BackButton
@@ -193,6 +195,30 @@
             ErrorLabel.TabIndex = 6;
             ErrorLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // ContinueButs
+            // 
+            ContinueButs.Location = new Point(632, 566);
+            ContinueButs.Name = "ContinueButs";
+            ContinueButs.OverrideDefault.Back.Color1 = Color.White;
+            ContinueButs.OverrideDefault.Back.Color2 = Color.Silver;
+            ContinueButs.Size = new Size(118, 44);
+            ContinueButs.StateCommon.Back.Color1 = Color.White;
+            ContinueButs.StateCommon.Back.Color2 = Color.Silver;
+            ContinueButs.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.ExpertSquareHighlight2;
+            ContinueButs.StateCommon.Border.Rounding = 10F;
+            ContinueButs.StateCommon.Content.ShortText.Color1 = Color.Black;
+            ContinueButs.StateCommon.Content.ShortText.Font = new Font("Verdana", 12F);
+            ContinueButs.StateTracking.Back.Color1 = Color.Green;
+            ContinueButs.StateTracking.Back.Color2 = Color.Silver;
+            ContinueButs.StateTracking.Border.Color1 = Color.Maroon;
+            ContinueButs.StateTracking.Border.Color2 = Color.Maroon;
+            ContinueButs.StateTracking.Content.ShortText.Color1 = Color.Black;
+            ContinueButs.StateTracking.Content.ShortText.Color2 = Color.Black;
+            ContinueButs.TabIndex = 7;
+            ContinueButs.Values.DropDownArrowColor = Color.Empty;
+            ContinueButs.Values.Text = "Continue";
+            ContinueButs.Click += ContinueButs_Click;
+            // 
             // InputProcess
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -231,5 +257,6 @@
         private Label LabelProcessNO;
         private Label label3;
         private Krypton.Toolkit.KryptonButton BackButton;
+        private Krypton.Toolkit.KryptonButton ContinueButs;
     }
 }

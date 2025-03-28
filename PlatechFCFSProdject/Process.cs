@@ -8,7 +8,7 @@ namespace PlatechFCFSProdject
 {
     class Process
     {
-        public string Name { get; set; }
+        public string ProcessID { get; set; }
         public int ArrivalTime { get; set; }
         public int BurstTime { get; set; }
         public int StartTime { get; set; }

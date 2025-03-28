@@ -32,9 +32,9 @@ namespace PlatechFCFSProdject
             {
                 txt.Text = $"{value} msec";
                 txt.BackColor = Color.Teal;
-
             }
-            else {
+            else
+            {
                 MessageBox.Show("Numbers only!.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt.Focus();
                 return;
@@ -154,7 +154,7 @@ namespace PlatechFCFSProdject
                                 TextAlign = HorizontalAlignment.Center,
                                 Width = (row.Width / 3),
                                 Location = new Point(j * (row.Width / 3), 5),
-                                Name = $"txt_{i}_{j}"
+                                Name = $"Text_Box_{j}"
                             };
 
                             if (j == 0)
@@ -226,5 +226,137 @@ namespace PlatechFCFSProdject
             thread.IsBackground = true;
             thread.Start();
         }
+        Dictionary<string, (float BurstTime, float ArrivalTime)> processData = new Dictionary<string, (float, float)>();
+        private void GetProcessData()
+        {
+          
+
+            foreach (Control control in panel1.Controls)
+            {
+                if (control is Panel rowPanel && rowPanel.Name.StartsWith("panelRow_"))
+                {
+                    string processID = "";
+                    float burstTime = 0;
+                    float arrivalTime = 0;
+
+                    foreach (Control txtControl in rowPanel.Controls)
+                    {
+
+                        if (string.IsNullOrEmpty(txtControl.Text)) {
+                            MessageBox.Show($"ASADAW.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+
+                        } else
+                        {
+                            if (txtControl is TextBox txtBox)
+                            {
+
+                                string[] parts = txtBox.Name.Split('_'); // Name format: txt_{i}_{j}
+                                int colIndex = int.Parse(parts[2]);
+                                string inputValue = txtBox.Text.Replace(" msec", "");
+
+                                if (colIndex == 0)
+                                {
+                                    processID = txtBox.Text;
+                                }
+                                else
+                                {
+
+                                    if (float.TryParse(inputValue, out float value))
+                                    {
+                                        if (value > 20)
+                                        {
+                                            MessageBox.Show($"Value in {processID} {txtBox.Name} cannot be more than 20.",
+                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            txtBox.Focus();
+                                            return;
+                                        }
+                                        if (colIndex == 1) burstTime = value;
+                                        if (colIndex == 2) arrivalTime = value;
+                                    }
+                                }
+                            }
+
+
+                        }
+                       
+                    }
+
+                    if (!string.IsNullOrEmpty(processID))
+                    {
+                        processData[processID] = (burstTime, arrivalTime);   
+                    }
+                }
+            }
+            
+        }
+        private void ContinueButs_Click(object sender, EventArgs e)
+        {
+            GetProcessData();
+        }
+
+
+        //private void GenerateGanttChart()
+        //{
+        //    var processList = processData.OrderBy(p => p.Value.ArrivalTime).ToList(); // Sort by Arrival Time
+        //    float currentTime = 0;
+        //    panelGantt.Controls.Clear();
+        //    int xPosition = 10; // Initial position for Gantt Chart Blocks
+
+        //    foreach (var process in processList)
+        //    {
+        //        string processID = process.Key;
+        //        float arrivalTime = process.Value.ArrivalTime;
+        //        float burstTime = process.Value.BurstTime;
+
+        //        // If the CPU is idle, move to the next arrival time
+        //        if (currentTime < arrivalTime)
+        //        {
+        //            currentTime = arrivalTime;
+        //        }
+
+        //        float startTime = currentTime;
+        //        float finishTime = startTime + burstTime;
+        //        currentTime = finishTime;
+
+        //        // Create Panel for Gantt Chart Block
+        //        Panel ganttBlock = new Panel
+        //        {
+        //            Width = (int)(burstTime * 20),  // Scale burst time for visibility
+        //            Height = 50,
+        //            Location = new Point(xPosition, 10),
+        //            BackColor = Color.LightBlue,
+        //            BorderStyle = BorderStyle.FixedSingle
+        //        };
+
+        //        // Label for Process ID
+        //        Label lblProcess = new Label
+        //        {
+        //            Text = processID,
+        //            AutoSize = true,
+        //            Location = new Point(5, 15),
+        //            Font = new Font("Verdana", 10F, FontStyle.Bold),
+        //            ForeColor = Color.Black
+        //        };
+
+        //        // Label for Time (Start & Finish)
+        //        Label lblTime = new Label
+        //        {
+        //            Text = $"{(int)startTime} - {(int)finishTime}",
+        //            AutoSize = true,
+        //            Location = new Point(5, 30),
+        //            Font = new Font("Verdana", 8F, FontStyle.Regular),
+        //            ForeColor = Color.Black
+        //        };
+
+        //        ganttBlock.Controls.Add(lblProcess);
+        //        ganttBlock.Controls.Add(lblTime);
+        //        panelGantt.Controls.Add(ganttBlock);
+
+        //        xPosition += ganttBlock.Width + 5; // Move to the next position
+        //    }
+        //}
     }
+
+
 }

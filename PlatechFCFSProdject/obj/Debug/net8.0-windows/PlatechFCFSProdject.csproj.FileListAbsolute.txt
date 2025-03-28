@@ -29,7 +29,6 @@ C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdje
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.Form1.resources
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.InputProcess.resources
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.Properties.Resources.resources
-C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.ShowTable.resources
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.csproj.GenerateResource.cache
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Admin\OneDrive\Desktop\MyRepo\PLATECH-G3-FinalProject\PlatechFCFSProdject\obj\Debug\net8.0-windows\PlatechFCFSProdject.AssemblyInfoInputs.cache
