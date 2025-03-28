@@ -7,8 +7,5 @@
     <Compile Update="InputProcess.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ShowTable.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
