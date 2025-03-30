@@ -34,6 +34,7 @@
             button1 = new Button();
             label1 = new Label();
             panel1 = new Panel();
+            ganttChartPanel = new Panel();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -113,6 +114,14 @@
             panel1.Size = new Size(486, 325);
             panel1.TabIndex = 7;
             // 
+            // ganttChartPanel
+            // 
+            ganttChartPanel.BackColor = Color.Transparent;
+            ganttChartPanel.Location = new Point(112, 541);
+            ganttChartPanel.Name = "ganttChartPanel";
+            ganttChartPanel.Size = new Size(1052, 108);
+            ganttChartPanel.TabIndex = 8;
+            // 
             // Perform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -120,6 +129,7 @@
             BackgroundImage = Properties.Resources.SideBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1254, 702);
+            Controls.Add(ganttChartPanel);
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(panel2);
@@ -143,5 +153,6 @@
         private Button button1;
         private Label label1;
         private Panel panel1;
+        private Panel ganttChartPanel;
     }
 }

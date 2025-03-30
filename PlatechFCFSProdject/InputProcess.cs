@@ -62,7 +62,6 @@ namespace PlatechFCFSProdject
         private void ContinueButt_Click(object sender, EventArgs e)
         {
             ShowTable();
-
         }
 
 
@@ -288,7 +287,7 @@ namespace PlatechFCFSProdject
                                         }
                                         if (colIndex == 1)
                                         {
-                                            if (value > 20 || value < 2)
+                                            if (value > 20 || value < 1)
                                             {
                                                 MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 20 and less than 2.",
                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -300,8 +299,6 @@ namespace PlatechFCFSProdject
                                         }
                                         if (colIndex == 2) proc.ArrivalTime = value;
                                     }
-
-                                    
                                 }
                                 allIsNotEmpty = true;
                             }
@@ -336,65 +333,6 @@ namespace PlatechFCFSProdject
         }
 
 
-        //private void GenerateGanttChart()
-        //{
-        //    var processList = processData.OrderBy(p => p.Value.ArrivalTime).ToList(); // Sort by Arrival Time
-        //    float currentTime = 0;
-        //    panelGantt.Controls.Clear();
-        //    int xPosition = 10; // Initial position for Gantt Chart Blocks
-
-        //    foreach (var process in processList)
-        //    {
-        //        string processID = process.Key;
-        //        float arrivalTime = process.Value.ArrivalTime;
-        //        float burstTime = process.Value.BurstTime;
-
-        //        // If the CPU is idle, move to the next arrival time
-        //        if (currentTime < arrivalTime)
-        //        {
-        //            currentTime = arrivalTime;
-        //        }
-
-        //        float startTime = currentTime;
-        //        float finishTime = startTime + burstTime;
-        //        currentTime = finishTime;
-
-        //        // Create Panel for Gantt Chart Block
-        //        Panel ganttBlock = new Panel
-        //        {
-        //            Width = (int)(burstTime * 20),  // Scale burst time for visibility
-        //            Height = 50,
-        //            Location = new Point(xPosition, 10),
-        //            BackColor = Color.LightBlue,
-        //            BorderStyle = BorderStyle.FixedSingle
-        //        };
-
-        //        // Label for Process ID
-        //        Label lblProcess = new Label
-        //        {
-        //            Text = processID,
-        //            AutoSize = true,
-        //            Location = new Point(5, 15),
-        //            Font = new Font("Verdana", 10F, FontStyle.Bold),
-        //            ForeColor = Color.Black
-        //        };
-
-        //        // Label for Time (Start & Finish)
-        //        Label lblTime = new Label
-        //        {
-        //            Text = $"{(int)startTime} - {(int)finishTime}",
-        //            AutoSize = true,
-        //            Location = new Point(5, 30),
-        //            Font = new Font("Verdana", 8F, FontStyle.Regular),
-        //            ForeColor = Color.Black
-        //        };
-
-        //        ganttBlock.Controls.Add(lblProcess);
-        //        ganttBlock.Controls.Add(lblTime);
-        //        panelGantt.Controls.Add(ganttBlock);
-
-        //        xPosition += ganttBlock.Width + 5; // Move to the next position
-        //    }
-        //}
+      
     }
 }
