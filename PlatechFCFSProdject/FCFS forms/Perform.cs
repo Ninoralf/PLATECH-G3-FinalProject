@@ -114,7 +114,7 @@ namespace PlatechFCFSProdject
 
         private void ContinueButt_Click(object sender, EventArgs e)
         {
-           
+            ShowTable();
             GenerateGanttChart();
         }
 
@@ -169,16 +169,16 @@ namespace PlatechFCFSProdject
             ganttChartPanel.Controls.Clear();
 
             float x = 0;
-            int sizeOfWidth = 30;
+            int sizeOfWidth = 16;
             float currentTime = 0f;
 
             foreach (var proc in pList.processList)
             {
                 if (currentTime < proc.ArrivalTime)
                 {
-                    float idleDuration = proc.ArrivalTime - currentTime;
-                    AddGanttBox("Empty", x, idleDuration * sizeOfWidth, Color.Gray);
-                    x += idleDuration * sizeOfWidth;
+                    float EmptyDuration = proc.ArrivalTime - currentTime;
+                    AddGanttBox("Empty", x, EmptyDuration * sizeOfWidth, Color.Gray);
+                    x += EmptyDuration * sizeOfWidth;
                     currentTime = proc.ArrivalTime;
                 }
 
@@ -193,7 +193,8 @@ namespace PlatechFCFSProdject
             Label timeEndLabel = new Label
             {
                 Text = endTime % 1 == 0 ? ((int)endTime).ToString() : endTime.ToString("0.##"),
-                Location = new Point((int)endPixel, 75),
+                Location = new Point((int)endPixel, 120),
+                Font = new Font("Verdana", 10F, FontStyle.Bold),
                 AutoSize = true
             };
             ganttChartPanel.Controls.Add(timeEndLabel);
@@ -205,20 +206,22 @@ namespace PlatechFCFSProdject
             {
                 Text = label,
                 Width = (int)width,
-                Height = 50,
+                Height = 90,
                 BackColor = color,
                 ForeColor = Color.White,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Location = new Point((int)x, 20),
+                Font = new Font("Verdana", 10F, FontStyle.Bold),
                 BorderStyle = BorderStyle.FixedSingle
             };
             ganttChartPanel.Controls.Add(ganttBlock);
 
-            float time = x / 30f;
+            float time = x / 16f;
             Label timeLabel = new Label
             {
                 Text = time % 1 == 0 ? ((int)time).ToString() : time.ToString("0.##"),
-                Location = new Point((int)x, 75),
+                Location = new Point((int)x, 120),
+                Font = new Font("Verdana", 10F, FontStyle.Bold),
                 AutoSize = true
             };
             ganttChartPanel.Controls.Add(timeLabel);

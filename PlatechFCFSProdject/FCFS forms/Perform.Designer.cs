@@ -117,9 +117,9 @@
             // ganttChartPanel
             // 
             ganttChartPanel.BackColor = Color.Transparent;
-            ganttChartPanel.Location = new Point(112, 541);
+            ganttChartPanel.Location = new Point(24, 542);
             ganttChartPanel.Name = "ganttChartPanel";
-            ganttChartPanel.Size = new Size(1052, 108);
+            ganttChartPanel.Size = new Size(1230, 138);
             ganttChartPanel.TabIndex = 8;
             // 
             // Perform

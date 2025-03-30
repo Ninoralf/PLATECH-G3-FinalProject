@@ -1,9 +1,9 @@
 namespace PlatechFCFSProdject
 {
-    public partial class Form1 : Form
+    public partial class TitleGroupName : Form
     {
         bool isOpen = false;
-        public Form1()
+        public TitleGroupName()
         {
             InitializeComponent();
         }

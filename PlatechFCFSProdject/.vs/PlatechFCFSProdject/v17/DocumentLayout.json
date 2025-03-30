@@ -3,52 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\inputprocess.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:inputprocess.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\processlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:processlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\process.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:process.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,153 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Perform.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.cs",
-              "RelativeDocumentMoniker": "Perform.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.cs",
-              "RelativeToolTip": "Perform.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwBMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T16:11:37.504Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Perform.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.Designer.cs",
-              "RelativeDocumentMoniker": "Perform.Designer.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.Designer.cs",
-              "RelativeToolTip": "Perform.Designer.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAowDcAAAA1AAAAAAAAAA==",
+              "Title": "InputProcess.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
+              "RelativeDocumentMoniker": "FCFS forms\\InputProcess.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
+              "RelativeToolTip": "FCFS forms\\InputProcess.cs",
+              "ViewState": "AgIAABEBAAAAAAAAAAAkwBoBAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T16:32:33.915Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Perform.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.cs",
-              "RelativeDocumentMoniker": "Perform.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Perform.cs [Design]",
-              "RelativeToolTip": "Perform.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T16:10:49.053Z"
+              "WhenOpened": "2025-03-30T18:47:04.904Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InputProcess.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.cs",
-              "RelativeDocumentMoniker": "InputProcess.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.cs",
-              "RelativeToolTip": "InputProcess.cs",
-              "ViewState": "AgIAAC8BAAAAAAAAAAAkwD8AAAAYAAAAAAAAAA==",
+              "Title": "InputProcess.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
+              "RelativeDocumentMoniker": "FCFS forms\\InputProcess.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs [Design]",
+              "RelativeToolTip": "FCFS forms\\InputProcess.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T03:37:52.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T18:47:02.104Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InputProcess.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.Designer.cs",
-              "RelativeDocumentMoniker": "InputProcess.Designer.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.Designer.cs",
-              "RelativeToolTip": "InputProcess.Designer.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAGYAAAAuAAAAAAAAAA==",
+              "Title": "Perform.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
+              "RelativeDocumentMoniker": "FCFS forms\\Perform.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
+              "RelativeToolTip": "FCFS forms\\Perform.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAuwMQAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T03:46:57.18Z",
+              "WhenOpened": "2025-03-30T18:37:07.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "InputProcess.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.cs",
-              "RelativeDocumentMoniker": "InputProcess.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\InputProcess.cs [Design]",
-              "RelativeToolTip": "InputProcess.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "Perform.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
+              "RelativeDocumentMoniker": "FCFS forms\\Perform.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs [Design]",
+              "RelativeToolTip": "FCFS forms\\Perform.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T03:29:31.695Z"
+              "WhenOpened": "2025-03-30T18:37:01.046Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProcessList.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\ProcessList.cs",
-              "RelativeDocumentMoniker": "ProcessList.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\ProcessList.cs",
-              "RelativeToolTip": "ProcessList.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA/AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Perform.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.Designer.cs",
+              "RelativeDocumentMoniker": "FCFS forms\\Perform.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.Designer.cs",
+              "RelativeToolTip": "FCFS forms\\Perform.Designer.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAowGMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T16:00:45.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Process.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Process.cs",
-              "RelativeDocumentMoniker": "Process.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Process.cs",
-              "RelativeToolTip": "Process.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T18:04:40.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T17:48:12.496Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAWwEIAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T13:37:52.095Z",
+              "WhenOpened": "2025-03-30T18:36:59.41Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AgIAAPwAAAAAAAAAAAAowMcAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T13:37:40.763Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\PlatechFCFS\\PlatechFCFSProdject\\Form1.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\PlatechFCFS\\PlatechFCFSProdject\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T12:57:34.857Z"
             }
           ]
         }

@@ -278,18 +278,18 @@ namespace PlatechFCFSProdject
 
                                     if (float.TryParse(inputValue, out float value))
                                     {
-                                        if (value > 20 || value < 0)
+                                        if (value > 15 || value < 0)
                                         {
-                                            MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 20.",
+                                            MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 0.",
                                                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             txtBox.Focus();
                                             return;
                                         }
                                         if (colIndex == 1)
                                         {
-                                            if (value > 20 || value < 1)
+                                            if (value > 15 || value < 1)
                                             {
-                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 20 and less than 2.",
+                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 2.",
                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 txtBox.Focus();
                                                 return;

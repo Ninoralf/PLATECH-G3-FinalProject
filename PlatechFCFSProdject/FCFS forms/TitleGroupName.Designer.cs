@@ -1,6 +1,6 @@
 ﻿namespace PlatechFCFSProdject
 {
-    partial class Form1
+    partial class TitleGroupName
     {
         /// <summary>
         ///  Required designer variable.
