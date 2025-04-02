@@ -126,11 +126,11 @@
             // ganttChartPanel
             // 
             ganttChartPanel.BackColor = Color.Gainsboro;
-            ganttChartPanel.BackgroundImage = Properties.Resources.InputBackground;
+            ganttChartPanel.BackgroundImage = Properties.Resources.SideBackground;
             ganttChartPanel.BackgroundImageLayout = ImageLayout.Stretch;
-            ganttChartPanel.Location = new Point(29, 536);
+            ganttChartPanel.Location = new Point(29, 543);
             ganttChartPanel.Name = "ganttChartPanel";
-            ganttChartPanel.Size = new Size(0, 168);
+            ganttChartPanel.Size = new Size(0, 161);
             ganttChartPanel.TabIndex = 8;
             // 
             // ShowTablesButt

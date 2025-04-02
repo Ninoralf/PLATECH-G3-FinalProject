@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\perform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -58,8 +58,7 @@
               "RelativeToolTip": "FCFS forms\\Process.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T14:05:58.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-01T14:05:58.719Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "FCFS forms\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T14:05:55.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-01T14:05:55.951Z"
             },
             {
               "$type": "Document",
@@ -120,25 +118,24 @@
               "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs [Design]",
               "RelativeToolTip": "FCFS forms\\InputProcess.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T18:47:02.104Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-30T18:47:02.104Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Perform.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
               "RelativeDocumentMoniker": "FCFS forms\\Perform.cs",
               "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
               "RelativeToolTip": "FCFS forms\\Perform.cs",
-              "ViewState": "AgIAAA4BAAAAAAAAAAAzwNYBAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAEMCAAAAAAAAAAAmwCEDAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T18:37:07.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Perform.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs",
               "RelativeDocumentMoniker": "FCFS forms\\Perform.cs",
@@ -150,13 +147,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Perform.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.Designer.cs",
               "RelativeDocumentMoniker": "FCFS forms\\Perform.Designer.cs",
               "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.Designer.cs",
               "RelativeToolTip": "FCFS forms\\Perform.Designer.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAIQAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAowIQAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T18:36:59.41Z",
               "EditorCaption": ""

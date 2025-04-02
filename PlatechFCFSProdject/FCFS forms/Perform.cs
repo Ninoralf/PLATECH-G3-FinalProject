@@ -770,7 +770,7 @@ namespace PlatechFCFSProdject
 
         private void CloseAverDisAndProcDis(bool isFromButtonGanttChart)
         {
-
+            bool checker = false;
             int goalWidth = 0;
             Thread thread = new Thread(() => {
                 int currentWidth = 849;
@@ -787,7 +787,8 @@ namespace PlatechFCFSProdject
                             if (AverageDisplays.Width != 0)
                             {
                                 AverageDisplays.Width = currentWidth;
-                            }   
+                            }
+                            checker = true;
                         }
                         else {
                             if (AverageDisplays.Width != 0) {
@@ -798,7 +799,7 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(6);
                 }
-                if(isFromButtonGanttChart)
+                if(isFromButtonGanttChart && checker)
                 {
                     Invoke((MethodInvoker)(() => {
                         animateTableToDown();
