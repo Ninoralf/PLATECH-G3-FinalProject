@@ -202,11 +202,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Verdana", 20F, FontStyle.Bold);
+            label2.Font = new Font("Verdana", 15F, FontStyle.Bold);
             label2.ForeColor = Color.Olive;
             label2.Location = new Point(293, 4);
             label2.Name = "label2";
-            label2.Size = new Size(709, 32);
+            label2.Size = new Size(525, 25);
             label2.TabIndex = 5;
             label2.Text = "First Come First Serve (FCFS) CPU Scheduling";
             label2.TextAlign = ContentAlignment.TopCenter;

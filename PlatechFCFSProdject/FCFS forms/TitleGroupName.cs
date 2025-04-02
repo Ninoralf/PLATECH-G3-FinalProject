@@ -141,12 +141,8 @@ namespace PlatechFCFSProdject
                     }));
                     Thread.Sleep(25);
                 }
-
-
                 OpenButton.Values.Text = "Open";
                 OpenButton.Enabled = true;
-
-
             });
 
             thread.IsBackground = true;

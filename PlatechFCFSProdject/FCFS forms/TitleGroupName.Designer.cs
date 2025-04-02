@@ -43,23 +43,17 @@
             panel3 = new Panel();
             GroupNo = new Label();
             Header = new Panel();
-            panel8 = new Panel();
-            panel7 = new Panel();
-            panel6 = new Panel();
-            panel5 = new Panel();
-            panel2 = new Panel();
             panel1.SuspendLayout();
             PanelWall.SuspendLayout();
             MemberPanel.SuspendLayout();
             panel4.SuspendLayout();
             TitlePanel.SuspendLayout();
             panel3.SuspendLayout();
-            Header.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackgroundImage = Properties.Resources.background;
+            panel1.BackgroundImage = Properties.Resources.backgoourdblack1;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(PanelWall);
             panel1.Controls.Add(RopePanel2);
@@ -67,14 +61,14 @@
             panel1.Controls.Add(ContinueButt);
             panel1.Controls.Add(MemberPanel);
             panel1.Controls.Add(TitlePanel);
-            panel1.Location = new Point(0, 57);
+            panel1.Location = new Point(0, 56);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1286, 726);
+            panel1.Size = new Size(1286, 727);
             panel1.TabIndex = 0;
             // 
             // PanelWall
             // 
-            PanelWall.BackColor = Color.FromArgb(72, 72, 13);
+            PanelWall.BackColor = Color.FromArgb(64, 64, 0);
             PanelWall.BorderStyle = BorderStyle.FixedSingle;
             PanelWall.Controls.Add(OpenButton);
             PanelWall.Location = new Point(448, 286);
@@ -110,7 +104,7 @@
             // 
             // RopePanel2
             // 
-            RopePanel2.BackColor = Color.Black;
+            RopePanel2.BackColor = Color.Silver;
             RopePanel2.Location = new Point(789, 3);
             RopePanel2.Name = "RopePanel2";
             RopePanel2.Size = new Size(12, 286);
@@ -118,7 +112,7 @@
             // 
             // RopePanel1
             // 
-            RopePanel1.BackColor = Color.Black;
+            RopePanel1.BackColor = Color.Silver;
             RopePanel1.Location = new Point(493, 3);
             RopePanel1.Name = "RopePanel1";
             RopePanel1.Size = new Size(12, 286);
@@ -234,59 +228,14 @@
             // 
             // Header
             // 
-            Header.BackColor = Color.FromArgb(72, 72, 13);
-            Header.Controls.Add(panel8);
-            Header.Controls.Add(panel7);
-            Header.Controls.Add(panel6);
-            Header.Controls.Add(panel5);
-            Header.Controls.Add(panel2);
+            Header.BackColor = Color.Black;
             Header.Dock = DockStyle.Top;
             Header.Location = new Point(0, 0);
             Header.Name = "Header";
-            Header.Size = new Size(1286, 63);
+            Header.Size = new Size(1286, 59);
             Header.TabIndex = 1;
             // 
-            // panel8
-            // 
-            panel8.BackColor = Color.Black;
-            panel8.Location = new Point(465, 53);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(356, 10);
-            panel8.TabIndex = 3;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.Black;
-            panel7.Location = new Point(859, 37);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(356, 10);
-            panel7.TabIndex = 2;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.Black;
-            panel6.Location = new Point(71, 37);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(356, 10);
-            panel6.TabIndex = 2;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Black;
-            panel5.Location = new Point(896, 21);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(356, 10);
-            panel5.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.Black;
-            panel2.Location = new Point(34, 21);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(356, 10);
-            panel2.TabIndex = 1;
-            // 
-            // Form1
+            // TitleGroupName
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -294,7 +243,7 @@
             Controls.Add(Header);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
+            Name = "TitleGroupName";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panel1.ResumeLayout(false);
@@ -306,7 +255,6 @@
             TitlePanel.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            Header.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -323,14 +271,9 @@
         private Label LeaderLabel;
         private Label label1;
         private Panel panel4;
-        private Panel panel5;
-        private Panel panel2;
-        private Panel panel7;
-        private Panel panel6;
         private Krypton.Toolkit.KryptonButton ContinueButt;
         private Panel PanelWall;
         private Panel RopePanel2;
         private Panel RopePanel1;
-        private Panel panel8;
     }
 }

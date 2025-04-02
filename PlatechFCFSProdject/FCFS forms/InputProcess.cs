@@ -13,7 +13,10 @@ namespace PlatechFCFSProdject
 {
     public partial class InputProcess : Form
     {
-        List<Process> processList = new List<Process>();
+        public List<Process> processList = new List<Process>();
+        public bool ResetProcessNo = false;
+        private int processCount = 0;
+        private int prevCount = 0;
         public InputProcess()
         {
             InitializeComponent();
@@ -22,24 +25,10 @@ namespace PlatechFCFSProdject
         private void TextBox_Leave_AddMsec(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
-            if (string.IsNullOrEmpty(txt.Text))
-            {
-                MessageBox.Show("This field cannot be empty.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt.Focus();
-                return;
-            }
-
             if (float.TryParse(txt.Text.Trim(), out float value))
             {
                 txt.Text = $"{value} msec";
                 txt.BackColor = Color.Teal;
-            }
-            else
-            {
-                MessageBox.Show("Numbers only!.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt.Focus();
-                return;
-
             }
 
             if (txt.Text.Contains(" msec"))
@@ -105,7 +94,7 @@ namespace PlatechFCFSProdject
             panel1.Visible = true;
             panel1.Controls.Clear();
 
-            int processCount;
+           
 
             if (int.TryParse(TextBoxInputPross.Text, out processCount))
             {
@@ -299,22 +288,28 @@ namespace PlatechFCFSProdject
                                         }
                                         if (colIndex == 2) proc.ArrivalTime = value;
                                     }
+                                    else {
+                                            MessageBox.Show("Numbers only!.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            txtBox.Focus();
+                                            return;
+
+                                    }
                                 }
                                 allIsNotEmpty = true;
                             }
                            
                         }
-                    }
-                    var existing = processList.FirstOrDefault(p => p.ProcessID == proc.ProcessID);
-                    if (existing != null)
-                    {
-                        existing.BurstTime = proc.BurstTime;
-                        existing.ArrivalTime = proc.ArrivalTime;
-                    }
-                    else
-                    {
-                        processList.Add(proc);
-                    }
+                    }          
+                        var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
+                        if (isProcessAlreadyList != null)
+                        {
+                            isProcessAlreadyList.BurstTime = proc.BurstTime;
+                            isProcessAlreadyList.ArrivalTime = proc.ArrivalTime;
+                        }
+                        else
+                        {
+                            processList.Add(proc);
+                        } 
                 }
             }    
         }
@@ -325,10 +320,13 @@ namespace PlatechFCFSProdject
 
             if (allIsNotEmpty)
             {
+                prevCount = processCount;
                 this.Hide();
-                Perform perform = new Perform();
+                Perform perform = new Perform(this);
                 perform.SetProcessList(processList);
                 perform.Show();
+                perform.ShowTable();
+
             }
         }
 
