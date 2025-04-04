@@ -163,8 +163,8 @@
             // 
             // panelPerformFind
             // 
-            panelPerformFind.BackColor = Color.Silver;
-            panelPerformFind.BackgroundImage = Properties.Resources.SideBackground;
+            panelPerformFind.BackColor = Color.Gainsboro;
+            panelPerformFind.BackgroundImage = Properties.Resources.ReverseBackground;
             panelPerformFind.BackgroundImageLayout = ImageLayout.Stretch;
             panelPerformFind.Controls.Add(ATATButt);
             panelPerformFind.Controls.Add(PTATButt);
@@ -563,7 +563,7 @@
             GanttChartButt.StateTracking.Border.Width = 15;
             GanttChartButt.TabIndex = 4;
             GanttChartButt.Values.DropDownArrowColor = Color.Empty;
-            GanttChartButt.Values.Text = "Gantt Chart";
+            GanttChartButt.Values.Text = "GANTT CHART";
             GanttChartButt.Click += GanttChart_Click;
             // 
             // OpenButton
@@ -583,7 +583,7 @@
             // 
             // GanttchartP
             // 
-            GanttchartP.BackColor = Color.Silver;
+            GanttchartP.BackColor = Color.WhiteSmoke;
             GanttchartP.BackgroundImage = Properties.Resources.SideBackground;
             GanttchartP.BackgroundImageLayout = ImageLayout.Stretch;
             GanttchartP.Controls.Add(label3);

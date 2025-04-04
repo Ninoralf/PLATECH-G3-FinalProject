@@ -351,7 +351,7 @@ namespace PlatechFCFSProdject
             }
             else
             {
-                if (!isOpenPWT)
+                if (!isOpenPWT && isGranttChartOpen)
                 {
                     MessageBox.Show($"Open the Process Waiting Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -399,7 +399,7 @@ namespace PlatechFCFSProdject
             }
             else
             {
-                if (!isOpenPCT)
+                if (!isOpenPCT && isGranttChartOpen)
                 {
                     MessageBox.Show($"Open the Process Complete Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -445,7 +445,7 @@ namespace PlatechFCFSProdject
             }
             else
             {
-                if (!isOpenPTAT)
+                if (!isOpenPTAT && isGranttChartOpen)
                 {
                     MessageBox.Show($"Open the Process Turn Around Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -640,8 +640,8 @@ namespace PlatechFCFSProdject
                     var Plist = pList.processList[i];
                     Label Pno = new Label
                     {
-                        Font = new Font("Sans Serif Collection", 8F, FontStyle.Bold, GraphicsUnit.Point, 0),
-                        Location = new Point(currentWidth, 18),
+                        Font = new Font("Sans Serif Collection", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                        Location = new Point(currentWidth, 12),
                         Size = new Size(116, 27),
                         Text = title == "PWT" ? $"{Plist.ProcessID}: {Plist.PWT} msec" :
                                title == "PCT" ? $"{Plist.ProcessID}: {Plist.PCT} msec" :

@@ -15,13 +15,14 @@ namespace PlatechFCFSProdject
     {
         public List<Process> processList = new List<Process>();
         public bool ResetProcessNo = false;
+        private bool allIsNotEmpty = false;
         private int processCount = 0;
         private int prevCount = 0;
         public InputProcess()
         {
             InitializeComponent();
         }
-
+        // HELPER METHOD ==================================================================
         private void TextBox_Leave_AddMsec(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
@@ -40,197 +41,120 @@ namespace PlatechFCFSProdject
                 txt.BackColor = Color.White;
             }
         }
-
         private void TextBox_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
             txt.BackColor = Color.White;
             txt.Text = txt.Text.Replace(" msec", "").Trim();
         }
-
-        private void ContinueButt_Click(object sender, EventArgs e)
-        {
-            ShowTable();
-        }
-
-
-        private void ChangeBackground()
-        {
-            BackButton.Visible = false;
-            ContinueButs.Visible = false;
-            label1.Visible = false;
-            int GoalLHeightWhitePanel = 701;
-
-            Thread thread = new Thread(() =>
-            {
-                int FirstHeightWhitePanel = WhitePanel.Height;
-                //=================================================
-
-                while (FirstHeightWhitePanel < GoalLHeightWhitePanel)
-                {
-                    FirstHeightWhitePanel += 12;
-                    Invoke((MethodInvoker)(() =>
-                    {
-                        WhitePanel.Height = FirstHeightWhitePanel;
-                    }));
-
-                    Thread.Sleep(2);
-                }
-                BackButton.Visible = true;
-                ContinueButs.Visible = true;
-                label1.Visible = true;
-                TextBoxInputPross.Visible = false;
-                ContinueButt.Visible = false;
-                
-            });
-           
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
-
         private void ShowTable()
         {
             panel1.Visible = true;
             panel1.Controls.Clear();
 
-           
-
-            if (int.TryParse(TextBoxInputPross.Text, out processCount))
+            if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
             {
-                if (processCount >= 2 && processCount <= 5)
+
+                if (int.TryParse(TextBoxInputPross.Text, out processCount))
                 {
-                    Panel[] arrayPanel = new Panel[processCount];
-
-                    Panel header = new Panel
+                    if (processCount >= 2 && processCount <= 5)
                     {
-                        Width = panel1.Width - 25,
-                        Height = 40,
-                        Location = new Point(10, 0),
+                        Panel[] arrayPanel = new Panel[processCount];
 
-                    };
-
-                    for (int i = 0; i < processCount; i++)
-                    {
-
-                        string[] headers = { "Process ID", "Burst Time", "Arrival Time" };
-                        // FOR LABEL OF HEADERS -----------------------
-                        for (int j = 0; j < headers.Length; j++)
+                        Panel header = new Panel
                         {
-                            Label lbl = new Label
-                            {
-                                Text = headers[j],
-                                Width = (header.Width / 3) - 10,
-                                Location = new Point(j * (header.Width / 3), 10),
-                                TextAlign = ContentAlignment.MiddleCenter,
-                                Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                            };
-                            header.Controls.Add(lbl);
-                        }
-
-                        panel1.Controls.Add(header);
-
-                        // FOR ROW PANEL -----------------------
-                        Panel row = new Panel
-                        {
-                            Size = new Size(492, 39),
-                            TabIndex = 2,
-                            Width = panel1.Width - 18,
+                            Width = panel1.Width - 25,
                             Height = 40,
-                            Location = new Point(10, (i + 1) * 45),
-                            Name = $"panelRow_{i}",
-                            BackColor = SystemColors.AppWorkspace
+                            Location = new Point(10, 0),
+
                         };
-                        // FOR TEXTBOX -----------------------
-                        for (int j = 0; j < 3; j++)
+
+                        for (int i = 0; i < processCount; i++)
                         {
-                            TextBox txt = new TextBox
+
+                            string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
+                            // FOR LABEL OF HEADERS -----------------------
+                            for (int j = 0; j < headers.Length; j++)
                             {
-                                Multiline = true,
-                                Size = new Size(158, 38),
-                                Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                                TextAlign = HorizontalAlignment.Center,
-                                Width = (row.Width / 3),
-                                Location = new Point(j * (row.Width / 3), 5),
-                                Name = $"Text_Box_{j}"
+                                Label lbl = new Label
+                                {
+                                    Text = headers[j],
+                                    Width = (header.Width / 3) - 3,
+                                    Location = new Point(j * (header.Width / 3), 10),
+                                    TextAlign = ContentAlignment.MiddleCenter,
+                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                };
+
+                                header.Controls.Add(lbl);
+                            }
+
+                            panel1.Controls.Add(header);
+
+                            // FOR ROW PANEL -----------------------
+                            Panel row = new Panel
+                            {
+                                Size = new Size(492, 39),
+                                TabIndex = 2,
+                                Width = panel1.Width - 18,
+                                Height = 40,
+                                Location = new Point(10, (i + 1) * 45),
+                                Name = $"panelRow_{i}",
+                                BackColor = SystemColors.AppWorkspace
                             };
+                            // FOR TEXTBOX -----------------------
+                            for (int j = 0; j < 3; j++)
+                            {
+                                TextBox txt = new TextBox
+                                {
+                                    Multiline = true,
+                                    Size = new Size(158, 38),
+                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                    TextAlign = HorizontalAlignment.Center,
+                                    Width = (row.Width / 3),
+                                    Location = new Point(j * (row.Width / 3), 5),
+                                    Name = $"Text_Box_{j}"
+                                };
 
-                            if (j == 0)
-                            {
-                                txt.Text = $"P{i + 1}";
-                                txt.Enabled = false;
-                                txt.TextAlign = HorizontalAlignment.Center;
-                                txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                                if (j == 0)
+                                {
+                                    txt.Text = $"P{i + 1}";
+                                    txt.Enabled = false;
+                                    txt.TextAlign = HorizontalAlignment.Center;
+                                    txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                                }
+                                else
+                                {
+                                    txt.Leave += TextBox_Leave_AddMsec;
+                                    txt.Enter += TextBox_Enter;
+                                }
+                                row.Controls.Add(txt);
                             }
-                            else
-                            {
-                                txt.Leave += TextBox_Leave_AddMsec;
-                                txt.Enter += TextBox_Enter;
-                            }
-                            row.Controls.Add(txt);
+
+                            panel1.Controls.Add(row);
+
                         }
-
-                        panel1.Controls.Add(row);
-
+                        LabelProcessNO.Text = TextBoxInputPross.Text;
+                        panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
+                        ChangeBackground();
+                        AnimateHandlePanelHide();
                     }
-                    LabelProcessNO.Text = TextBoxInputPross.Text;
-                    panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
-                    ChangeBackground();
+                    else
+                    {
+                        ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
+                    }
+
                 }
                 else
                 {
-                    ErrorLabel.Text = "Minimum of 2, Maximum of 5";
+                    ErrorLabel.Text = "Integers only, please try again.";
                 }
-
             }
-            else
-            {
-                ErrorLabel.Text = "Integers only, please try again!";
+            else {
+                ErrorLabel.Text = "Cannot be empty, please enter the process no.";
             }
+
+          
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private void kryptonTextBox1_MouseEnter(object sender, EventArgs e)
-        {
-            ErrorLabel.Text = "";
-        }
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            BackButton.Visible = false;
-            ContinueButs.Visible = false;
-
-            int GoalLHeightWhitePanel = 0;
-
-            Thread thread = new Thread(() =>
-            {
-                int FirstHeightWhitePanel = WhitePanel.Height;
-                //=================================================
-
-                while (FirstHeightWhitePanel > GoalLHeightWhitePanel)
-                {
-                    FirstHeightWhitePanel -= 10;
-                    Invoke((MethodInvoker)(() =>
-                    {
-                        WhitePanel.Height = FirstHeightWhitePanel;
-                    }));
-
-                    Thread.Sleep(2);
-
-                }
-                TextBoxInputPross.Visible = true;
-                ContinueButt.Visible = true;
-            });
-
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
-
-        bool allIsNotEmpty = false;
-       
-        
         private void GetProcessData()
         {
             foreach (Control control in panel1.Controls)
@@ -240,7 +164,7 @@ namespace PlatechFCFSProdject
                     Process proc = new Process();
 
                     foreach (Control txtControl in rowPanel.Controls)
-                    {             
+                    {
                         if (txtControl is TextBox txtBox)
                         {
                             allIsNotEmpty = false;
@@ -257,7 +181,8 @@ namespace PlatechFCFSProdject
                                 txtBox.Focus();
                                 return;
                             }
-                            else {
+                            else
+                            {
                                 if (colIndex == 0)
                                 {
                                     proc.ProcessID = txtBox.Text;
@@ -288,32 +213,76 @@ namespace PlatechFCFSProdject
                                         }
                                         if (colIndex == 2) proc.ArrivalTime = value;
                                     }
-                                    else {
-                                            MessageBox.Show("Numbers only!.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                            txtBox.Focus();
-                                            return;
+                                    else
+                                    {
+                                        MessageBox.Show("Numbers only!.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        txtBox.Focus();
+                                        return;
 
                                     }
                                 }
                                 allIsNotEmpty = true;
                             }
-                           
+
                         }
-                    }          
-                        var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
-                        if (isProcessAlreadyList != null)
-                        {
-                            isProcessAlreadyList.BurstTime = proc.BurstTime;
-                            isProcessAlreadyList.ArrivalTime = proc.ArrivalTime;
-                        }
-                        else
-                        {
-                            processList.Add(proc);
-                        } 
+                    }
+                    var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
+                    if (isProcessAlreadyList != null)
+                    {
+                        isProcessAlreadyList.BurstTime = proc.BurstTime;
+                        isProcessAlreadyList.ArrivalTime = proc.ArrivalTime;
+                    }
+                    else
+                    {
+                        processList.Add(proc);
+                    }
                 }
-            }    
+            }
         }
 
+        // CLICKABLE BUTTONS METHOD =======================================================
+        private void ContinueButt_Click(object sender, EventArgs e)
+        {
+            ShowTable();
+         
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void kryptonTextBox1_MouseEnter(object sender, EventArgs e)
+        {
+            ErrorLabel.Text = "";
+        }
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            SetButtonsVisibility(false);
+            int GoalLHeightWhitePanel = 0;
+
+            Thread thread = new Thread(() =>
+            {
+                int FirstWidthWhitePanel = WhitePanel.Width;
+                //=================================================
+
+                while (FirstWidthWhitePanel > GoalLHeightWhitePanel)
+                {
+                    FirstWidthWhitePanel -= 12;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        WhitePanel.Width = FirstWidthWhitePanel;
+                    }));
+
+                    Thread.Sleep(2);
+
+                }
+                ContinueButt.Visible = true;
+                AnimateHandlePanelShow();
+            });
+            thread.IsBackground = true;
+            thread.Start();
+   
+        }
+        
         private void ContinueButs_Click(object sender, EventArgs e)
         {
             GetProcessData();
@@ -330,7 +299,99 @@ namespace PlatechFCFSProdject
             }
         }
 
+        // ANIMATED METHOD ================================================================
+        private void ChangeBackground()
+        {
+            SetButtonsVisibility(false);
+            int GoalLHeightWhitePanel = 1256;
 
-      
+            Thread thread = new Thread(() =>
+            {
+                int FirstWidthWhitePanel = 0;
+                //=================================================
+
+                while (FirstWidthWhitePanel < GoalLHeightWhitePanel)
+                {
+                    FirstWidthWhitePanel += 12;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        WhitePanel.Width = FirstWidthWhitePanel;
+                    }));
+
+                    Thread.Sleep(2);
+                }
+
+                SetButtonsVisibility(true);
+            });
+
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        private void SetButtonsVisibility(bool isVisible)
+        {
+            if (!isVisible)
+            {
+
+                BackButton.Visible = false;
+                ContinueButs.Visible = false;
+                label3.Visible = false;
+                LabelProcessNO.Visible = false;
+                panel1.Visible = false;
+                BackButton.Visible = false;
+                ContinueButs.Visible = false;
+
+            }
+            else
+            {
+                BackButton.Visible = true;
+                ContinueButs.Visible = true;
+                label3.Visible = true;
+                LabelProcessNO.Visible = true;
+                panel1.Visible = true;
+                BackButton.Visible = true;
+                ContinueButt.Visible = true;
+            }
+        }
+
+        private void AnimateHandlePanelHide() {
+            int GoalLocation = 1253;
+            Thread thread = new Thread(() =>
+            {
+                int CurrentLoc = 291;
+                while (CurrentLoc < GoalLocation) {
+                    CurrentLoc += 12;
+                        Invoke((MethodInvoker)(() => {
+
+                            HandlePanel.Location = new Point(CurrentLoc, 70);
+
+                        }));
+                    Thread.Sleep(10);
+                }
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        private void AnimateHandlePanelShow()
+        {
+            int GoalLocation = 291;
+            Thread thread = new Thread(() =>
+            {
+                int CurrentLoc = 1253;
+                while (CurrentLoc > GoalLocation)
+                {
+                    CurrentLoc -= 12;
+                    Invoke((MethodInvoker)(() => {
+
+                        HandlePanel.Location = new Point(CurrentLoc, 70);
+
+                    }));
+                    Thread.Sleep(10);
+                }
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
     }
 }
