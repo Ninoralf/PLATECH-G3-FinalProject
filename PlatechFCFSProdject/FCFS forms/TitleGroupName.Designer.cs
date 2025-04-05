@@ -237,6 +237,7 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkGray;
+            panel1.BackgroundImage = Properties.Resources.SideBackground;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(DesignPanel2);
             panel1.Controls.Add(panel6);
@@ -254,7 +255,7 @@
             // 
             // DesignPanel2
             // 
-            DesignPanel2.BackColor = Color.DarkGray;
+            DesignPanel2.BackColor = Color.Transparent;
             DesignPanel2.Location = new Point(904, 417);
             DesignPanel2.Name = "DesignPanel2";
             DesignPanel2.Size = new Size(312, 275);
@@ -262,7 +263,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.LightGray;
+            panel6.BackColor = Color.Black;
             panel6.BorderStyle = BorderStyle.Fixed3D;
             panel6.Location = new Point(904, 417);
             panel6.Name = "panel6";
@@ -271,7 +272,7 @@
             // 
             // DesignPanel1
             // 
-            DesignPanel1.BackColor = Color.DarkGray;
+            DesignPanel1.BackColor = Color.Transparent;
             DesignPanel1.Location = new Point(80, 417);
             DesignPanel1.Name = "DesignPanel1";
             DesignPanel1.Size = new Size(312, 275);
@@ -287,7 +288,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.LightGray;
+            panel5.BackColor = Color.Black;
             panel5.BorderStyle = BorderStyle.Fixed3D;
             panel5.Location = new Point(80, 417);
             panel5.Name = "panel5";

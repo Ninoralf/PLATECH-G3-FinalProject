@@ -122,7 +122,7 @@
             // 
             ContinueButs.Location = new Point(625, 552);
             ContinueButs.Name = "ContinueButs";
-            ContinueButs.OverrideDefault.Back.Color1 = Color.White;
+            ContinueButs.OverrideDefault.Back.Color1 = Color.DimGray;
             ContinueButs.OverrideDefault.Back.Color2 = Color.DarkGray;
             ContinueButs.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
             ContinueButs.OverrideDefault.Border.Color1 = Color.Black;

@@ -27,19 +27,14 @@ namespace PlatechFCFSProdject
             this.input = inputProcess;
         }
 
+        // HELPER METHOD ===============================================================================
         public void SetProcessList(List<Process> process)
         {
-            pList.processList = process;
+            pList.processList = process; // set processList to Process
         }
-
-        private void ContinueButt_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         public void ShowTable()
         {
-            panel1.Visible = true;
+            panel1.Visible = true; // set Visible True
 
             Panel[] arrayPanel = new Panel[pList.processList.Count];
 
@@ -52,22 +47,23 @@ namespace PlatechFCFSProdject
 
             for (int i = 0; i < pList.processList.Count; i++)
             {
-                string[] headers = { "Process ID", "Burst Time", "Arrival Time" };
+                string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
                 for (int j = 0; j < headers.Length; j++)
-                {
+                {   
+                    // SET LABEL HEADER
                     Label lbl = new Label
                     {
                         Text = headers[j],
-                        Width = (header.Width / 3) - 10,
+                        Width = (header.Width / 3),
                         Location = new Point(j * (header.Width / 3), 10),
                         TextAlign = ContentAlignment.MiddleCenter,
-                        Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                        Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
                     };
                     header.Controls.Add(lbl);
                 }
 
                 panel1.Controls.Add(header);
-
+                // ROW PANEL 
                 Panel row = new Panel
                 {
                     Size = new Size(492, 39),
@@ -81,7 +77,8 @@ namespace PlatechFCFSProdject
 
                 var Plist = pList.processList[i];
                 for (int j = 0; j < 3; j++)
-                {
+                {   
+                    // 3 TEXTBOX OF THE ROW PANEL
                     TextBox txt = new TextBox
                     {
                         Multiline = true,
@@ -93,7 +90,7 @@ namespace PlatechFCFSProdject
                         Name = $"Text_Box_{j}",
                         Enabled = false
                     };
-
+                    // SET PROCESS ID LABEL IN FIRST TEXTBOX, AND SO ON..
                     if (j == 0)
                     {
                         txt.Text = Plist.ProcessID;
@@ -110,23 +107,21 @@ namespace PlatechFCFSProdject
                         string arrivalDisplay = Plist.ArrivalTime % 1 == 0 ? ((int)Plist.ArrivalTime).ToString() : Plist.ArrivalTime.ToString("0.##");
                         txt.Text = $"{arrivalDisplay} msec";
                     }
-                    row.Controls.Add(txt);
+                    row.Controls.Add(txt); // ADD TO ROW PANEL
                 }
 
-                panel1.Controls.Add(row);
+                panel1.Controls.Add(row); // ROW PANEL ADD TO PANEL1 THE MAIN
             }
             panel1.Height = Math.Min(pList.processList.Count * 60 + 15, this.ClientSize.Height - 410);
             panelTable.Height = Math.Min(pList.processList.Count * 60 + 50, this.ClientSize.Height - 390);
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // EXIT PROGRAM
         }
-
         private void GenerateGanttChart()
-        {
+        {   
+            // SORTING LOOP
             for (int i = 0; i < pList.processList.Count - 1; i++)
             {
                 for (int j = i + 1; j < pList.processList.Count; j++)
@@ -139,6 +134,7 @@ namespace PlatechFCFSProdject
                     float burst1 = pList.processList[i].BurstTime;
                     float burst2 = pList.processList[j].BurstTime;
 
+                    // IF ARRIVAL PNo. IS GREATER THAN TO ANOTHER PNo
                     if (arrival1 > arrival2)
                     {
                         shouldSwap = true;
@@ -159,8 +155,10 @@ namespace PlatechFCFSProdject
                         }
                     }
 
+                    // THEN SWAP
                     if (shouldSwap)
-                    {
+                    {   
+                        // MAKE A TEMP PROCESS. 
                         Process temp = pList.processList[i];
                         pList.processList[i] = pList.processList[j];
                         pList.processList[j] = temp;
@@ -168,15 +166,16 @@ namespace PlatechFCFSProdject
                 }
             }
 
-            ganttChartPanel.Controls.Clear();
+            ganttChartPanel.Controls.Clear(); // CLEAR THE GANTCHART SO THAT IT WILL APPLY CLEARLY
             int countHighBurstTime = 0;
             foreach (var list in pList.processList)
             {
+                // IF THE BURST TIME AND ARRIVAL TIME GREATER THAN 13 THEN ADJUST THE WIDTH
                 if (list.BurstTime >= 13 && list.ArrivalTime >= 13) {
                     countHighBurstTime++;
                 }
             }
-    
+            
             int sizeOfWidth = 0;
             if (countHighBurstTime == 5) sizeOfWidth = 13;
             else sizeOfWidth = 15;
@@ -185,7 +184,8 @@ namespace PlatechFCFSProdject
             float currentTime = 0f;
 
             foreach (var proc in pList.processList)
-            {
+            {   
+                // THIS IS FOR STARTING PROCESS NO.
                 if (currentTime < proc.ArrivalTime)
                 {
                     float EmptyDuration = proc.ArrivalTime - currentTime;
@@ -194,31 +194,31 @@ namespace PlatechFCFSProdject
                     currentTime = proc.ArrivalTime;
                 }
 
-                float width = proc.BurstTime * sizeOfWidth;
+                // FOR BURST TIME
+                float width = proc.BurstTime * sizeOfWidth; 
                 float StartTime;
                 if (sizeOfWidth == 13) StartTime = x / 13f;
                 else StartTime = x / 15f;
                 
-                proc.StartTime = StartTime;
+                proc.StartTime = StartTime; 
                 AddGanttBox(proc.ProcessID, x, width, Color.Teal , sizeOfWidth);
-                x += width;
+                x += width; 
                 currentTime += proc.BurstTime;
-                proc.CompletionTime = currentTime;
+                proc.CompletionTime = currentTime; 
             }
 
-            float endTime = currentTime;
-            float endPixel = endTime * sizeOfWidth;
+            float endTime = currentTime; 
+            float endPoint = endTime * sizeOfWidth;
             Label timeEndLabel = new Label
             {
                 BackColor = Color.Transparent,
                 Text = endTime % 1 == 0 ? ((int)endTime).ToString() : endTime.ToString("0.##"),
-                Location = new Point((int)endPixel, 115),
+                Location = new Point((int)endPoint, 115),
                 Font = new Font("Verdana", 10F, FontStyle.Bold),
                 AutoSize = true
             };
             ganttChartPanel.Controls.Add(timeEndLabel);
         }
-
         private void AddGanttBox(string label, float x, float width, Color color, int sizeOfWidth)
         {
             Label ganttBlock = new Label
@@ -249,33 +249,6 @@ namespace PlatechFCFSProdject
                 };
             ganttChartPanel.Controls.Add(timeLabel);
         }
-
-        private void ShowTablesButt_Click(object sender, EventArgs e)
-        {
-            //ShowTable();
-            if (!isToOpenTable)
-            {
-                panelTable.Visible = false;
-                ShowTablesButt.Text = "Show table";
-                isToOpenTable = true;
-            }
-            else
-            {
-                panelTable.Visible = true;
-                ShowTablesButt.Text = "Hide table";
-                isToOpenTable = false;
-            }
-
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            input.Show();
-            input.ResetProcessNo = true;
-            input.processList.Clear();
-        }
-
         private void ClickedButton(Krypton.Toolkit.KryptonButton ActiveButtons, params Krypton.Toolkit.KryptonButton[] buttons)
         {
             ActiveButtons.Enabled = false;
@@ -299,9 +272,9 @@ namespace PlatechFCFSProdject
                 defaultButt.OverrideDefault.Border.Width = 1;
             }
         }
-
         private void ReArrangeProcessNo()
         {
+            // reArrange / Back To Normal -> Ex. P1 to P5: WE USE SORTING IN GenerateGanttChart(). THIS IS FOR BACK TO NORMAL
             for (int i = 0; i < pList.processList.Count - 1; i++)
             {
                 for (int j = i + 1; j < pList.processList.Count; j++)
@@ -318,365 +291,8 @@ namespace PlatechFCFSProdject
                 }
             }
         }
-
-        // PWT ===================================================================================
-        float AverOfWT = 0;
-        bool isOpenPWT = false;
-        private void PWTButt_Click(object sender, EventArgs e)
-        {
-            if (isGranttChartOpen)
-            {
-                isOpenPWT = false;
-                isOpenPCT = false;
-                isOpenPWT = true;
-                ClickedButton(PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt); 
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PWT");
-            }
-            else {
-                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-        }
-        private void AWTButt_Click(object sender, EventArgs e)
-        {
-            if (isGranttChartOpen && isOpenPWT)
-            {
-                ClickedButton(AWTButt, PWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
-                float TotalAverWT = AverOfWT / pList.processList.Count();
-                AverageDisplay("AWT", TotalAverWT);
-                AverOfWT = 0;
-                isOpenPWT = false;
-            }
-            else
-            {
-                if (!isOpenPWT && isGranttChartOpen)
-                {
-                    MessageBox.Show($"Open the Process Waiting Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else {
-                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-             
-            }
-           
-        }
-
-        // PCT ==================================================================================
-        float AverOfCT = 0;
-        bool isOpenPCT = false;
-        private void PCTButt_Click(object sender, EventArgs e)
-        {
-
-            if (isGranttChartOpen)
-            {
-                isOpenPWT = false;
-                isOpenPTAT = false;
-                isOpenPCT = true;
-                ClickedButton(PCTButt, AWTButt, PWTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PCT");
-            }
-            else
-            {
-                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-            
-        }
-        private void ACTButt_Click(object sender, EventArgs e)
-        {
-            if (isGranttChartOpen && isOpenPCT)
-            {
-                ClickedButton(ACTButt, AWTButt, PCTButt, PWTButt, PTATButt, ATATButt, GanttChartButt);
-
-                float TotalAverCT = AverOfCT / pList.processList.Count();
-                AverageDisplay("ACT", TotalAverCT);
-                AverOfCT = 0;
-                isOpenPCT = false;
-            }
-            else
-            {
-                if (!isOpenPCT && isGranttChartOpen)
-                {
-                    MessageBox.Show($"Open the Process Complete Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else {
-                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-            }
-           
-        }
-
-        // PTAT =====================================================================================
-        float AverTAT = 0;
-        bool isOpenPTAT = false;
-        private void PTATButt_Click(object sender, EventArgs e)
-        {
-            if (isGranttChartOpen)
-            {
-                isOpenPWT = false;
-                isOpenPCT = false;
-                isOpenPTAT = true;
-                ClickedButton(PTATButt, AWTButt, PCTButt, ACTButt, PWTButt, ATATButt, GanttChartButt);
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PTAT");
-            }
-            else
-            {
-                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-           
-        }
-        private void ATATButt_Click(object sender, EventArgs e)
-        {
-            if (isGranttChartOpen && isOpenPTAT)
-            {
-                ClickedButton(ATATButt, AWTButt, PCTButt, ACTButt, PWTButt, PTATButt, GanttChartButt);
-                float PATATPno = AverTAT / pList.processList.Count();
-                AverageDisplay("ATAT", PATATPno);
-                AverTAT = 0;
-                isOpenPTAT = false;
-            }
-            else
-            {
-                if (!isOpenPTAT && isGranttChartOpen)
-                {
-                    MessageBox.Show($"Open the Process Turn Around Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-
-            }
-
-        }
-        //======================================================================================
-        private void GanttChart_Click(object sender, EventArgs e)
-        {
-           
-            isGranttChartOpen = true;
-            panelPerformFindClose();
-        }
-        //======================================================================================
-        private void displayGanttChart() {
-            OpenButton.Enabled = false;
-            int WidthGoal = 1222;
-            Thread thread = new Thread(() => {
-                int CurrentWidth = ganttChartPanel.Width;
-
-                while (CurrentWidth < WidthGoal) {
-                    CurrentWidth += 12;
-                    Invoke((MethodInvoker)(() => {
-                        ganttChartPanel.Width = CurrentWidth;
-                    }));
-                    Thread.Sleep(2);
-                }
-                Invoke((MethodInvoker)(() =>
-                {
-                    OpenButton.Enabled = true;
-                }));
-
-            });
-            thread.Start();
-          
-        }
-
-        private void closeGanttChart()
-        {
-            OpenButton.Enabled = false;
-            int WidthGoal = 0;
-            Thread thread = new Thread(() => {
-                int CurrentWidth = ganttChartPanel.Width ;
-
-                while (CurrentWidth > WidthGoal)
-                {
-                    CurrentWidth -= 12;
-                    Invoke((MethodInvoker)(() => {
-                        ganttChartPanel.Width = CurrentWidth;
-                    }));
-
-                    Thread.Sleep(2);
-                }
-               
-                
-                Invoke((MethodInvoker)(() =>
-                {
-                    animatePanel4Open();
-                    OpenButton.Enabled = true;
-                    
-                }));
-            });
-            thread.Start();
-          
-
-        }
-
-        private void panelPerformFindClose()
-        {
-            GanttChartButt.Visible = false;
-            int GoalWidthSize = 30;
-            Thread thread = new Thread(() =>
-            {
-                int CurrentWidthSize = GanttchartP.Width;
-
-                while (CurrentWidthSize > GoalWidthSize)
-                {
-                    CurrentWidthSize -= 6;
-
-                    Invoke((MethodInvoker)(() =>
-                    {
-
-                        GanttchartP.Width = CurrentWidthSize;
-                    }));
-                    Thread.Sleep(10);
-                }
-                Invoke((MethodInvoker)(() =>
-                {
-                    animatePanel4();
-                }));
-            });
-            thread.Start();
-           
-        }
-
-        private void panelPerformFindOPen()
-        {   
-            int GoalWidthSize = 354;
-            Thread thread = new Thread(() =>
-            {
-                int CurrentSize = 30;
-                while (CurrentSize < GoalWidthSize)
-                {
-                    CurrentSize += 6;
-
-                    Invoke((MethodInvoker)(() =>
-                    {
-                        GanttchartP.Width = CurrentSize;
-
-                    }));
-                    Thread.Sleep(10);
-                }
-                Invoke((MethodInvoker)(() =>
-                {
-
-                    GanttChartButt.Visible = true;
-     
-                }));
-            });
-            thread.Start();
-        }
-
-        private void OpenButton_Click(object sender, EventArgs e)
-        {
-            isGranttChartOpen = false;
-            Invoke((MethodInvoker)(() => {
-                ClickedButton(GanttChartButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, PWTButt);
-                GanttChartButt.Enabled = true;
-                CloseAverDisAndProcDis(true);
-            }));
-            closeGanttChart();
-        }
-
-        private void displayMsec(string title) {
-
-            if (!isTableTop)
-            {
-                animateTableToUp();
-                isTableTop = true;
-            }
-
-            AnimatedDisplayMsec();
-            if (title == "PWT")
-            {
-                foreach (var proc in pList.processList)
-                {
-                    float PWTPno = proc.StartTime - proc.ArrivalTime;
-                    proc.PWT = PWTPno;
-                    AverOfWT += PWTPno;
-                }
-            }
-            else if (title == "PCT")
-            {
-                foreach (var proc in pList.processList)
-                {
-                    float PCTPno = proc.CompletionTime - proc.ArrivalTime;
-                    proc.PCT = PCTPno;
-                    AverOfCT += PCTPno;
-                }
-            }
-            else {
-                foreach (var proc in pList.processList)
-                {
-                    float PATATPno = proc.CompletionTime - proc.ArrivalTime;
-                    proc.PTAT = PATATPno;
-                    AverTAT += PATATPno;
-                }
-            }
-
-            int currentWidth = 94;
-            int AddWidth = 154;
-            Invoke((MethodInvoker)(() => {
-                ProcessDisplay.Controls.Clear();
-                Label TitleProcess = new Label
-                {
-                    AutoSize = true,
-                    Font = new Font("Sans Serif Collection", 8F, FontStyle.Bold, GraphicsUnit.Point, 0),
-                    Location = new Point(14, 18),
-                    Size = new Size(70, 47),
-                    TabIndex = 0,
-                    Text = $"{title}:"
-                };
-                ProcessDisplay.Controls.Add(TitleProcess);
-
-                for (int i = 0; i < pList.processList.Count; i++) {
-                    var Plist = pList.processList[i];
-                    Label Pno = new Label
-                    {
-                        Font = new Font("Sans Serif Collection", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
-                        Location = new Point(currentWidth, 12),
-                        Size = new Size(116, 27),
-                        Text = title == "PWT" ? $"{Plist.ProcessID}: {Plist.PWT} msec" :
-                               title == "PCT" ? $"{Plist.ProcessID}: {Plist.PCT} msec" :
-                               $"{Plist.ProcessID}: {Plist.PTAT} msec"
-                    };
-
-                    currentWidth += AddWidth;
-
-                    ProcessDisplay.Controls.Add(Pno);
-                }
-            }));
-        }
-
-        private void AnimatedDisplayMsec() {
-            int goalWidth = 849;
-            Thread thread = new Thread(() => {
-                int currentWidth = 0;
-
-                while (currentWidth < goalWidth)
-                {
-                    currentWidth += 12;
-
-                    Invoke((MethodInvoker)(() =>
-                    {
-                        ProcessDisplay.Width = currentWidth;
-                    }));
-
-                    Thread.Sleep(6);
-                } 
-            });
-            thread.Start();
-        }
-
         private void AverageDisplay(string title, float totalAver)
-        {
+        {     
             AnimatedAverageDisplay();
             string TextResult = "(";
 
@@ -697,7 +313,7 @@ namespace PlatechFCFSProdject
             Invoke((MethodInvoker)(() => {
                 AverageDisplays.Controls.Clear();
 
-                int startX = 14;
+                int startX = 14; // Start with Location of X to 14
 
                 Label TitleProcess = new Label
                 {
@@ -707,7 +323,7 @@ namespace PlatechFCFSProdject
                     Text = $"{title}:"
                 };
                 AverageDisplays.Controls.Add(TitleProcess);
-                startX += TitleProcess.Width + 10;
+                startX += TitleProcess.Width + 10; // 10 is the Gap or Space Before Displaying the Msec.
 
                 Label displayMsec = new Label
                 {
@@ -742,10 +358,393 @@ namespace PlatechFCFSProdject
                     Text = $"{totalAver} msec.",
                     TextAlign = ContentAlignment.TopCenter
                 };
-                AverageDisplays.Controls.Add(TotalAverage);
+                AverageDisplays.Controls.Add(TotalAverage); 
             }));
         }
+        private void displayMsec(string title)
+        {
 
+            if (!isTableTop)
+            {
+                animateTableToUp();
+                isTableTop = true;
+            }
+
+            AnimatedDisplayMsec();
+            if (title == "PWT")
+            {
+                foreach (var proc in pList.processList)
+                {
+                    float PWTPno = proc.StartTime - proc.ArrivalTime;
+                    proc.PWT = PWTPno;
+                    AverOfWT += proc.PWT;
+                }
+            }
+            else if (title == "PCT")
+            {
+                foreach (var proc in pList.processList)
+                {
+                    float PCTPno = proc.CompletionTime - proc.ArrivalTime;
+                    proc.PCT = PCTPno;
+                    AverOfCT += proc.PCT;
+                }
+            }
+            else
+            {
+                foreach (var proc in pList.processList)
+                {
+                    float PATATPno = proc.CompletionTime - proc.ArrivalTime;
+                    proc.PTAT = PATATPno;
+                    AverTAT += proc.PTAT;
+                }
+            }
+
+            int currentWidth = 94;
+            int AddWidth = 154;
+            Invoke((MethodInvoker)(() => {
+                ProcessDisplay.Controls.Clear();
+                Label TitleProcess = new Label
+                {
+                    AutoSize = true,
+                    Font = new Font("Sans Serif Collection", 8F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                    Location = new Point(14, 18),
+                    Size = new Size(70, 47),
+                    TabIndex = 0,
+                    Text = $"{title}:"
+                };
+                ProcessDisplay.Controls.Add(TitleProcess);
+
+                for (int i = 0; i < pList.processList.Count; i++)
+                {
+                    var Plist = pList.processList[i];
+                    Label Pno = new Label
+                    {
+                        Font = new Font("Sans Serif Collection", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
+                        Location = new Point(currentWidth, 12),
+                        Size = new Size(125, 27),
+                        Text = title == "PWT" ? $"{Plist.ProcessID}: {Plist.PWT} msec" :
+                               title == "PCT" ? $"{Plist.ProcessID}: {Plist.PCT} msec" :
+                               $"{Plist.ProcessID}: {Plist.PTAT} msec"
+                    };
+
+                    currentWidth += AddWidth;
+
+                    ProcessDisplay.Controls.Add(Pno);
+                }
+            }));
+        }
+        private void EnableButtons(bool isEnable,params Krypton.Toolkit.KryptonButton[] buttons) {
+            foreach (var butt in buttons) {
+                butt.Enabled = isEnable;
+            }
+        }
+        // CLICKABLE BUTTONS METHOD ===================================================================
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            input.Show();
+            input.ResetProcessNo = true;
+            input.processList.Clear(); // After Pressing Back Button. All Value in List will be Deleted.
+        }
+        private void ShowTablesButt_Click(object sender, EventArgs e)
+        {
+            if (!isToOpenTable)
+            {
+                panelTable.Visible = false;
+                ShowTablesButt.Text = "Show table";
+                isToOpenTable = true;
+            }
+            else
+            {
+                panelTable.Visible = true;
+                ShowTablesButt.Text = "Hide table";
+                isToOpenTable = false;
+            }
+        }
+        private void OpenButton_Click(object sender, EventArgs e)
+        {
+            isGranttChartOpen = false;
+            Invoke((MethodInvoker)(() => {
+                ClickedButton(GanttChartButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, PWTButt);
+                GanttChartButt.Enabled = true;
+                CloseAverDisAndProcDis(true);
+            }));
+            closeGanttChart();
+        }
+        private void GanttChart_Click(object sender, EventArgs e)
+        {
+            EnableButtons(false, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt);
+            isGranttChartOpen = true;
+            panelPerformFindClose();
+        }
+        // PWT ========================================================================================
+        float AverOfWT = 0;
+        bool isOpenPWT = false;
+        private void PWTButt_Click(object sender, EventArgs e)
+        {
+            if (isGranttChartOpen)
+            {
+                isOpenPWT = false; 
+                isOpenPCT = false;
+                isOpenPWT = true;
+                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                ClickedButton(PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt); 
+                CloseAverDisAndProcDis(false);
+                ReArrangeProcessNo();
+                displayMsec("PWT");
+            }
+            else {
+                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        private void AWTButt_Click(object sender, EventArgs e)
+        {
+            if (isGranttChartOpen && isOpenPWT)
+            {
+                ClickedButton(AWTButt, PWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
+                float TotalAverWT = AverOfWT / pList.processList.Count();
+                AverageDisplay("AWT", TotalAverWT);
+                isOpenPWT = false;
+            }
+            else
+            {
+                if (!isOpenPWT && isGranttChartOpen)
+                {
+                    MessageBox.Show($"Open the Process Waiting Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else {
+                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+             
+            }
+           
+        }
+
+        // PCT ========================================================================================
+        float AverOfCT = 0;
+        bool isOpenPCT = false;
+        private void PCTButt_Click(object sender, EventArgs e)
+        {
+
+            if (isGranttChartOpen)
+            {
+                isOpenPWT = false;
+                isOpenPTAT = false;
+                isOpenPCT = true;
+                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                ClickedButton(PCTButt, AWTButt, PWTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
+                CloseAverDisAndProcDis(false);
+                ReArrangeProcessNo();
+                displayMsec("PCT");
+            }
+            else
+            {
+                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+            
+        }
+        private void ACTButt_Click(object sender, EventArgs e)
+        {
+            if (isGranttChartOpen && isOpenPCT)
+            {
+                ClickedButton(ACTButt, AWTButt, PCTButt, PWTButt, PTATButt, ATATButt, GanttChartButt);
+
+                float TotalAverCT = AverOfCT / pList.processList.Count();
+                AverageDisplay("ACT", TotalAverCT);
+                isOpenPCT = false;
+            }
+            else
+            {
+                if (!isOpenPCT && isGranttChartOpen)
+                {
+                    MessageBox.Show($"Open the Process Complete Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else {
+                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+           
+        }
+
+        // PTAT =======================================================================================
+        float AverTAT = 0;
+        bool isOpenPTAT = false;
+        private void PTATButt_Click(object sender, EventArgs e)
+        {
+            if (isGranttChartOpen)
+            {
+                isOpenPWT = false;
+                isOpenPCT = false;
+                isOpenPTAT = true;
+                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                ClickedButton(PTATButt, AWTButt, PCTButt, ACTButt, PWTButt, ATATButt, GanttChartButt);
+                CloseAverDisAndProcDis(false);
+                ReArrangeProcessNo();
+                displayMsec("PTAT");
+            }
+            else
+            {
+                MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+           
+        }
+        private void ATATButt_Click(object sender, EventArgs e)
+        {
+            if (isGranttChartOpen && isOpenPTAT)
+            {
+                ClickedButton(ATATButt, AWTButt, PCTButt, ACTButt, PWTButt, PTATButt, GanttChartButt);
+                float PATATPno = AverTAT / pList.processList.Count();
+                AverageDisplay("ATAT", PATATPno);
+                AverOfWT = 0;
+                AverOfCT = 0;
+                AverTAT = 0;
+                isOpenPTAT = false;
+            }
+            else
+            {
+                if (!isOpenPTAT && isGranttChartOpen)
+                {
+                    MessageBox.Show($"Open the Process Turn Around Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+
+            }
+
+        }
+        
+        // ANIMATED METHOD ============================================================================
+        private void displayGanttChart() {
+            OpenButton.Enabled = false;
+            int WidthGoal = 1222;
+            Thread thread = new Thread(() => {
+                int CurrentWidth = ganttChartPanel.Width;
+
+                while (CurrentWidth < WidthGoal) {
+                    CurrentWidth += 12;
+                    Invoke((MethodInvoker)(() => {
+                        ganttChartPanel.Width = CurrentWidth;
+                    }));
+                    Thread.Sleep(2);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    OpenButton.Enabled = true;
+                    EnableButtons(true, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt);
+                }));
+
+            });
+            thread.Start();
+            
+        }
+        private void closeGanttChart()
+        {
+            OpenButton.Enabled = false;
+            int WidthGoal = 0;
+            Thread thread = new Thread(() => {
+                int CurrentWidth = ganttChartPanel.Width ;
+
+                while (CurrentWidth > WidthGoal)
+                {
+                    CurrentWidth -= 12;
+                    Invoke((MethodInvoker)(() => {
+                        ganttChartPanel.Width = CurrentWidth;
+                    }));
+
+                    Thread.Sleep(2);
+                }
+               
+                
+                Invoke((MethodInvoker)(() =>
+                {
+                    animatePanel4Open();
+                    OpenButton.Enabled = true;
+                    
+                }));
+            });
+            thread.Start();
+          
+
+        }
+        private void panelPerformFindClose()
+        {
+            GanttChartButt.Visible = false;
+            int GoalWidthSize = 30;
+            Thread thread = new Thread(() =>
+            {
+                int CurrentWidthSize = GanttchartP.Width;
+
+                while (CurrentWidthSize > GoalWidthSize)
+                {
+                    CurrentWidthSize -= 6;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+
+                        GanttchartP.Width = CurrentWidthSize;
+                    }));
+                    Thread.Sleep(10);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    animatePanel4();
+                }));
+            });
+            thread.Start();
+           
+        }
+        private void panelPerformFindOPen()
+        {   
+            int GoalWidthSize = 354;
+            Thread thread = new Thread(() =>
+            {
+                int CurrentSize = 30;
+                while (CurrentSize < GoalWidthSize)
+                {
+                    CurrentSize += 6;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        GanttchartP.Width = CurrentSize;
+
+                    }));
+                    Thread.Sleep(10);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+
+                    GanttChartButt.Visible = true;
+     
+                }));
+            });
+            thread.Start();
+        }
+        private void AnimatedDisplayMsec() {
+            int goalWidth = 849;
+            Thread thread = new Thread(() => {
+                int currentWidth = 0;
+
+                while (currentWidth < goalWidth)
+                {
+                    currentWidth += 12;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        ProcessDisplay.Width = currentWidth;
+                    }));
+
+                    Thread.Sleep(6);
+                } 
+            });
+            thread.Start();
+        }
         private void AnimatedAverageDisplay()
         {   
             int goalWidth = 849;
@@ -766,8 +765,6 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
-
         private void CloseAverDisAndProcDis(bool isFromButtonGanttChart)
         {
             bool checker = false;
@@ -809,7 +806,6 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
         private void animatePanel4() {
             int GoalHeight = 0;
 
@@ -836,7 +832,6 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
         private void animatePanel4Open()
         {
             int GoalHeight = 177;
@@ -884,7 +879,6 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
         private void animateTableToDown()
         {
             int GoalLocation = 72;

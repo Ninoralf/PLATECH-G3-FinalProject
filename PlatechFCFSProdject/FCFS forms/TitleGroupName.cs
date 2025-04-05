@@ -8,10 +8,9 @@ namespace PlatechFCFSProdject
             InitializeComponent();
         }
 
+        // CLICKABLE BUTTONS METHOD ================================================
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-
-
             if (!isOpen)
             {
                 AdditionalDesignAnimatedO();
@@ -21,70 +20,19 @@ namespace PlatechFCFSProdject
                 CloseTitleAnimated();
             }
         }
+        private void ContinueButt_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // HIDE FORM
+            InputProcess InputProcess = new InputProcess(); // OPEN INPUT PROCESS FORM
+            InputProcess.Show();
+        }
 
-        //public void TitleAnimated()
-        //{
-        //    OpenButton.Enabled = false;
-        //    isOpen = true;
-        //    int GoalHeight = 721;
-        //    int MemberPanelGoal = 427;
-        //    int RegHeightOfRope = 0;
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        int currentTitleHeight = 0;
-        //        int currentMemberHeight = 0;
-        //        int RegSizeOfRope = 286;
-
-        //        while (RegSizeOfRope > RegHeightOfRope)
-        //        {
-        //            RegSizeOfRope -= 10;
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-        //                RopePanel1.Height = RegSizeOfRope;
-        //                RopePanel2.Height = RegSizeOfRope;
-        //                PanelWall.Location = new Point(448, RegSizeOfRope);
-        //            }));
-        //            Thread.Sleep(25);
-        //        }
-
-        //        //===================================================
-        //        while (currentTitleHeight < GoalHeight)
-        //        {
-
-        //            currentTitleHeight += 12;
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-        //                TitlePanel.Height = currentTitleHeight;
-        //            }));
-        //            Thread.Sleep(2);
-
-        //        }
-        //        //=================================================
-        //        while (currentMemberHeight < MemberPanelGoal)
-        //        {
-
-        //            currentMemberHeight += 12;
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-        //                MemberPanel.Height = currentMemberHeight;
-        //            }));
-        //            Thread.Sleep(2);
-        //        }
-
-        //        Invoke((MethodInvoker)(() =>
-        //        {
-        //            ContinueButt.Visible = true;
-        //            OpenButton.Values.Text = "Close";
-        //            OpenButton.Enabled = true;
-        //        }));
-        //    });
-        //    thread.Start();
-
-        //}
+        // ANIMATED METHOD =========================================================
+        // OPEN
         private void OpenTitleAnimated() {
-            isOpen = true;
-            int GoalTitleHeight = 346;
-            int GoalMemberHeight = 267;
+            isOpen = true; 
+            int GoalTitleHeight = 346; // GOAL HEIGHT / THE TITLE PANEL WILL STOP HERE.
+            int GoalMemberHeight = 267; // GOAL HEIGHT / THE MEMBER PANEL WILL STOP HERE.
             Thread thread = new Thread(() =>
             {
                 int CurrentTitleHeight = 0;
@@ -93,13 +41,13 @@ namespace PlatechFCFSProdject
                 while (CurrentTitleHeight < GoalTitleHeight) {
                     CurrentTitleHeight += 6;
                     Invoke((MethodInvoker)(() => {
-                        TitlePanel.Height = CurrentTitleHeight;
+                        TitlePanel.Height = CurrentTitleHeight; // CHANGE HEIGHT OF TITLE PANEL BASE ON CurrentTitleHeight
                     }));
-                    Thread.Sleep(10);
+                    Thread.Sleep(10); // sleep 
                 }
 
 
-
+                // AFTER TITLE PANEL SHOWN, THE MEMBER PANEL CODE ANIMATE HERE.
                 while (CUrrentMemberHeight < GoalMemberHeight)
                 {
                     CUrrentMemberHeight += 6;
@@ -109,6 +57,7 @@ namespace PlatechFCFSProdject
                     Thread.Sleep(10);
                 }
 
+                // AFTER ALL PANEL ARE SHOWN, APPLY THE ASSIGN BUTTONS.
                 Invoke((MethodInvoker)(() =>
                 {
                     ContinueButt.Visible = true;
@@ -119,8 +68,7 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
-
+        // CLOSE
         private void CloseTitleAnimated()
         {
             OpenButton.Enabled = false;
@@ -157,7 +105,8 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
+        //==========================================================================
+        // OPEN
         private void AdditionalDesignAnimatedO()
         {
             PanelDesign1Open();
@@ -195,11 +144,10 @@ namespace PlatechFCFSProdject
                 Invoke((MethodInvoker)(() => {
                     OpenTitleAnimated();
                 }));
-
             });
             thread.Start();
         }
-
+        // CLOSE
         private void AdditionalDesignAnimatedC()
         {
             ContinueButt.Visible = false;
@@ -242,71 +190,8 @@ namespace PlatechFCFSProdject
          
             thread.Start();
         }
-
-
-        //public void TitleCloseAnimated()
-        //{
-        //    ContinueButt.Visible = false;
-        //    OpenButton.Enabled = false;
-        //    isOpen = false;
-        //    int GoalHeight = 0;
-        //    int MemberPanelGoal = 0;
-        //    int RegHeightOfRope = 286;
-        //    //=================================================
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        int currentMemberHeight = MemberPanel.Height;
-        //        int currentTitleHeight = TitlePanel.Height;
-        //        int RegSizeOfRope = 0;
-
-
-        //        //=================================================
-
-        //        while (currentMemberHeight > MemberPanelGoal)
-        //        {
-        //            currentMemberHeight -= 10;
-        //            if (currentMemberHeight < MemberPanelGoal) currentMemberHeight = MemberPanelGoal;
-
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-        //                MemberPanel.Height = currentMemberHeight;
-        //            }));
-
-        //            Thread.Sleep(2);
-        //        }
-
-        //        //=================================================
-
-        //        while (currentTitleHeight > GoalHeight)
-        //        {
-        //            currentTitleHeight -= 10;
-        //            if (currentTitleHeight < GoalHeight) currentTitleHeight = GoalHeight;
-
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-        //                TitlePanel.Height = currentTitleHeight;
-        //            }));
-
-        //            Thread.Sleep(2);
-        //        }
-
-
-        //        while (RegSizeOfRope < RegHeightOfRope)
-        //        {
-        //            RegSizeOfRope += 10;
-        //            Invoke((MethodInvoker)(() =>
-        //            {
-
-        //                PanelWall.Location = new Point(448, RegSizeOfRope);
-        //            }));
-        //            Thread.Sleep(25);
-        //        }
-        //        OpenButton.Values.Text = "Open";
-        //        OpenButton.Enabled = true;
-       //    });
-       //    thread.Start();777777
-        //}
-
+        //==========================================================================
+        // OPEN
         private void PanelDesign1Open()
         {
             DesignPanel1.BorderStyle = BorderStyle.Fixed3D;
@@ -316,7 +201,8 @@ namespace PlatechFCFSProdject
             Thread thread = new Thread(() =>
             {
                 int currentLocation = 417;
-                while (currentLocation > GoalLocationToUp) {
+                while (currentLocation > GoalLocationToUp)
+                {
 
                     currentLocation -= 1;
                     Invoke((MethodInvoker)(() =>
@@ -344,13 +230,12 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(30);
                 }
-              
+
             });
             thread.Start();
 
         }
-
-
+        // CLOSE
         private void PanelDesign1Close()
         {
             DesignPanel1.BorderStyle = BorderStyle.Fixed3D;
@@ -402,11 +287,6 @@ namespace PlatechFCFSProdject
 
         }
 
-        private void ContinueButt_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            InputProcess InputProcess = new InputProcess();
-            InputProcess.Show();
-        }
+   
     }
 }

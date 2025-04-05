@@ -17,7 +17,6 @@ namespace PlatechFCFSProdject
         public bool ResetProcessNo = false;
         private bool allIsNotEmpty = false;
         private int processCount = 0;
-        private int prevCount = 0;
         public InputProcess()
         {
             InitializeComponent();
@@ -34,22 +33,23 @@ namespace PlatechFCFSProdject
 
             if (txt.Text.Contains(" msec"))
             {
-                txt.BackColor = Color.Teal;
+                txt.BackColor = Color.Teal; // TURN TEAL COLOR IF THERE'S A INPUT VALUE
             }
             else
             {
-                txt.BackColor = Color.White;
+                txt.BackColor = Color.White; // TURN WHITE COLOR IF EMTPY.
             }
         }
         private void TextBox_Enter(object sender, EventArgs e)
         {
             TextBox txt = sender as TextBox;
             txt.BackColor = Color.White;
-            txt.Text = txt.Text.Replace(" msec", "").Trim();
+            txt.Text = txt.Text.Replace(" msec", "").Trim(); // REMOVE MSEC IF THE USER PRESS AGAIN TO THE TEXTBOX
         }
+        // THIS METHOD CREATE THE TABLE OF PROCESS
         private void ShowTable()
         {
-            panel1.Visible = true;
+            panel1.Visible = true; 
             panel1.Controls.Clear();
 
             if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
@@ -60,7 +60,7 @@ namespace PlatechFCFSProdject
                     if (processCount >= 2 && processCount <= 5)
                     {
                         Panel[] arrayPanel = new Panel[processCount];
-
+                        // HEADER PANEL =====
                         Panel header = new Panel
                         {
                             Width = panel1.Width - 25,
@@ -70,8 +70,7 @@ namespace PlatechFCFSProdject
                         };
 
                         for (int i = 0; i < processCount; i++)
-                        {
-
+                        {   
                             string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
                             // FOR LABEL OF HEADERS -----------------------
                             for (int j = 0; j < headers.Length; j++)
@@ -101,7 +100,7 @@ namespace PlatechFCFSProdject
                                 Name = $"panelRow_{i}",
                                 BackColor = SystemColors.AppWorkspace
                             };
-                            // FOR TEXTBOX -----------------------
+                            // FOR TEXTBOX INSIDE THE ROW PANEL-----------------------
                             for (int j = 0; j < 3; j++)
                             {
                                 TextBox txt = new TextBox
@@ -155,6 +154,7 @@ namespace PlatechFCFSProdject
 
           
         }
+        // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
         private void GetProcessData()
         {
             foreach (Control control in panel1.Controls)
@@ -162,12 +162,11 @@ namespace PlatechFCFSProdject
                 if (control is Panel rowPanel && rowPanel.Name.StartsWith("panelRow_"))
                 {
                     Process proc = new Process();
-
                     foreach (Control txtControl in rowPanel.Controls)
                     {
                         if (txtControl is TextBox txtBox)
                         {
-                            allIsNotEmpty = false;
+                            allIsNotEmpty = false; // SET IT FIRST TO FALSE
                             string[] parts = txtBox.Name.Split('_');
                             int colIndex = int.Parse(parts[2]);
 
@@ -203,7 +202,7 @@ namespace PlatechFCFSProdject
                                         {
                                             if (value > 15 || value < 1)
                                             {
-                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 2.",
+                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 1.",
                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 txtBox.Focus();
                                                 return;
@@ -221,30 +220,57 @@ namespace PlatechFCFSProdject
 
                                     }
                                 }
-                                allIsNotEmpty = true;
+                                allIsNotEmpty = true; // SET TO TRUE.
                             }
 
                         }
                     }
-                    var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
+                    // THIS IS THE SAME OF FOREACH LOOP. IT CHECK IF THE PROCESS ID ADDED MULTIPLE TIMES.
+                    // IF USER CHANGE THE VALUE, THEN THE VALUE ONLY WILL CHANGE NOT THE PROCESS ID WILL ADD TO LIST.
+                    var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID); 
                     if (isProcessAlreadyList != null)
                     {
                         isProcessAlreadyList.BurstTime = proc.BurstTime;
                         isProcessAlreadyList.ArrivalTime = proc.ArrivalTime;
                     }
                     else
-                    {
+                    {   
+                        // ELSE IF NO CHANGES.
                         processList.Add(proc);
                     }
                 }
             }
         }
+        private void SetButtonsVisibility(bool isVisible)
+        {
+            if (!isVisible)
+            {
 
-        // CLICKABLE BUTTONS METHOD =======================================================
+                BackButton.Visible = false;
+                ContinueButs.Visible = false;
+                label3.Visible = false;
+                LabelProcessNO.Visible = false;
+                panel1.Visible = false;
+                BackButton.Visible = false;
+                ContinueButs.Visible = false;
+
+            }
+            else
+            {
+                BackButton.Visible = true;
+                ContinueButs.Visible = true;
+                label3.Visible = true;
+                LabelProcessNO.Visible = true;
+                panel1.Visible = true;
+                BackButton.Visible = true;
+                ContinueButt.Visible = true;
+            }
+        }
+
+        // CLICKABLE BUTTONS AND ANOTHER EVENT METHOD =======================================================
         private void ContinueButt_Click(object sender, EventArgs e)
         {
             ShowTable();
-         
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -282,14 +308,13 @@ namespace PlatechFCFSProdject
             thread.Start();
    
         }
-        
         private void ContinueButs_Click(object sender, EventArgs e)
         {
             GetProcessData();
 
             if (allIsNotEmpty)
             {
-                prevCount = processCount;
+                //prevCount = processCount
                 this.Hide();
                 Perform perform = new Perform(this);
                 perform.SetProcessList(processList);
@@ -327,33 +352,6 @@ namespace PlatechFCFSProdject
             thread.IsBackground = true;
             thread.Start();
         }
-
-        private void SetButtonsVisibility(bool isVisible)
-        {
-            if (!isVisible)
-            {
-
-                BackButton.Visible = false;
-                ContinueButs.Visible = false;
-                label3.Visible = false;
-                LabelProcessNO.Visible = false;
-                panel1.Visible = false;
-                BackButton.Visible = false;
-                ContinueButs.Visible = false;
-
-            }
-            else
-            {
-                BackButton.Visible = true;
-                ContinueButs.Visible = true;
-                label3.Visible = true;
-                LabelProcessNO.Visible = true;
-                panel1.Visible = true;
-                BackButton.Visible = true;
-                ContinueButt.Visible = true;
-            }
-        }
-
         private void AnimateHandlePanelHide() {
             int GoalLocation = 1253;
             Thread thread = new Thread(() =>
@@ -372,7 +370,6 @@ namespace PlatechFCFSProdject
             thread.IsBackground = true;
             thread.Start();
         }
-
         private void AnimateHandlePanelShow()
         {
             int GoalLocation = 291;
