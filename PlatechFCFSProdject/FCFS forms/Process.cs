@@ -15,5 +15,8 @@ namespace PlatechFCFSProdject
         public float CompletionTime { get; set; }
         public float TurnaroundTime { get; set; }
         public float WaitingTime { get; set; }
+        public float PWT { get; set; }
+        public float PCT { get; set; }
+        public float PTAT { get; set; }
     }
 }

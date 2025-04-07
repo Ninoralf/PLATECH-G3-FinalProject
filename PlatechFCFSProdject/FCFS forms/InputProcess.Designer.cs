@@ -34,15 +34,20 @@
             WhitePanel = new Panel();
             ContinueButs = new Krypton.Toolkit.KryptonButton();
             BackButton = new Krypton.Toolkit.KryptonButton();
-            LabelProcessNO = new Label();
             label3 = new Label();
             panel1 = new Panel();
+            LabelProcessNO = new Label();
             panel2 = new Panel();
             label2 = new Label();
             button1 = new Button();
             ErrorLabel = new Label();
+            HandlePanel = new Panel();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             WhitePanel.SuspendLayout();
             panel2.SuspendLayout();
+            HandlePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
+            kryptonPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -50,21 +55,26 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Verdana", 40F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(327, 153);
+            label1.Location = new Point(19, 78);
             label1.Name = "label1";
-            label1.Size = new Size(593, 130);
+            label1.Size = new Size(656, 130);
             label1.TabIndex = 0;
-            label1.Text = "Enter a number of \r\nProcesses";
+            label1.Text = "Enter the number of \r\nProcesses";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TextBoxInputPross
             // 
-            TextBoxInputPross.Location = new Point(451, 340);
+            TextBoxInputPross.Location = new Point(176, 34);
             TextBoxInputPross.Multiline = true;
             TextBoxInputPross.Name = "TextBoxInputPross";
             TextBoxInputPross.Size = new Size(322, 61);
-            TextBoxInputPross.StateCommon.Back.Color1 = Color.White;
+            TextBoxInputPross.StateCommon.Back.Color1 = Color.Black;
+            TextBoxInputPross.StateCommon.Border.Color1 = Color.White;
+            TextBoxInputPross.StateCommon.Border.Color2 = Color.Transparent;
+            TextBoxInputPross.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             TextBoxInputPross.StateCommon.Border.Rounding = 10F;
+            TextBoxInputPross.StateCommon.Border.Width = 3;
+            TextBoxInputPross.StateCommon.Content.Color1 = Color.Olive;
             TextBoxInputPross.StateCommon.Content.Font = new Font("Verdana", 30F);
             TextBoxInputPross.TabIndex = 1;
             TextBoxInputPross.TextAlign = HorizontalAlignment.Center;
@@ -72,14 +82,19 @@
             // 
             // ContinueButt
             // 
-            ContinueButt.Location = new Point(504, 465);
+            ContinueButt.Location = new Point(233, 177);
             ContinueButt.Name = "ContinueButt";
-            ContinueButt.OverrideDefault.Back.Color1 = Color.FromArgb(224, 224, 224);
-            ContinueButt.OverrideDefault.Back.Color2 = Color.White;
+            ContinueButt.OverrideDefault.Back.Color1 = Color.DimGray;
+            ContinueButt.OverrideDefault.Back.Color2 = Color.DarkGray;
+            ContinueButt.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ContinueButt.OverrideDefault.Border.Color1 = Color.Black;
+            ContinueButt.OverrideDefault.Border.Rounding = 10F;
+            ContinueButt.OverrideDefault.Border.Width = 1;
             ContinueButt.Size = new Size(207, 55);
-            ContinueButt.StateCommon.Back.Color1 = Color.FromArgb(224, 224, 224);
-            ContinueButt.StateCommon.Back.Color2 = Color.White;
-            ContinueButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.ExpertSquareHighlight;
+            ContinueButt.StateCommon.Back.Color1 = Color.DimGray;
+            ContinueButt.StateCommon.Back.Color2 = Color.DarkGray;
+            ContinueButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ContinueButt.StateCommon.Border.Color1 = Color.Black;
             ContinueButt.StateCommon.Border.Rounding = 10F;
             ContinueButt.StateCommon.Content.ShortText.Color1 = Color.Black;
             ContinueButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -95,31 +110,40 @@
             WhitePanel.BackgroundImageLayout = ImageLayout.Stretch;
             WhitePanel.Controls.Add(ContinueButs);
             WhitePanel.Controls.Add(BackButton);
-            WhitePanel.Controls.Add(LabelProcessNO);
             WhitePanel.Controls.Add(label3);
             WhitePanel.Controls.Add(panel1);
-            WhitePanel.Location = new Point(1, 37);
+            WhitePanel.Controls.Add(LabelProcessNO);
+            WhitePanel.Location = new Point(-2, 39);
             WhitePanel.Name = "WhitePanel";
-            WhitePanel.Size = new Size(1252, 0);
+            WhitePanel.Size = new Size(0, 665);
             WhitePanel.TabIndex = 4;
             // 
             // ContinueButs
             // 
-            ContinueButs.Location = new Point(658, 552);
+            ContinueButs.Location = new Point(625, 552);
             ContinueButs.Name = "ContinueButs";
-            ContinueButs.OverrideDefault.Back.Color1 = Color.White;
-            ContinueButs.OverrideDefault.Back.Color2 = Color.Silver;
-            ContinueButs.Size = new Size(118, 44);
-            ContinueButs.StateCommon.Back.Color1 = Color.White;
-            ContinueButs.StateCommon.Back.Color2 = Color.Silver;
-            ContinueButs.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.ExpertSquareHighlight2;
+            ContinueButs.OverrideDefault.Back.Color1 = Color.DimGray;
+            ContinueButs.OverrideDefault.Back.Color2 = Color.DarkGray;
+            ContinueButs.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ContinueButs.OverrideDefault.Border.Color1 = Color.Black;
+            ContinueButs.OverrideDefault.Border.Rounding = 10F;
+            ContinueButs.OverrideDefault.Border.Width = 1;
+            ContinueButs.Size = new Size(277, 44);
+            ContinueButs.StateCommon.Back.Color1 = Color.DimGray;
+            ContinueButs.StateCommon.Back.Color2 = Color.DarkGray;
+            ContinueButs.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ContinueButs.StateCommon.Border.Color1 = Color.Black;
             ContinueButs.StateCommon.Border.Rounding = 10F;
+            ContinueButs.StateCommon.Border.Width = 1;
             ContinueButs.StateCommon.Content.ShortText.Color1 = Color.Black;
             ContinueButs.StateCommon.Content.ShortText.Font = new Font("Verdana", 12F);
-            ContinueButs.StateTracking.Back.Color1 = Color.Green;
-            ContinueButs.StateTracking.Back.Color2 = Color.Silver;
-            ContinueButs.StateTracking.Border.Color1 = Color.Maroon;
-            ContinueButs.StateTracking.Border.Color2 = Color.Maroon;
+            ContinueButs.StateTracking.Back.Color1 = Color.White;
+            ContinueButs.StateTracking.Back.Color2 = Color.DarkGray;
+            ContinueButs.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ContinueButs.StateTracking.Border.Color1 = Color.Olive;
+            ContinueButs.StateTracking.Border.Color2 = Color.Black;
+            ContinueButs.StateTracking.Border.Rounding = 10F;
+            ContinueButs.StateTracking.Border.Width = 1;
             ContinueButs.StateTracking.Content.ShortText.Color1 = Color.Black;
             ContinueButs.StateTracking.Content.ShortText.Color2 = Color.Black;
             ContinueButs.TabIndex = 7;
@@ -129,21 +153,30 @@
             // 
             // BackButton
             // 
-            BackButton.Location = new Point(481, 552);
+            BackButton.Location = new Point(349, 552);
             BackButton.Name = "BackButton";
-            BackButton.OverrideDefault.Back.Color1 = Color.White;
-            BackButton.OverrideDefault.Back.Color2 = Color.Silver;
-            BackButton.Size = new Size(118, 44);
-            BackButton.StateCommon.Back.Color1 = Color.White;
-            BackButton.StateCommon.Back.Color2 = Color.Silver;
-            BackButton.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.ExpertSquareHighlight2;
+            BackButton.OverrideDefault.Back.Color1 = Color.DimGray;
+            BackButton.OverrideDefault.Back.Color2 = Color.DarkGray;
+            BackButton.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            BackButton.OverrideDefault.Border.Color1 = Color.Black;
+            BackButton.OverrideDefault.Border.Rounding = 10F;
+            BackButton.OverrideDefault.Border.Width = 1;
+            BackButton.Size = new Size(270, 44);
+            BackButton.StateCommon.Back.Color1 = Color.DimGray;
+            BackButton.StateCommon.Back.Color2 = Color.DarkGray;
+            BackButton.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            BackButton.StateCommon.Border.Color1 = Color.Black;
             BackButton.StateCommon.Border.Rounding = 10F;
+            BackButton.StateCommon.Border.Width = 1;
             BackButton.StateCommon.Content.ShortText.Color1 = Color.Black;
             BackButton.StateCommon.Content.ShortText.Font = new Font("Verdana", 12F);
-            BackButton.StateTracking.Back.Color1 = Color.Olive;
-            BackButton.StateTracking.Back.Color2 = Color.Silver;
+            BackButton.StateTracking.Back.Color1 = Color.White;
+            BackButton.StateTracking.Back.Color2 = Color.DarkGray;
+            BackButton.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
             BackButton.StateTracking.Border.Color1 = Color.Maroon;
-            BackButton.StateTracking.Border.Color2 = Color.Maroon;
+            BackButton.StateTracking.Border.Color2 = Color.Black;
+            BackButton.StateTracking.Border.Rounding = 10F;
+            BackButton.StateTracking.Border.Width = 1;
             BackButton.StateTracking.Content.ShortText.Color1 = Color.Black;
             BackButton.StateTracking.Content.ShortText.Color2 = Color.Black;
             BackButton.TabIndex = 6;
@@ -151,28 +184,15 @@
             BackButton.Values.Text = "Back";
             BackButton.Click += BackButton_Click;
             // 
-            // LabelProcessNO
-            // 
-            LabelProcessNO.AutoSize = true;
-            LabelProcessNO.BackColor = Color.Transparent;
-            LabelProcessNO.Font = new Font("Verdana", 70F, FontStyle.Bold);
-            LabelProcessNO.ForeColor = Color.Black;
-            LabelProcessNO.Location = new Point(886, 43);
-            LabelProcessNO.Name = "LabelProcessNO";
-            LabelProcessNO.Size = new Size(115, 114);
-            LabelProcessNO.TabIndex = 5;
-            LabelProcessNO.Text = "5";
-            LabelProcessNO.TextAlign = ContentAlignment.TopCenter;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Verdana", 35F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(298, 69);
+            label3.Font = new Font("Verdana", 50F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(64, 64, 64);
+            label3.Location = new Point(154, 42);
             label3.Name = "label3";
-            label3.Size = new Size(582, 57);
+            label3.Size = new Size(832, 80);
             label3.TabIndex = 4;
             label3.Text = "Number of Processes";
             label3.TextAlign = ContentAlignment.TopCenter;
@@ -181,11 +201,25 @@
             // 
             panel1.AutoSize = true;
             panel1.BackColor = Color.Gray;
-            panel1.Location = new Point(345, 181);
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Location = new Point(345, 153);
             panel1.Name = "panel1";
             panel1.Size = new Size(557, 324);
             panel1.TabIndex = 3;
             panel1.Visible = false;
+            // 
+            // LabelProcessNO
+            // 
+            LabelProcessNO.AutoSize = true;
+            LabelProcessNO.BackColor = Color.Transparent;
+            LabelProcessNO.Font = new Font("Stencil", 130.75F, FontStyle.Bold);
+            LabelProcessNO.ForeColor = Color.Black;
+            LabelProcessNO.Location = new Point(959, -15);
+            LabelProcessNO.Name = "LabelProcessNO";
+            LabelProcessNO.Size = new Size(189, 207);
+            LabelProcessNO.TabIndex = 5;
+            LabelProcessNO.Text = "5";
+            LabelProcessNO.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel2
             // 
@@ -202,11 +236,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Verdana", 20F, FontStyle.Bold);
+            label2.Font = new Font("Verdana", 15F, FontStyle.Bold);
             label2.ForeColor = Color.Olive;
-            label2.Location = new Point(293, 4);
+            label2.Location = new Point(363, 7);
             label2.Name = "label2";
-            label2.Size = new Size(709, 32);
+            label2.Size = new Size(525, 25);
             label2.TabIndex = 5;
             label2.Text = "First Come First Serve (FCFS) CPU Scheduling";
             label2.TextAlign = ContentAlignment.TopCenter;
@@ -230,25 +264,47 @@
             ErrorLabel.BackColor = Color.Transparent;
             ErrorLabel.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ErrorLabel.ForeColor = Color.FromArgb(192, 0, 0);
-            ErrorLabel.Location = new Point(451, 404);
+            ErrorLabel.Location = new Point(174, 98);
             ErrorLabel.Name = "ErrorLabel";
             ErrorLabel.Size = new Size(0, 20);
             ErrorLabel.TabIndex = 6;
             ErrorLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // HandlePanel
+            // 
+            HandlePanel.BackColor = Color.LightGray;
+            HandlePanel.BorderStyle = BorderStyle.Fixed3D;
+            HandlePanel.Controls.Add(kryptonPanel1);
+            HandlePanel.Controls.Add(label1);
+            HandlePanel.Location = new Point(291, 71);
+            HandlePanel.Name = "HandlePanel";
+            HandlePanel.Size = new Size(682, 589);
+            HandlePanel.TabIndex = 10;
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Controls.Add(ErrorLabel);
+            kryptonPanel1.Controls.Add(ContinueButt);
+            kryptonPanel1.Controls.Add(TextBoxInputPross);
+            kryptonPanel1.Location = new Point(0, 239);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(682, 348);
+            kryptonPanel1.StateCommon.Color1 = Color.Transparent;
+            kryptonPanel1.StateCommon.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonPanel1.StateCommon.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounded;
+            kryptonPanel1.TabIndex = 7;
+            // 
             // InputProcess
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.InputBackground;
+            BackColor = Color.DimGray;
+            BackgroundImage = Properties.Resources.SideBackground;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1254, 702);
-            Controls.Add(ErrorLabel);
-            Controls.Add(panel2);
             Controls.Add(WhitePanel);
-            Controls.Add(ContinueButt);
-            Controls.Add(TextBoxInputPross);
-            Controls.Add(label1);
+            Controls.Add(HandlePanel);
+            Controls.Add(panel2);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "InputProcess";
@@ -258,8 +314,12 @@
             WhitePanel.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            HandlePanel.ResumeLayout(false);
+            HandlePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
+            kryptonPanel1.ResumeLayout(false);
+            kryptonPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -277,5 +337,7 @@
         private Krypton.Toolkit.KryptonButton BackButton;
         private Krypton.Toolkit.KryptonButton ContinueButs;
         private Label label2;
+        private Panel HandlePanel;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
