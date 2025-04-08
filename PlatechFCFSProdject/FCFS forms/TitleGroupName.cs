@@ -286,7 +286,5 @@ namespace PlatechFCFSProdject
             thread.Start();
 
         }
-
-   
     }
 }

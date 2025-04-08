@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -299,10 +300,9 @@ namespace PlatechFCFSProdject
             for (int i = 0; i < pList.processList.Count; i++)
             {
                 var Plist = pList.processList[i];
-                if (title == "AWT") TextResult += $"{Plist.PWT}";
-                else if (title == "ACT") TextResult += $"{Plist.PCT}";
-                else TextResult += $"{Plist.PTAT}";
-
+                if (title == "AWT") TextResult += $"{(Plist.PWT % 1 == 0 ? Plist.PWT.ToString("0") : Plist.PWT.ToString("F"))}";
+                else if (title == "ACT") TextResult += $"{(Plist.PCT % 1 == 0 ? Plist.PCT.ToString("0") : Plist.PCT.ToString("F"))}";
+                else TextResult += $"{(Plist.PTAT % 1 == 0 ? Plist.PTAT.ToString("0") : Plist.PTAT.ToString("F"))}";
                 if (i < pList.processList.Count - 1)
                 {
                     TextResult += " + ";
@@ -328,7 +328,7 @@ namespace PlatechFCFSProdject
                 Label displayMsec = new Label
                 {
                     AutoSize = true,
-                    Font = new Font("Verdana", 20F, FontStyle.Bold),
+                    Font = new Font("Verdana", 14F, FontStyle.Bold),
                     ForeColor = Color.Black,
                     Location = new Point(startX, 13),
                     Text = TextResult,
@@ -355,7 +355,7 @@ namespace PlatechFCFSProdject
                     Font = new Font("Verdana", 20F, FontStyle.Bold),
                     ForeColor = Color.Black,
                     Location = new Point(startX, 13),
-                    Text = $"{totalAver} msec.",
+                    Text = $"{(totalAver % 1 == 0 ? totalAver.ToString("0") : totalAver.ToString("F"))} msec.",
                     TextAlign = ContentAlignment.TopCenter
                 };
                 AverageDisplays.Controls.Add(TotalAverage); 
@@ -421,10 +421,10 @@ namespace PlatechFCFSProdject
                     {
                         Font = new Font("Sans Serif Collection", 12F, FontStyle.Bold, GraphicsUnit.Point, 0),
                         Location = new Point(currentWidth, 12),
-                        Size = new Size(125, 27),
-                        Text = title == "PWT" ? $"{Plist.ProcessID}: {Plist.PWT} msec" :
-                               title == "PCT" ? $"{Plist.ProcessID}: {Plist.PCT} msec" :
-                               $"{Plist.ProcessID}: {Plist.PTAT} msec"
+                        Size = new Size(155, 27),
+                        Text = title == "PWT" ? $"{Plist.ProcessID}: {(Plist.PWT % 1 == 0 ? Plist.PWT.ToString("0") : Plist.PWT.ToString("F"))} msec" :
+                               title == "PCT" ? $"{Plist.ProcessID}: {(Plist.PCT % 1 == 0 ? Plist.PCT.ToString("0") : Plist.PCT.ToString("F"))} msec" :
+                               $"{Plist.ProcessID}: {(Plist.PTAT % 1 == 0 ? Plist.PTAT.ToString("0") : Plist.PTAT.ToString("F"))} msec"
                     };
 
                     currentWidth += AddWidth;
