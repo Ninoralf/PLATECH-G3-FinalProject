@@ -17,6 +17,7 @@ namespace PlatechFCFSProdject
         public bool ResetProcessNo = false;
         private bool allIsNotEmpty = false;
         private int processCount = 0;
+        private bool isUpdating = false;
         public InputProcess()
         {
             InitializeComponent();
@@ -281,10 +282,12 @@ namespace PlatechFCFSProdject
             ErrorLabel.Text = "";
         }
         private void BackButton_Click(object sender, EventArgs e)
-        {
+        {   
+
             SetButtonsVisibility(false);
             int GoalLHeightWhitePanel = 0;
-
+            panelSlide.Visible = false;
+            panel3.Visible = false;
             Thread thread = new Thread(() =>
             {
                 int FirstWidthWhitePanel = WhitePanel.Width;
@@ -301,6 +304,8 @@ namespace PlatechFCFSProdject
                     Thread.Sleep(2);
 
                 }
+                panelSlide.Visible = true;
+                panel3.Visible = true;
                 ContinueButt.Visible = true;
                 AnimateHandlePanelShow();
             });
@@ -310,17 +315,14 @@ namespace PlatechFCFSProdject
         }
         private void ContinueButs_Click(object sender, EventArgs e)
         {
+          
+
             GetProcessData();
 
             if (allIsNotEmpty)
             {
                 //prevCount = processCount
-                this.Hide();
-                Perform perform = new Perform(this);
-                perform.SetProcessList(processList);
-                perform.Show();
-                perform.ShowTable();
-
+                AnimateTableProcced();
             }
         }
 
@@ -328,6 +330,8 @@ namespace PlatechFCFSProdject
         private void ChangeBackground()
         {
             SetButtonsVisibility(false);
+            panelSlide.Visible = false;
+            panel3.Visible = false;
             int GoalLHeightWhitePanel = 1256;
 
             Thread thread = new Thread(() =>
@@ -345,7 +349,10 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(2);
                 }
-
+                panel3.Visible = true;
+                panelSlide.Visible = true;
+                PleaseWaitLabel.Visible = false;
+                Pbar.Visible = false;
                 SetButtonsVisibility(true);
             });
 
@@ -388,6 +395,114 @@ namespace PlatechFCFSProdject
                 }
             });
             thread.IsBackground = true;
+            thread.Start();
+        }
+        private void AnimateTableProcced()
+        {
+            if (isUpdating)
+            {
+                PleaseWaitLabel.Text = "Updating, please wait...";
+            }
+            else {
+                PleaseWaitLabel.Text = "Processing, please wait...";
+            }
+            BackButton.Enabled = false;
+            ContinueButs.Enabled = false;
+            int GoalSize = 20;
+            int CloseSize = 635;
+            int progressMax = 100;
+            Thread thread = new Thread(() =>
+            {
+                int currentSize = panelSlide.Width;
+
+                while (currentSize > GoalSize)
+                {
+                    currentSize -= 6;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panelSlide.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    panelSlide.BringToFront();
+                }));
+
+                while (currentSize < CloseSize)
+                {
+                    currentSize += 6;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panelSlide.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                PleaseWaitLabel.Visible = true;
+                Pbar.Visible = true;
+                int minumum = 0;
+                while (minumum < progressMax)
+                {
+                    minumum += 1;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        Pbar.Value = minumum;
+
+                        if (Pbar.Value == 80) PleaseWaitLabel.Text = "Opening the next form...";
+
+                    }));
+                    Thread.Sleep(30);
+                }
+
+                Invoke((MethodInvoker)(() =>
+                {
+                    this.Hide();
+                    Perform perform = new Perform(this);
+                    perform.SetProcessList(processList);
+                    perform.Show();
+                    perform.ShowTable();
+                    perform.animatedOpenTable();
+                    isUpdating = true;
+                }));
+
+            });
+            thread.Start();
+        }
+        public void AnimateTableBack()
+        {     
+            PleaseWaitLabel.Visible = false;
+            Pbar.Visible = false;
+            int GoalSize = 20;
+            int CloseSize = 635;
+            Thread thread = new Thread(() => {
+                int currentSize = panelSlide.Width;
+                
+                while (currentSize > GoalSize)
+                {
+                    currentSize -= 6;
+                    Invoke((MethodInvoker)(() => {
+                        panelSlide.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                Invoke((MethodInvoker)(() => {
+                   
+                    panelSlide.SendToBack();
+                    panel3.SendToBack();
+                }));
+
+                while (currentSize < CloseSize)
+                {
+                    currentSize += 6;
+                    Invoke((MethodInvoker)(() => {
+                        panelSlide.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+
+                BackButton.Enabled = true;
+                ContinueButs.Enabled = true;
+            });
             thread.Start();
         }
     }

@@ -21,6 +21,7 @@ namespace PlatechFCFSProdject
         private InputProcess input;
         private bool isGranttChartOpen = false;
         private bool isTableTop = false;
+        private bool isTableUp = false;
         public Perform(InputProcess inputProcess)
         {
             InitializeComponent();
@@ -441,10 +442,21 @@ namespace PlatechFCFSProdject
         // CLICKABLE BUTTONS METHOD ===================================================================
         private void BackButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            input.Show();
-            input.ResetProcessNo = true;
-            input.processList.Clear(); // After Pressing Back Button. All Value in List will be Deleted.
+            if (isGranttChartOpen && !isTableTop)
+            {
+                closeGanttChart();
+                animatedCloseTable();
+            }
+            else if (isTableTop)
+            {
+                CloseAverDisAndProcDis(true);
+                closeGanttChart();
+                animatedCloseTable();
+            }
+            else {
+                animatedCloseTable();
+            }
+         
         }
         private void ShowTablesButt_Click(object sender, EventArgs e)
         {
@@ -876,6 +888,8 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(20);
                 }
+
+                isTableTop = true;
             });
             thread.Start();
         }
@@ -901,5 +915,89 @@ namespace PlatechFCFSProdject
             thread.Start();
         }
 
+        public void animatedOpenTable() {
+            ShowTablesButt.Enabled = false;
+            GanttChartButt.Enabled = false;
+            BackButton.Enabled = false;
+            int GoalSize = 20;
+            int CloseSize = 546;
+            Thread thread = new Thread(() => {
+                int currentSize = panel6.Width;
+
+                while (currentSize > GoalSize)
+                {
+                    currentSize -= 5;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panel6.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    panel6.SendToBack();
+                    panel5.SendToBack();
+                }));
+
+                while (currentSize < CloseSize)
+                {
+                    currentSize += 5;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panel6.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+
+                ShowTablesButt.Enabled = true;
+                GanttChartButt.Enabled = true;
+                BackButton.Enabled = true;
+            });
+            thread.Start();
+        }
+
+        public void animatedCloseTable()
+        {
+            int GoalSize = 20;
+            int CloseSize = 546;
+            Thread thread = new Thread(() => {
+                int currentSize = panel6.Width;
+
+                while (currentSize > GoalSize)
+                {
+                    currentSize -= 4;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panel6.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    panel6.BringToFront();
+                }));
+
+                while (currentSize < CloseSize)
+                {
+                    currentSize += 4;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        panel6.Width = currentSize;
+                    }));
+                    Thread.Sleep(1);
+                }
+                Invoke((MethodInvoker)(() =>
+                {
+                    this.Hide();
+                    input.Show();
+                    input.ResetProcessNo = true;
+                    input.processList.Clear();
+                    input.AnimateTableBack(); 
+
+                }));
+              
+            });
+            thread.Start();
+        }
     }
     }
