@@ -605,6 +605,7 @@
             // panel6
             // 
             panel6.BackColor = Color.Silver;
+            panel6.BackgroundImage = Properties.Resources.SideBackground;
             panel6.BackgroundImageLayout = ImageLayout.Stretch;
             panel6.BorderStyle = BorderStyle.Fixed3D;
             panel6.Location = new Point(182, 48);

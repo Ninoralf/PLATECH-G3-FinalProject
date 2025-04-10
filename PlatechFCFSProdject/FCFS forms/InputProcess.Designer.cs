@@ -130,6 +130,7 @@
             panel1.AutoSize = true;
             panel1.BackColor = Color.Gray;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Location = new Point(348, 172);
             panel1.Name = "panel1";
             panel1.Size = new Size(557, 324);
@@ -139,6 +140,7 @@
             // panelSlide
             // 
             panelSlide.BackColor = Color.Silver;
+            panelSlide.BackgroundImage = Properties.Resources.SideBackground;
             panelSlide.BackgroundImageLayout = ImageLayout.Stretch;
             panelSlide.BorderStyle = BorderStyle.Fixed3D;
             panelSlide.Controls.Add(Pbar);

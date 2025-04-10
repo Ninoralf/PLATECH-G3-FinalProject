@@ -871,7 +871,7 @@ namespace PlatechFCFSProdject
             thread.Start();
         }
         private void animateTableToUp ()
-        {
+        {   
             int GoalLocation = 9;
 
             Thread thread = new Thread(() =>
@@ -955,6 +955,7 @@ namespace PlatechFCFSProdject
 
         public void animatedCloseTable()
         {
+            BackButton.Enabled = false;
             int GoalSize = 0;
             int CloseSize = 546;
             Thread thread = new Thread(() => {
@@ -989,8 +990,8 @@ namespace PlatechFCFSProdject
                     input.Show();
                     input.ResetProcessNo = true;
                     input.processList.Clear();
-                    input.AnimateTableBack(); 
-
+                    input.AnimateTableBack();
+                    BackButton.Enabled = true;
                 }));
               
             });
