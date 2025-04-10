@@ -17,7 +17,7 @@ namespace PlatechFCFSProdject
     public partial class Perform : Form
     {
         ProcessList pList = new ProcessList();
-        private bool isToOpenTable = false;
+        //private bool isToOpenTable = false;
         private InputProcess input;
         private bool isGranttChartOpen = false;
         private bool isTableTop = false;
@@ -458,21 +458,21 @@ namespace PlatechFCFSProdject
             }
          
         }
-        private void ShowTablesButt_Click(object sender, EventArgs e)
-        {
-            if (!isToOpenTable)
-            {
-                panelTable.Visible = false;
-                ShowTablesButt.Text = "Show table";
-                isToOpenTable = true;
-            }
-            else
-            {
-                panelTable.Visible = true;
-                ShowTablesButt.Text = "Hide table";
-                isToOpenTable = false;
-            }
-        }
+        //private void ShowTablesButt_Click(object sender, EventArgs e)
+        //{
+        //    if (!isToOpenTable)
+        //    {
+        //        panelTable.Visible = false;
+        //        ShowTablesButt.Text = "Show table";
+        //        isToOpenTable = true;
+        //    }
+        //    else
+        //    {
+        //        panelTable.Visible = true;
+        //        ShowTablesButt.Text = "Hide table";
+        //        isToOpenTable = false;
+        //    }
+        //}
         private void OpenButton_Click(object sender, EventArgs e)
         {
             isGranttChartOpen = false;
@@ -916,10 +916,9 @@ namespace PlatechFCFSProdject
         }
 
         public void animatedOpenTable() {
-            ShowTablesButt.Enabled = false;
             GanttChartButt.Enabled = false;
             BackButton.Enabled = false;
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 546;
             Thread thread = new Thread(() => {
                 int currentSize = panel6.Width;
@@ -948,8 +947,6 @@ namespace PlatechFCFSProdject
                     }));
                     Thread.Sleep(1);
                 }
-
-                ShowTablesButt.Enabled = true;
                 GanttChartButt.Enabled = true;
                 BackButton.Enabled = true;
             });
@@ -958,7 +955,7 @@ namespace PlatechFCFSProdject
 
         public void animatedCloseTable()
         {
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 546;
             Thread thread = new Thread(() => {
                 int currentSize = panel6.Width;

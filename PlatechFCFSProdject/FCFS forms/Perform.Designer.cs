@@ -34,7 +34,6 @@
             BackButton = new Button();
             panel1 = new Panel();
             ganttChartPanel = new Panel();
-            ShowTablesButt = new Krypton.Toolkit.KryptonButton();
             panelTable = new Panel();
             panelPerformFind = new Panel();
             ATATButt = new Krypton.Toolkit.KryptonButton();
@@ -132,24 +131,6 @@
             ganttChartPanel.Name = "ganttChartPanel";
             ganttChartPanel.Size = new Size(0, 161);
             ganttChartPanel.TabIndex = 8;
-            // 
-            // ShowTablesButt
-            // 
-            ShowTablesButt.Location = new Point(745, 222);
-            ShowTablesButt.Name = "ShowTablesButt";
-            ShowTablesButt.OverrideDefault.Back.Color1 = Color.FromArgb(224, 224, 224);
-            ShowTablesButt.OverrideDefault.Back.Color2 = Color.White;
-            ShowTablesButt.Size = new Size(98, 37);
-            ShowTablesButt.StateCommon.Back.Color1 = Color.Gainsboro;
-            ShowTablesButt.StateCommon.Back.Color2 = Color.White;
-            ShowTablesButt.StateCommon.Border.Color1 = Color.Black;
-            ShowTablesButt.StateCommon.Border.Rounding = 10F;
-            ShowTablesButt.StateCommon.Content.ShortText.Color1 = Color.Black;
-            ShowTablesButt.StateCommon.Content.ShortText.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ShowTablesButt.TabIndex = 9;
-            ShowTablesButt.Values.DropDownArrowColor = Color.Empty;
-            ShowTablesButt.Values.Text = "Hide table";
-            ShowTablesButt.Click += ShowTablesButt_Click;
             // 
             // panelTable
             // 
@@ -614,7 +595,6 @@
             panel3.Controls.Add(panelTable);
             panel3.Controls.Add(AverageDisplays);
             panel3.Controls.Add(ProcessDisplay);
-            panel3.Controls.Add(ShowTablesButt);
             panel3.Controls.Add(panel5);
             panel3.Font = new Font("Segoe UI", 12F);
             panel3.Location = new Point(351, 39);
@@ -739,7 +719,6 @@
         private Button button1;
         private Panel panel1;
         private Panel ganttChartPanel;
-        private Krypton.Toolkit.KryptonButton ShowTablesButt;
         private Panel panelTable;
         private Panel panelPerformFind;
         private Button BackButton;
