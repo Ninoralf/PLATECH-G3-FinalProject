@@ -79,7 +79,7 @@
             TextBoxInputPross.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
             TextBoxInputPross.StateCommon.Border.Rounding = 10F;
             TextBoxInputPross.StateCommon.Border.Width = 3;
-            TextBoxInputPross.StateCommon.Content.Color1 = Color.Olive;
+            TextBoxInputPross.StateCommon.Content.Color1 = Color.FromArgb(192, 192, 0);
             TextBoxInputPross.StateCommon.Content.Font = new Font("Verdana", 30F);
             TextBoxInputPross.TabIndex = 1;
             TextBoxInputPross.TextAlign = HorizontalAlignment.Center;
