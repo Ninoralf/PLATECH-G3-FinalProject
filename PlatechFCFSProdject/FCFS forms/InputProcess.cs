@@ -408,7 +408,7 @@ namespace PlatechFCFSProdject
             }
             BackButton.Enabled = false;
             ContinueButs.Enabled = false;
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 635;
             int progressMax = 100;
             Thread thread = new Thread(() =>
@@ -472,7 +472,7 @@ namespace PlatechFCFSProdject
         {     
             PleaseWaitLabel.Visible = false;
             Pbar.Visible = false;
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 635;
             Thread thread = new Thread(() => {
                 int currentSize = panelSlide.Width;

@@ -919,7 +919,7 @@ namespace PlatechFCFSProdject
             ShowTablesButt.Enabled = false;
             GanttChartButt.Enabled = false;
             BackButton.Enabled = false;
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 546;
             Thread thread = new Thread(() => {
                 int currentSize = panel6.Width;
@@ -958,7 +958,7 @@ namespace PlatechFCFSProdject
 
         public void animatedCloseTable()
         {
-            int GoalSize = 20;
+            int GoalSize = 0;
             int CloseSize = 546;
             Thread thread = new Thread(() => {
                 int currentSize = panel6.Width;
