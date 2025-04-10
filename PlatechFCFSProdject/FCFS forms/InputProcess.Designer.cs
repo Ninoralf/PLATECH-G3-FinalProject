@@ -32,10 +32,14 @@
             TextBoxInputPross = new Krypton.Toolkit.KryptonTextBox();
             ContinueButt = new Krypton.Toolkit.KryptonButton();
             WhitePanel = new Panel();
+            panel1 = new Panel();
+            panelSlide = new Panel();
+            Pbar = new Krypton.Toolkit.KryptonProgressBar();
+            PleaseWaitLabel = new Label();
+            panel3 = new Panel();
             ContinueButs = new Krypton.Toolkit.KryptonButton();
             BackButton = new Krypton.Toolkit.KryptonButton();
             label3 = new Label();
-            panel1 = new Panel();
             LabelProcessNO = new Label();
             panel2 = new Panel();
             label2 = new Label();
@@ -44,6 +48,7 @@
             HandlePanel = new Panel();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             WhitePanel.SuspendLayout();
+            panelSlide.SuspendLayout();
             panel2.SuspendLayout();
             HandlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
@@ -108,15 +113,79 @@
             WhitePanel.BackColor = Color.White;
             WhitePanel.BackgroundImage = Properties.Resources.SideBackground;
             WhitePanel.BackgroundImageLayout = ImageLayout.Stretch;
+            WhitePanel.Controls.Add(panel1);
+            WhitePanel.Controls.Add(panelSlide);
+            WhitePanel.Controls.Add(panel3);
             WhitePanel.Controls.Add(ContinueButs);
             WhitePanel.Controls.Add(BackButton);
             WhitePanel.Controls.Add(label3);
-            WhitePanel.Controls.Add(panel1);
             WhitePanel.Controls.Add(LabelProcessNO);
             WhitePanel.Location = new Point(-2, 39);
             WhitePanel.Name = "WhitePanel";
             WhitePanel.Size = new Size(0, 665);
             WhitePanel.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            panel1.AutoSize = true;
+            panel1.BackColor = Color.Gray;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Location = new Point(348, 172);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(557, 324);
+            panel1.TabIndex = 3;
+            panel1.Visible = false;
+            // 
+            // panelSlide
+            // 
+            panelSlide.BackColor = Color.Silver;
+            panelSlide.BackgroundImageLayout = ImageLayout.Stretch;
+            panelSlide.BorderStyle = BorderStyle.Fixed3D;
+            panelSlide.Controls.Add(Pbar);
+            panelSlide.Controls.Add(PleaseWaitLabel);
+            panelSlide.Location = new Point(319, 150);
+            panelSlide.Name = "panelSlide";
+            panelSlide.Size = new Size(630, 381);
+            panelSlide.TabIndex = 0;
+            // 
+            // Pbar
+            // 
+            Pbar.Location = new Point(56, 192);
+            Pbar.Name = "Pbar";
+            Pbar.Size = new Size(518, 37);
+            Pbar.StateCommon.Back.Color1 = Color.FromArgb(192, 192, 0);
+            Pbar.StateCommon.Back.Color2 = Color.Black;
+            Pbar.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            Pbar.StateCommon.Border.Color1 = Color.Black;
+            Pbar.StateCommon.Border.Color2 = Color.Black;
+            Pbar.StateCommon.Border.Rounding = 1F;
+            Pbar.StateCommon.Border.Width = 2;
+            Pbar.StateDisabled.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.OneNote;
+            Pbar.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.OneNote;
+            Pbar.TabIndex = 0;
+            Pbar.Values.Text = "";
+            // 
+            // PleaseWaitLabel
+            // 
+            PleaseWaitLabel.AutoSize = true;
+            PleaseWaitLabel.BackColor = Color.Transparent;
+            PleaseWaitLabel.Font = new Font("Verdana", 20F, FontStyle.Bold);
+            PleaseWaitLabel.ForeColor = Color.Black;
+            PleaseWaitLabel.Location = new Point(118, 133);
+            PleaseWaitLabel.Name = "PleaseWaitLabel";
+            PleaseWaitLabel.Size = new Size(400, 32);
+            PleaseWaitLabel.TabIndex = 5;
+            PleaseWaitLabel.Text = "Processing, please wait...";
+            PleaseWaitLabel.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Black;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Location = new Point(319, 150);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(630, 381);
+            panel3.TabIndex = 8;
             // 
             // ContinueButs
             // 
@@ -196,17 +265,6 @@
             label3.TabIndex = 4;
             label3.Text = "Number of Processes";
             label3.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // panel1
-            // 
-            panel1.AutoSize = true;
-            panel1.BackColor = Color.Gray;
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Location = new Point(345, 153);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(557, 324);
-            panel1.TabIndex = 3;
-            panel1.Visible = false;
             // 
             // LabelProcessNO
             // 
@@ -312,6 +370,8 @@
             Text = "InputProcess";
             WhitePanel.ResumeLayout(false);
             WhitePanel.PerformLayout();
+            panelSlide.ResumeLayout(false);
+            panelSlide.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             HandlePanel.ResumeLayout(false);
@@ -339,5 +399,9 @@
         private Label label2;
         private Panel HandlePanel;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Panel panelSlide;
+        private Panel panel3;
+        private Krypton.Toolkit.KryptonProgressBar Pbar;
+        private Label PleaseWaitLabel;
     }
 }

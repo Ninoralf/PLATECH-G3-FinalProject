@@ -48,10 +48,10 @@
             GanttchartP = new Panel();
             label3 = new Label();
             panel3 = new Panel();
-            label5 = new Label();
+            panel6 = new Panel();
             AverageDisplays = new Panel();
             ProcessDisplay = new Panel();
-            label6 = new Label();
+            panel5 = new Panel();
             panel4 = new Panel();
             label4 = new Label();
             label1 = new Label();
@@ -156,9 +156,9 @@
             panelTable.BackColor = Color.FromArgb(64, 64, 64);
             panelTable.BorderStyle = BorderStyle.Fixed3D;
             panelTable.Controls.Add(panel1);
-            panelTable.Location = new Point(202, 72);
+            panelTable.Location = new Point(202, 65);
             panelTable.Name = "panelTable";
-            panelTable.Size = new Size(503, 339);
+            panelTable.Size = new Size(503, 300);
             panelTable.TabIndex = 10;
             // 
             // panelPerformFind
@@ -610,32 +610,27 @@
             // 
             panel3.BackgroundImage = Properties.Resources.SideBackground;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(panel6);
             panel3.Controls.Add(panelTable);
-            panel3.Controls.Add(label5);
             panel3.Controls.Add(AverageDisplays);
             panel3.Controls.Add(ProcessDisplay);
             panel3.Controls.Add(ShowTablesButt);
-            panel3.Controls.Add(label6);
+            panel3.Controls.Add(panel5);
             panel3.Font = new Font("Segoe UI", 12F);
             panel3.Location = new Point(351, 39);
             panel3.Name = "panel3";
             panel3.Size = new Size(903, 498);
             panel3.TabIndex = 15;
             // 
-            // label5
+            // panel6
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.BorderStyle = BorderStyle.Fixed3D;
-            label5.Font = new Font("Verdana", 20F, FontStyle.Bold);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(259, 107);
-            label5.Name = "label5";
-            label5.Padding = new Padding(15);
-            label5.Size = new Size(390, 128);
-            label5.TabIndex = 14;
-            label5.Text = "First Come First Serve \r\n(FCFS)\r\nCPU Scheduling";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            panel6.BackColor = Color.Silver;
+            panel6.BackgroundImageLayout = ImageLayout.Stretch;
+            panel6.BorderStyle = BorderStyle.Fixed3D;
+            panel6.Location = new Point(182, 48);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(541, 348);
+            panel6.TabIndex = 17;
             // 
             // AverageDisplays
             // 
@@ -657,19 +652,14 @@
             ProcessDisplay.Size = new Size(0, 59);
             ProcessDisplay.TabIndex = 11;
             // 
-            // label6
+            // panel5
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Gainsboro;
-            label6.BorderStyle = BorderStyle.Fixed3D;
-            label6.Font = new Font("Verdana", 20F, FontStyle.Bold);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(226, 141);
-            label6.Name = "label6";
-            label6.Padding = new Padding(400, 50, 50, 50);
-            label6.Size = new Size(452, 134);
-            label6.TabIndex = 15;
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            panel5.BackColor = Color.Black;
+            panel5.BorderStyle = BorderStyle.Fixed3D;
+            panel5.Location = new Point(182, 48);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(541, 348);
+            panel5.TabIndex = 16;
             // 
             // panel4
             // 
@@ -689,7 +679,7 @@
             label4.BorderStyle = BorderStyle.Fixed3D;
             label4.Font = new Font("Stencil", 50.75F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(491, 35);
+            label4.Location = new Point(479, 39);
             label4.Name = "label4";
             label4.Padding = new Padding(15);
             label4.Size = new Size(107, 113);
@@ -704,7 +694,7 @@
             label1.BorderStyle = BorderStyle.Fixed3D;
             label1.Font = new Font("Verdana", 25F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(321, 55);
+            label1.Location = new Point(309, 59);
             label1.Name = "label1";
             label1.Padding = new Padding(15);
             label1.Size = new Size(187, 73);
@@ -738,7 +728,6 @@
             GanttchartP.ResumeLayout(false);
             GanttchartP.PerformLayout();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -770,7 +759,7 @@
         private Label label1;
         private Label label4;
         private Panel panel4;
-        private Label label5;
-        private Label label6;
+        private Panel panel6;
+        private Panel panel5;
     }
 }
