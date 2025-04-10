@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|c:\\users\\admin\\onedrive\\desktop\\myrepo\\platech-g3-finalproject\\platechfcfsprodject\\fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B3E8B745-0179-4D00-88F5-D2A4927BD430}|PlatechFCFSProdject.csproj|solutionrelative:fcfs forms\\inputprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -50,8 +50,7 @@
               "RelativeToolTip": "FCFS forms\\Perform.Designer.cs",
               "ViewState": "AgIAAIMAAAAAAAAAAAASwIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T04:24:38.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-10T04:24:38.65Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,8 @@
               "Title": "InputProcess.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.Designer.cs",
               "RelativeDocumentMoniker": "FCFS forms\\InputProcess.Designer.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.Designer.cs*",
-              "RelativeToolTip": "FCFS forms\\InputProcess.Designer.cs*",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.Designer.cs",
+              "RelativeToolTip": "FCFS forms\\InputProcess.Designer.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAAowHwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T07:44:57.955Z",
@@ -100,8 +99,7 @@
               "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\Perform.cs [Design]",
               "RelativeToolTip": "FCFS forms\\Perform.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T07:07:58.408Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-09T07:07:58.408Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,8 @@
               "Title": "InputProcess.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
               "RelativeDocumentMoniker": "FCFS forms\\InputProcess.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs*",
-              "RelativeToolTip": "FCFS forms\\InputProcess.cs*",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
+              "RelativeToolTip": "FCFS forms\\InputProcess.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAANoBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-30T18:47:04.904Z",
@@ -122,8 +120,8 @@
               "Title": "InputProcess.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs",
               "RelativeDocumentMoniker": "FCFS forms\\InputProcess.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs [Design]*",
-              "RelativeToolTip": "FCFS forms\\InputProcess.cs [Design]*",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\FCFS forms\\InputProcess.cs [Design]",
+              "RelativeToolTip": "FCFS forms\\InputProcess.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T06:00:52.387Z",
               "EditorCaption": " [Design]"
