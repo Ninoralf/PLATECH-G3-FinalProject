@@ -1,5 +1,8 @@
 # Contributing Guidelines
 
+## 🔹 Project Flow Chart
+[View Flow Chart](https://www.canva.com/design/DAGkyrPO5nI/_BQfT7yNz2cGKoukrkZ3OQ/edit?utm_content=DAGkyrPO5nI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 if there are compability issues download kripton.Toolkit in manage <nuget> then restart the microsoft studio  
 
 Thank you for your interest in contributing! Follow the steps below to contribute effectively.
