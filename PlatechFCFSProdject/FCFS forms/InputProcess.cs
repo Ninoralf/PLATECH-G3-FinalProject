@@ -48,117 +48,126 @@ namespace PlatechFCFSProdject
             txt.BackColor = Color.White;
             txt.Text = txt.Text.Replace(" msec", "").Trim(); // REMOVE MSEC IF THE USER PRESS AGAIN TO THE TEXTBOX
         }
+        private void TextBoxInputPross_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !enterHandled)
+            {
+                ShowTable();
+                TextBoxInputPross.Focus();
+            }
+        }
         // THIS METHOD CREATE THE TABLE OF PROCESS
         private void ShowTable()
-        {
-            panel1.Visible = true;
-            panel1.Controls.Clear();
-
-            if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
             {
+                panel1.Visible = true;
+                panel1.Controls.Clear();
 
-                if (int.TryParse(TextBoxInputPross.Text, out processCount))
+                if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
                 {
-                    if (processCount >= 2 && processCount <= 5)
+
+                    if (int.TryParse(TextBoxInputPross.Text, out processCount))
                     {
-                        Panel[] arrayPanel = new Panel[processCount];
-                        // HEADER PANEL =====
-                        Panel header = new Panel
+                        if (processCount >= 2 && processCount <= 5)
                         {
-                            Width = panel1.Width - 25,
-                            Height = 40,
-                            Location = new Point(10, 0),
-
-                        };
-
-                        for (int i = 0; i < processCount; i++)
-                        {
-                            string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
-                            // FOR LABEL OF HEADERS -----------------------
-                            for (int j = 0; j < headers.Length; j++)
+                            Panel[] arrayPanel = new Panel[processCount];
+                            // HEADER PANEL =====
+                            Panel header = new Panel
                             {
-                                Label lbl = new Label
-                                {
-                                    Text = headers[j],
-                                    Width = (header.Width / 3) - 3,
-                                    Location = new Point(j * (header.Width / 3), 10),
-                                    TextAlign = ContentAlignment.MiddleCenter,
-                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                                };
-
-                                header.Controls.Add(lbl);
-                            }
-
-                            panel1.Controls.Add(header);
-
-                            // FOR ROW PANEL -----------------------
-                            Panel row = new Panel
-                            {
-                                Size = new Size(492, 39),
-                                TabIndex = 2,
-                                Width = panel1.Width - 18,
+                                Width = panel1.Width - 25,
                                 Height = 40,
-                                Location = new Point(10, (i + 1) * 45),
-                                Name = $"panelRow_{i}",
-                                BackColor = SystemColors.AppWorkspace
+                                Location = new Point(10, 0),
+
                             };
-                            // FOR TEXTBOX INSIDE THE ROW PANEL-----------------------
-                            for (int j = 0; j < 3; j++)
+
+                            for (int i = 0; i < processCount; i++)
                             {
-                                TextBox txt = new TextBox
+                                string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
+                                // FOR LABEL OF HEADERS -----------------------
+                                for (int j = 0; j < headers.Length; j++)
                                 {
-                                    Multiline = false,
-                                    Size = new Size(158, 38),
-                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                                    TextAlign = HorizontalAlignment.Center,
-                                    Width = (row.Width / 3),
-                                    Location = new Point(j * (row.Width / 3), 5),
-                                    Name = $"Text_Box_{j}"
+                                    Label lbl = new Label
+                                    {
+                                        Text = headers[j],
+                                        Width = (header.Width / 3) - 3,
+                                        Location = new Point(j * (header.Width / 3), 10),
+                                        TextAlign = ContentAlignment.MiddleCenter,
+                                        Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                    };
+
+                                    header.Controls.Add(lbl);
+                                }
+
+                                panel1.Controls.Add(header);
+
+                                // FOR ROW PANEL -----------------------
+                                Panel row = new Panel
+                                {
+                                    Size = new Size(492, 39),
+                                    TabIndex = 2,
+                                    Width = panel1.Width - 18,
+                                    Height = 40,
+                                    Location = new Point(10, (i + 1) * 45),
+                                    Name = $"panelRow_{i}",
+                                    BackColor = SystemColors.AppWorkspace
                                 };
+                                // FOR TEXTBOX INSIDE THE ROW PANEL-----------------------
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    TextBox txt = new TextBox
+                                    {
+                                        Multiline = false,
+                                        Size = new Size(158, 38),
+                                        Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                        TextAlign = HorizontalAlignment.Center,
+                                        Width = (row.Width / 3),
+                                        Location = new Point(j * (row.Width / 3), 5),
+                                        Name = $"Text_Box_{j}"
+                                    };
 
-                                if (j == 0)
-                                {
-                                    txt.Text = $"P{i + 1}";
-                                    txt.Enabled = false;
-                                    txt.TextAlign = HorizontalAlignment.Center;
-                                    txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                                }
-                                else
-                                {
-                                    txt.Leave += TextBox_Leave_AddMsec;
-                                    txt.Enter += TextBox_Enter;
-                                }
+                                    if (j == 0)
+                                    {
+                                        txt.Text = $"P{i + 1}";
+                                        txt.Enabled = false;
+                                        txt.TextAlign = HorizontalAlignment.Center;
+                                        txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                                    }
+                                    else
+                                    {
+                                        txt.Leave += TextBox_Leave_AddMsec;
+                                        txt.Enter += TextBox_Enter;
+                                     
+                                    }
                                 row.Controls.Add(txt);
+                                }
+
+                                panel1.Controls.Add(row);
+
                             }
-
-                            panel1.Controls.Add(row);
-
+                            LabelProcessNO.Text = TextBoxInputPross.Text;
+                            panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
+                            enterHandled = true;
+                            ErrorLabel.Text = "";
+                            ChangeBackground();
+                            AnimateHandlePanelHide();
                         }
-                        LabelProcessNO.Text = TextBoxInputPross.Text;
-                        panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
-                        enterHandled = true;
-                        ErrorLabel.Text = "";
-                        ChangeBackground();
-                        AnimateHandlePanelHide();
+                        else
+                        {
+                            ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
+                        }
+
                     }
                     else
                     {
-                        ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
+                        ErrorLabel.Text = "Integers only, please try again.";
                     }
-
                 }
                 else
                 {
-                    ErrorLabel.Text = "Integers only, please try again.";
+                    ErrorLabel.Text = "Cannot be empty, please enter the process no.";
                 }
-            }
-            else
-            {
-                ErrorLabel.Text = "Cannot be empty, please enter the process no.";
-            }
 
 
-        }
+            }
         // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
         private void GetProcessData()
         {
@@ -170,7 +179,7 @@ namespace PlatechFCFSProdject
                     foreach (Control txtControl in rowPanel.Controls)
                     {
                         if (txtControl is TextBox txtBox)
-                        {   
+                        {
                             allIsNotEmpty = false; // SET IT FIRST TO FALSE
                             string[] parts = txtBox.Name.Split('_'); // 
                             int colIndex = int.Parse(parts[2]);
@@ -276,6 +285,7 @@ namespace PlatechFCFSProdject
         private void ContinueButt_Click(object sender, EventArgs e)
         {
             ShowTable();
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -320,8 +330,6 @@ namespace PlatechFCFSProdject
         }
         private void ContinueButs_Click(object sender, EventArgs e)
         {
-
-
             GetProcessData();
 
             if (allIsNotEmpty)
@@ -519,12 +527,7 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-        private void TextBoxInputPross_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && !enterHandled)
-            {
-                ShowTable();
-            }
-        }
+
+    
     }
 }

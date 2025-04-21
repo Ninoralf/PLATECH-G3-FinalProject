@@ -97,6 +97,7 @@
             button1.Name = "button1";
             button1.Size = new Size(36, 31);
             button1.TabIndex = 0;
+            button1.TabStop = false;
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 

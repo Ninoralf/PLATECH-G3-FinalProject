@@ -103,7 +103,7 @@
             ContinueButt.StateCommon.Border.Rounding = 10F;
             ContinueButt.StateCommon.Content.ShortText.Color1 = Color.Black;
             ContinueButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ContinueButt.TabIndex = 3;
+            ContinueButt.TabIndex = 2;
             ContinueButt.Values.DropDownArrowColor = Color.Empty;
             ContinueButt.Values.Text = "Continue";
             ContinueButt.Click += ContinueButt_Click;
@@ -314,7 +314,8 @@
             button1.Location = new Point(1206, 5);
             button1.Name = "button1";
             button1.Size = new Size(36, 31);
-            button1.TabIndex = 0;
+            button1.TabIndex = 3;
+            button1.TabStop = false;
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
