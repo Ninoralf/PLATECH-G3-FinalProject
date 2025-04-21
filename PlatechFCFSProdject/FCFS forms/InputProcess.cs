@@ -18,6 +18,7 @@ namespace PlatechFCFSProdject
         private bool allIsNotEmpty = false;
         private int processCount = 0;
         private bool isUpdating = false;
+        private bool enterHandled = false;
         public InputProcess()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace PlatechFCFSProdject
         // THIS METHOD CREATE THE TABLE OF PROCESS
         private void ShowTable()
         {
-            panel1.Visible = true; 
+            panel1.Visible = true;
             panel1.Controls.Clear();
 
             if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
@@ -71,7 +72,7 @@ namespace PlatechFCFSProdject
                         };
 
                         for (int i = 0; i < processCount; i++)
-                        {   
+                        {
                             string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
                             // FOR LABEL OF HEADERS -----------------------
                             for (int j = 0; j < headers.Length; j++)
@@ -106,7 +107,7 @@ namespace PlatechFCFSProdject
                             {
                                 TextBox txt = new TextBox
                                 {
-                                    Multiline = true,
+                                    Multiline = false,
                                     Size = new Size(158, 38),
                                     Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
                                     TextAlign = HorizontalAlignment.Center,
@@ -135,6 +136,8 @@ namespace PlatechFCFSProdject
                         }
                         LabelProcessNO.Text = TextBoxInputPross.Text;
                         panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
+                        enterHandled = true;
+                        ErrorLabel.Text = "";
                         ChangeBackground();
                         AnimateHandlePanelHide();
                     }
@@ -149,11 +152,12 @@ namespace PlatechFCFSProdject
                     ErrorLabel.Text = "Integers only, please try again.";
                 }
             }
-            else {
+            else
+            {
                 ErrorLabel.Text = "Cannot be empty, please enter the process no.";
             }
 
-          
+
         }
         // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
         private void GetProcessData()
@@ -166,9 +170,9 @@ namespace PlatechFCFSProdject
                     foreach (Control txtControl in rowPanel.Controls)
                     {
                         if (txtControl is TextBox txtBox)
-                        {
+                        {   
                             allIsNotEmpty = false; // SET IT FIRST TO FALSE
-                            string[] parts = txtBox.Name.Split('_');
+                            string[] parts = txtBox.Name.Split('_'); // 
                             int colIndex = int.Parse(parts[2]);
 
                             string inputValue = txtBox.Text.Replace(" msec", "").Trim();
@@ -228,14 +232,14 @@ namespace PlatechFCFSProdject
                     }
                     // THIS IS THE SAME OF FOREACH LOOP. IT CHECK IF THE PROCESS ID ADDED MULTIPLE TIMES.
                     // IF USER CHANGE THE VALUE, THEN THE VALUE ONLY WILL CHANGE NOT THE PROCESS ID WILL ADD TO LIST.
-                    var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID); 
+                    var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
                     if (isProcessAlreadyList != null)
                     {
                         isProcessAlreadyList.BurstTime = proc.BurstTime;
                         isProcessAlreadyList.ArrivalTime = proc.ArrivalTime;
                     }
                     else
-                    {   
+                    {
                         // ELSE IF NO CHANGES.
                         processList.Add(proc);
                     }
@@ -282,12 +286,13 @@ namespace PlatechFCFSProdject
             ErrorLabel.Text = "";
         }
         private void BackButton_Click(object sender, EventArgs e)
-        {   
+        {
 
             SetButtonsVisibility(false);
             int GoalLHeightWhitePanel = 0;
             panelSlide.Visible = false;
             panel3.Visible = false;
+            enterHandled = false;
             Thread thread = new Thread(() =>
             {
                 int FirstWidthWhitePanel = WhitePanel.Width;
@@ -311,11 +316,11 @@ namespace PlatechFCFSProdject
             });
             thread.IsBackground = true;
             thread.Start();
-   
+
         }
         private void ContinueButs_Click(object sender, EventArgs e)
         {
-          
+
 
             GetProcessData();
 
@@ -359,18 +364,21 @@ namespace PlatechFCFSProdject
             thread.IsBackground = true;
             thread.Start();
         }
-        private void AnimateHandlePanelHide() {
+        private void AnimateHandlePanelHide()
+        {
             int GoalLocation = 1253;
             Thread thread = new Thread(() =>
             {
                 int CurrentLoc = 291;
-                while (CurrentLoc < GoalLocation) {
+                while (CurrentLoc < GoalLocation)
+                {
                     CurrentLoc += 12;
-                        Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
 
-                            HandlePanel.Location = new Point(CurrentLoc, 70);
+                        HandlePanel.Location = new Point(CurrentLoc, 70);
 
-                        }));
+                    }));
                     Thread.Sleep(10);
                 }
             });
@@ -386,7 +394,8 @@ namespace PlatechFCFSProdject
                 while (CurrentLoc > GoalLocation)
                 {
                     CurrentLoc -= 12;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
 
                         HandlePanel.Location = new Point(CurrentLoc, 70);
 
@@ -403,7 +412,8 @@ namespace PlatechFCFSProdject
             {
                 PleaseWaitLabel.Text = "Updating, please wait...";
             }
-            else {
+            else
+            {
                 PleaseWaitLabel.Text = "Processing, please wait...";
             }
             BackButton.Enabled = false;
@@ -469,24 +479,27 @@ namespace PlatechFCFSProdject
             thread.Start();
         }
         public void AnimateTableBack()
-        {     
+        {
             PleaseWaitLabel.Visible = false;
             Pbar.Visible = false;
             int GoalSize = 0;
             int CloseSize = 635;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentSize = panelSlide.Width;
-                
+
                 while (currentSize > GoalSize)
                 {
                     currentSize -= 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         panelSlide.Width = currentSize;
                     }));
                     Thread.Sleep(1);
                 }
-                Invoke((MethodInvoker)(() => {
-                   
+                Invoke((MethodInvoker)(() =>
+                {
+
                     panelSlide.SendToBack();
                     panel3.SendToBack();
                 }));
@@ -494,7 +507,8 @@ namespace PlatechFCFSProdject
                 while (currentSize < CloseSize)
                 {
                     currentSize += 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         panelSlide.Width = currentSize;
                     }));
                     Thread.Sleep(1);
@@ -504,6 +518,13 @@ namespace PlatechFCFSProdject
                 ContinueButs.Enabled = true;
             });
             thread.Start();
+        }
+        private void TextBoxInputPross_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !enterHandled)
+            {
+                ShowTable();
+            }
         }
     }
 }

@@ -133,33 +133,23 @@ namespace PlatechFCFSProdject
                     float arrival1 = pList.processList[i].ArrivalTime;
                     float arrival2 = pList.processList[j].ArrivalTime;
 
-                    float burst1 = pList.processList[i].BurstTime;
-                    float burst2 = pList.processList[j].BurstTime;
+                    int procIdtemp1 = int.Parse(pList.processList[i].ProcessID.Replace("P", ""));
+                    int procIdtemp2 = int.Parse(pList.processList[j].ProcessID.Replace("P", ""));
 
                     // IF ARRIVAL PNo. IS GREATER THAN TO ANOTHER PNo
                     if (arrival1 > arrival2)
                     {
                         shouldSwap = true;
                     }
-                    else if (arrival1 == arrival2)
-                    {
-                        if (burst1 > burst2)
-                        {
+                    else if(arrival1 == arrival2) {
+                        if (procIdtemp1 > procIdtemp2) {
                             shouldSwap = true;
-                        }
-                        else if (burst1 == burst2)
-                        {
-                            int num1 = int.Parse(pList.processList[i].ProcessID.Substring(1));
-                            int num2 = int.Parse(pList.processList[j].ProcessID.Substring(1));
-
-                            if (num1 > num2)
-                                shouldSwap = true;
                         }
                     }
 
                     // THEN SWAP
                     if (shouldSwap)
-                    {   
+                    {
                         // MAKE A TEMP PROCESS. 
                         Process temp = pList.processList[i];
                         pList.processList[i] = pList.processList[j];
@@ -191,7 +181,7 @@ namespace PlatechFCFSProdject
                 if (currentTime < proc.ArrivalTime)
                 {
                     float EmptyDuration = proc.ArrivalTime - currentTime;
-                    AddGanttBox("Empty", x, EmptyDuration * sizeOfWidth, Color.Gray, sizeOfWidth);
+                    AddGanttBox("", x, EmptyDuration * sizeOfWidth, Color.Gray, sizeOfWidth);
                     x += EmptyDuration * sizeOfWidth;
                     currentTime = proc.ArrivalTime;
                 }
@@ -439,6 +429,7 @@ namespace PlatechFCFSProdject
                 butt.Enabled = isEnable;
             }
         }
+
         // CLICKABLE BUTTONS METHOD ===================================================================
         private void BackButton_Click(object sender, EventArgs e)
         {
@@ -458,21 +449,6 @@ namespace PlatechFCFSProdject
             }
          
         }
-        //private void ShowTablesButt_Click(object sender, EventArgs e)
-        //{
-        //    if (!isToOpenTable)
-        //    {
-        //        panelTable.Visible = false;
-        //        ShowTablesButt.Text = "Show table";
-        //        isToOpenTable = true;
-        //    }
-        //    else
-        //    {
-        //        panelTable.Visible = true;
-        //        ShowTablesButt.Text = "Hide table";
-        //        isToOpenTable = false;
-        //    }
-        //}
         private void OpenButton_Click(object sender, EventArgs e)
         {
             isGranttChartOpen = false;
@@ -914,7 +890,6 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
         public void animatedOpenTable() {
             GanttChartButt.Enabled = false;
             BackButton.Enabled = false;
@@ -952,9 +927,9 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-
         public void animatedCloseTable()
         {
+            EnableButtons(false,PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
             BackButton.Enabled = false;
             int GoalSize = 0;
             int CloseSize = 546;
@@ -992,6 +967,7 @@ namespace PlatechFCFSProdject
                     input.processList.Clear();
                     input.AnimateTableBack();
                     BackButton.Enabled = true;
+                    EnableButtons(true, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
                 }));
               
             });

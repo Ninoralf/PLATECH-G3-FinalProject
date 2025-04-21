@@ -70,9 +70,8 @@
             // TextBoxInputPross
             // 
             TextBoxInputPross.Location = new Point(176, 34);
-            TextBoxInputPross.Multiline = true;
             TextBoxInputPross.Name = "TextBoxInputPross";
-            TextBoxInputPross.Size = new Size(322, 61);
+            TextBoxInputPross.Size = new Size(322, 60);
             TextBoxInputPross.StateCommon.Back.Color1 = Color.Black;
             TextBoxInputPross.StateCommon.Border.Color1 = Color.White;
             TextBoxInputPross.StateCommon.Border.Color2 = Color.Transparent;
@@ -83,6 +82,7 @@
             TextBoxInputPross.StateCommon.Content.Font = new Font("Verdana", 30F);
             TextBoxInputPross.TabIndex = 1;
             TextBoxInputPross.TextAlign = HorizontalAlignment.Center;
+            TextBoxInputPross.KeyDown += TextBoxInputPross_KeyDown;
             TextBoxInputPross.MouseEnter += kryptonTextBox1_MouseEnter;
             // 
             // ContinueButt
