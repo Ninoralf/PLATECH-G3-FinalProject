@@ -1,11 +1,46 @@
+using System.Windows.Forms;
+
 namespace PlatechFCFSProdject
 {
     public partial class TitleGroupName : Form
     {
         bool isOpen = false;
+        private Image[] imagePaths;
+        private int currentIndex = 0;
         public TitleGroupName()
         {
             InitializeComponent();
+        }
+
+        private void LoadImages()
+        {
+            FlowChartPanel.Visible = true;
+            imagePaths = new Image[]
+            {
+                Properties.Resources.Image1,
+                Properties.Resources.Image2,
+                Properties.Resources.Image3,
+                Properties.Resources.Image4,
+                Properties.Resources.Image5,
+                Properties.Resources.image6,
+                Properties.Resources.image7,
+                Properties.Resources.image8
+            };
+
+            ShowImage();
+        }
+
+        private void ShowImage()
+        {
+
+            if (imagePaths.Length > 0 && currentIndex >= 0 && currentIndex < imagePaths.Length)
+            {
+                FlowChartPanel.BackgroundImage = imagePaths[currentIndex];
+                FlowChartPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+
+            PrevButt.Enabled = currentIndex > 0;
+            NextButt.Enabled = currentIndex < imagePaths.Length - 1;
         }
 
         // CLICKABLE BUTTONS METHOD ================================================
@@ -13,11 +48,13 @@ namespace PlatechFCFSProdject
         {
             if (!isOpen)
             {
+                FlowChartButt.Visible = false;
                 AdditionalDesignAnimatedO();
             }
             else
             {
                 CloseTitleAnimated();
+                FlowChartButt.Visible = true;
             }
         }
         private void ContinueButt_Click(object sender, EventArgs e)
@@ -132,6 +169,7 @@ namespace PlatechFCFSProdject
         private void AdditionalDesignAnimatedO()
         {
             PanelDesign1Open();
+
             OpenButton.Enabled = false;
             isOpen = false;
             ContinueButt.Visible = false;
@@ -348,13 +386,12 @@ namespace PlatechFCFSProdject
 
 
         }
-
         private void DescriptionPanelShown()
         {
             ExampleButt.Enabled = false;
             DescriptionButt.Enabled = false;
             DescriptionPanel.Visible = true;
-            int GoalLocationToLeft = 3;
+            int GoalLocationToLeft = 0;
             Thread thread = new Thread(() =>
             {
 
@@ -381,5 +418,32 @@ namespace PlatechFCFSProdject
 
         }
 
+        private void PrevButt_Click(object sender, EventArgs e)
+        {
+            if (currentIndex > 0)
+            {
+                currentIndex--;
+                ShowImage();
+            }
+        }
+
+        private void NextButt_Click(object sender, EventArgs e)
+        {
+            if (currentIndex < imagePaths.Length - 1)
+            {
+                currentIndex++;
+                ShowImage();
+            }
+        }
+
+        private void FlowChartButt_Click(object sender, EventArgs e)
+        {
+            LoadImages();
+        }
+
+        private void ExitFlowButt_Click(object sender, EventArgs e)
+        {
+            FlowChartPanel.Visible = false;
+        }
     }
 }
