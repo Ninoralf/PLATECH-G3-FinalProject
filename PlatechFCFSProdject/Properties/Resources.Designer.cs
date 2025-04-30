@@ -113,6 +113,16 @@ namespace PlatechFCFSProdject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Description {
+            get {
+                object obj = ResourceManager.GetObject("Description", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap download {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
@@ -126,6 +136,16 @@ namespace PlatechFCFSProdject.Properties {
         internal static System.Drawing.Bitmap exit_logo {
             get {
                 object obj = ResourceManager.GetObject("exit logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GanttChartExample {
+            get {
+                object obj = ResourceManager.GetObject("GanttChartExample", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +186,16 @@ namespace PlatechFCFSProdject.Properties {
         internal static System.Drawing.Bitmap SideBackground {
             get {
                 object obj = ResourceManager.GetObject("SideBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TableExample {
+            get {
+                object obj = ResourceManager.GetObject("TableExample", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

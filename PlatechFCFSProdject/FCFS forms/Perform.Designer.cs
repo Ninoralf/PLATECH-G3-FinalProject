@@ -47,6 +47,9 @@
             GanttchartP = new Panel();
             label3 = new Label();
             panel3 = new Panel();
+            NextPanel = new Panel();
+            panel7 = new Panel();
+            NextGanttButt = new Button();
             panel6 = new Panel();
             AverageDisplays = new Panel();
             ProcessDisplay = new Panel();
@@ -59,6 +62,7 @@
             panelPerformFind.SuspendLayout();
             GanttchartP.SuspendLayout();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -551,7 +555,7 @@
             // OpenButton
             // 
             OpenButton.BackColor = Color.Transparent;
-            OpenButton.BackgroundImage = Properties.Resources.ToRideSide1;
+            OpenButton.BackgroundImage = Properties.Resources.ToLeftSide;
             OpenButton.BackgroundImageLayout = ImageLayout.Stretch;
             OpenButton.FlatAppearance.BorderSize = 0;
             OpenButton.FlatStyle = FlatStyle.Flat;
@@ -572,7 +576,7 @@
             GanttchartP.Controls.Add(GanttChartButt);
             GanttchartP.Location = new Point(-2, 536);
             GanttchartP.Name = "GanttchartP";
-            GanttchartP.Size = new Size(354, 171);
+            GanttchartP.Size = new Size(354, 165);
             GanttchartP.TabIndex = 14;
             // 
             // label3
@@ -592,6 +596,8 @@
             // 
             panel3.BackgroundImage = Properties.Resources.SideBackground;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(NextPanel);
+            panel3.Controls.Add(panel7);
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(panelTable);
             panel3.Controls.Add(AverageDisplays);
@@ -602,6 +608,37 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(903, 498);
             panel3.TabIndex = 15;
+            // 
+            // NextPanel
+            // 
+            NextPanel.BackColor = Color.Gray;
+            NextPanel.Location = new Point(784, 1);
+            NextPanel.Name = "NextPanel";
+            NextPanel.Size = new Size(85, 75);
+            NextPanel.TabIndex = 19;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.Black;
+            panel7.Controls.Add(NextGanttButt);
+            panel7.Location = new Point(792, 1);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(68, 75);
+            panel7.TabIndex = 18;
+            // 
+            // NextGanttButt
+            // 
+            NextGanttButt.BackColor = Color.DarkGreen;
+            NextGanttButt.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            NextGanttButt.ForeColor = SystemColors.ButtonHighlight;
+            NextGanttButt.Location = new Point(5, 19);
+            NextGanttButt.Name = "NextGanttButt";
+            NextGanttButt.Size = new Size(58, 32);
+            NextGanttButt.TabIndex = 0;
+            NextGanttButt.Text = "Next";
+            NextGanttButt.TextAlign = ContentAlignment.TopCenter;
+            NextGanttButt.UseVisualStyleBackColor = false;
+            NextGanttButt.Click += NextGanttButt_Click;
             // 
             // panel6
             // 
@@ -710,6 +747,7 @@
             GanttchartP.ResumeLayout(false);
             GanttchartP.PerformLayout();
             panel3.ResumeLayout(false);
+            panel7.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -742,5 +780,8 @@
         private Panel panel4;
         private Panel panel6;
         private Panel panel5;
+        private Panel NextPanel;
+        private Panel panel7;
+        private Button NextGanttButt;
     }
 }

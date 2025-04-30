@@ -41,9 +41,19 @@
             LeaderLabel = new Label();
             ContinueButt = new Krypton.Toolkit.KryptonButton();
             panel1 = new Panel();
+            DescriptionPanel = new Panel();
+            ExitDescription = new Button();
+            ExamplePanel = new Panel();
+            ExitExample = new Button();
+            label2 = new Label();
+            ExampleLabel = new Label();
+            panel8 = new Panel();
+            panel7 = new Panel();
             DesignPanel2 = new Panel();
+            ExampleButt = new Krypton.Toolkit.KryptonButton();
             panel6 = new Panel();
             DesignPanel1 = new Panel();
+            DescriptionButt = new Krypton.Toolkit.KryptonButton();
             AdditionalDe = new Panel();
             panel5 = new Panel();
             TitlePanel.SuspendLayout();
@@ -51,6 +61,10 @@
             MemberPanel.SuspendLayout();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
+            DescriptionPanel.SuspendLayout();
+            ExamplePanel.SuspendLayout();
+            DesignPanel2.SuspendLayout();
+            DesignPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // Header
@@ -239,6 +253,8 @@
             panel1.BackColor = Color.DarkGray;
             panel1.BackgroundImage = Properties.Resources.SideBackground;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(DescriptionPanel);
+            panel1.Controls.Add(ExamplePanel);
             panel1.Controls.Add(DesignPanel2);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(DesignPanel1);
@@ -253,13 +269,147 @@
             panel1.Size = new Size(1286, 727);
             panel1.TabIndex = 0;
             // 
+            // DescriptionPanel
+            // 
+            DescriptionPanel.BackgroundImage = Properties.Resources.Description;
+            DescriptionPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            DescriptionPanel.Controls.Add(ExitDescription);
+            DescriptionPanel.Location = new Point(-1340, 3);
+            DescriptionPanel.Name = "DescriptionPanel";
+            DescriptionPanel.Size = new Size(1283, 721);
+            DescriptionPanel.TabIndex = 17;
+            // 
+            // ExitDescription
+            // 
+            ExitDescription.BackColor = Color.Transparent;
+            ExitDescription.BackgroundImage = Properties.Resources.exit_logo;
+            ExitDescription.BackgroundImageLayout = ImageLayout.Stretch;
+            ExitDescription.ForeColor = Color.Transparent;
+            ExitDescription.Location = new Point(1235, 10);
+            ExitDescription.Name = "ExitDescription";
+            ExitDescription.Size = new Size(36, 31);
+            ExitDescription.TabIndex = 4;
+            ExitDescription.TabStop = false;
+            ExitDescription.UseVisualStyleBackColor = false;
+            ExitDescription.Click += ExitDescription_Click;
+            // 
+            // ExamplePanel
+            // 
+            ExamplePanel.BackgroundImage = Properties.Resources.SideBackground;
+            ExamplePanel.BackgroundImageLayout = ImageLayout.Stretch;
+            ExamplePanel.Controls.Add(ExitExample);
+            ExamplePanel.Controls.Add(label2);
+            ExamplePanel.Controls.Add(ExampleLabel);
+            ExamplePanel.Controls.Add(panel8);
+            ExamplePanel.Controls.Add(panel7);
+            ExamplePanel.Location = new Point(1340, 3);
+            ExamplePanel.Name = "ExamplePanel";
+            ExamplePanel.Size = new Size(1285, 727);
+            ExamplePanel.TabIndex = 16;
+            // 
+            // ExitExample
+            // 
+            ExitExample.BackColor = Color.Transparent;
+            ExitExample.BackgroundImage = Properties.Resources.exit_logo;
+            ExitExample.BackgroundImageLayout = ImageLayout.Stretch;
+            ExitExample.ForeColor = Color.Transparent;
+            ExitExample.Location = new Point(1231, 10);
+            ExitExample.Name = "ExitExample";
+            ExitExample.Size = new Size(36, 31);
+            ExitExample.TabIndex = 4;
+            ExitExample.TabStop = false;
+            ExitExample.UseVisualStyleBackColor = false;
+            ExitExample.Click += button1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Verdana", 20F, FontStyle.Bold);
+            label2.Location = new Point(65, 525);
+            label2.Name = "label2";
+            label2.Size = new Size(188, 32);
+            label2.TabIndex = 3;
+            label2.Text = "Gantt Chart";
+            // 
+            // ExampleLabel
+            // 
+            ExampleLabel.AutoSize = true;
+            ExampleLabel.BackColor = Color.Transparent;
+            ExampleLabel.Font = new Font("Verdana", 30F, FontStyle.Bold);
+            ExampleLabel.Location = new Point(501, 24);
+            ExampleLabel.Name = "ExampleLabel";
+            ExampleLabel.Size = new Size(212, 48);
+            ExampleLabel.TabIndex = 2;
+            ExampleLabel.Text = "Example";
+            // 
+            // panel8
+            // 
+            panel8.BackgroundImage = Properties.Resources.GanttChartExample;
+            panel8.BackgroundImageLayout = ImageLayout.Stretch;
+            panel8.Location = new Point(65, 560);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1112, 136);
+            panel8.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.DimGray;
+            panel7.BackgroundImage = Properties.Resources.TableExample;
+            panel7.BackgroundImageLayout = ImageLayout.Stretch;
+            panel7.Location = new Point(340, 95);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(555, 355);
+            panel7.TabIndex = 0;
+            // 
             // DesignPanel2
             // 
             DesignPanel2.BackColor = Color.Transparent;
+            DesignPanel2.Controls.Add(ExampleButt);
             DesignPanel2.Location = new Point(904, 417);
             DesignPanel2.Name = "DesignPanel2";
             DesignPanel2.Size = new Size(312, 275);
             DesignPanel2.TabIndex = 14;
+            // 
+            // ExampleButt
+            // 
+            ExampleButt.Cursor = Cursors.Hand;
+            ExampleButt.Location = new Point(41, 39);
+            ExampleButt.Name = "ExampleButt";
+            ExampleButt.OverrideDefault.Back.Color1 = Color.DimGray;
+            ExampleButt.OverrideDefault.Back.Color2 = Color.White;
+            ExampleButt.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ExampleButt.OverrideDefault.Border.Color1 = Color.White;
+            ExampleButt.OverrideDefault.Border.Rounding = 10F;
+            ExampleButt.OverrideDefault.Border.Width = 1;
+            ExampleButt.Size = new Size(235, 199);
+            ExampleButt.StateCommon.Back.Color1 = Color.DimGray;
+            ExampleButt.StateCommon.Back.Color2 = Color.White;
+            ExampleButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ExampleButt.StateCommon.Border.Color1 = Color.White;
+            ExampleButt.StateCommon.Border.Rounding = 10F;
+            ExampleButt.StateCommon.Border.Width = 1;
+            ExampleButt.StateCommon.Content.ShortText.Color1 = Color.Black;
+            ExampleButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 11F, FontStyle.Bold);
+            ExampleButt.StateNormal.Back.Color1 = Color.DimGray;
+            ExampleButt.StateNormal.Back.Color2 = Color.White;
+            ExampleButt.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ExampleButt.StateNormal.Border.Color1 = Color.White;
+            ExampleButt.StateNormal.Border.Rounding = 10F;
+            ExampleButt.StateNormal.Border.Width = 1;
+            ExampleButt.StatePressed.Back.Color1 = Color.Olive;
+            ExampleButt.StatePressed.Back.Color2 = Color.Goldenrod;
+            ExampleButt.StateTracking.Back.Color1 = Color.DarkGray;
+            ExampleButt.StateTracking.Back.Color2 = Color.White;
+            ExampleButt.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            ExampleButt.StateTracking.Border.Color1 = Color.Olive;
+            ExampleButt.StateTracking.Border.Rounding = 10F;
+            ExampleButt.StateTracking.Border.Width = 1;
+            ExampleButt.TabIndex = 2;
+            ExampleButt.Values.DropDownArrowColor = Color.Empty;
+            ExampleButt.Values.Text = "EXAMPLE";
+            ExampleButt.Visible = false;
+            ExampleButt.Click += ExampleButt_Click;
             // 
             // panel6
             // 
@@ -273,10 +423,51 @@
             // DesignPanel1
             // 
             DesignPanel1.BackColor = Color.Transparent;
+            DesignPanel1.Controls.Add(DescriptionButt);
             DesignPanel1.Location = new Point(80, 417);
             DesignPanel1.Name = "DesignPanel1";
             DesignPanel1.Size = new Size(312, 275);
             DesignPanel1.TabIndex = 12;
+            // 
+            // DescriptionButt
+            // 
+            DescriptionButt.Cursor = Cursors.Hand;
+            DescriptionButt.Location = new Point(37, 39);
+            DescriptionButt.Name = "DescriptionButt";
+            DescriptionButt.OverrideDefault.Back.Color1 = Color.DimGray;
+            DescriptionButt.OverrideDefault.Back.Color2 = Color.White;
+            DescriptionButt.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            DescriptionButt.OverrideDefault.Border.Color1 = Color.White;
+            DescriptionButt.OverrideDefault.Border.Rounding = 10F;
+            DescriptionButt.OverrideDefault.Border.Width = 1;
+            DescriptionButt.Size = new Size(235, 199);
+            DescriptionButt.StateCommon.Back.Color1 = Color.DimGray;
+            DescriptionButt.StateCommon.Back.Color2 = Color.White;
+            DescriptionButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            DescriptionButt.StateCommon.Border.Color1 = Color.White;
+            DescriptionButt.StateCommon.Border.Rounding = 10F;
+            DescriptionButt.StateCommon.Border.Width = 1;
+            DescriptionButt.StateCommon.Content.ShortText.Color1 = Color.Black;
+            DescriptionButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 11F, FontStyle.Bold);
+            DescriptionButt.StateNormal.Back.Color1 = Color.DimGray;
+            DescriptionButt.StateNormal.Back.Color2 = Color.White;
+            DescriptionButt.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            DescriptionButt.StateNormal.Border.Color1 = Color.White;
+            DescriptionButt.StateNormal.Border.Rounding = 10F;
+            DescriptionButt.StateNormal.Border.Width = 1;
+            DescriptionButt.StatePressed.Back.Color1 = Color.Olive;
+            DescriptionButt.StatePressed.Back.Color2 = Color.Goldenrod;
+            DescriptionButt.StateTracking.Back.Color1 = Color.DarkGray;
+            DescriptionButt.StateTracking.Back.Color2 = Color.White;
+            DescriptionButt.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            DescriptionButt.StateTracking.Border.Color1 = Color.Olive;
+            DescriptionButt.StateTracking.Border.Rounding = 10F;
+            DescriptionButt.StateTracking.Border.Width = 1;
+            DescriptionButt.TabIndex = 1;
+            DescriptionButt.Values.DropDownArrowColor = Color.Empty;
+            DescriptionButt.Values.Text = "DESCRIPTION";
+            DescriptionButt.Visible = false;
+            DescriptionButt.Click += DescriptionButt_Click;
             // 
             // AdditionalDe
             // 
@@ -314,6 +505,11 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel1.ResumeLayout(false);
+            DescriptionPanel.ResumeLayout(false);
+            ExamplePanel.ResumeLayout(false);
+            ExamplePanel.PerformLayout();
+            DesignPanel2.ResumeLayout(false);
+            DesignPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -336,5 +532,15 @@
         private Panel panel5;
         private Panel DesignPanel2;
         private Panel panel6;
+        private Krypton.Toolkit.KryptonButton DescriptionButt;
+        private Krypton.Toolkit.KryptonButton ExampleButt;
+        private Panel ExamplePanel;
+        private Label ExampleLabel;
+        private Panel panel8;
+        private Panel panel7;
+        private Label label2;
+        private Button ExitExample;
+        private Panel DescriptionPanel;
+        private Button ExitDescription;
     }
 }

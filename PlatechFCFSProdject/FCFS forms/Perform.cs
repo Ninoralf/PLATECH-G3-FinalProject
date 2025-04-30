@@ -21,7 +21,20 @@ namespace PlatechFCFSProdject
         private InputProcess input;
         private bool isGranttChartOpen = false;
         private bool isTableTop = false;
-        private bool isTableUp = false;
+        private int currentProcessIndex;
+        private float x = 0;
+        private float currentTime = 0f;
+        private int sizeOfWidth = 0;
+        private int countHighBurstTime = 0;
+
+        float EmptyDuration = 0;
+        float width = 0;
+        float endTime = 0;
+        float endPoint = 0;
+        float time = 0;
+        float StartTime = 0;
+        //private bool isTableUp = false;
+
         public Perform(InputProcess inputProcess)
         {
             InitializeComponent();
@@ -49,9 +62,10 @@ namespace PlatechFCFSProdject
 
             for (int i = 0; i < pList.processList.Count; i++)
             {
+
                 string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
                 for (int j = 0; j < headers.Length; j++)
-                {   
+                {
                     // SET LABEL HEADER
                     Label lbl = new Label
                     {
@@ -63,8 +77,9 @@ namespace PlatechFCFSProdject
                     };
                     header.Controls.Add(lbl);
                 }
-
                 panel1.Controls.Add(header);
+
+                var Plist = pList.processList[i];
                 // ROW PANEL 
                 Panel row = new Panel
                 {
@@ -74,12 +89,11 @@ namespace PlatechFCFSProdject
                     Height = 40,
                     Location = new Point(10, (i + 1) * 45),
                     Name = $"panelRow_{i}",
-                    BackColor = SystemColors.AppWorkspace
+                    BackColor = Plist.Color
                 };
 
-                var Plist = pList.processList[i];
                 for (int j = 0; j < 3; j++)
-                {   
+                {
                     // 3 TEXTBOX OF THE ROW PANEL
                     TextBox txt = new TextBox
                     {
@@ -122,7 +136,7 @@ namespace PlatechFCFSProdject
             Application.Exit(); // EXIT PROGRAM
         }
         private void GenerateGanttChart()
-        {   
+        {
             // SORTING LOOP
             for (int i = 0; i < pList.processList.Count - 1; i++)
             {
@@ -141,8 +155,10 @@ namespace PlatechFCFSProdject
                     {
                         shouldSwap = true;
                     }
-                    else if(arrival1 == arrival2) {
-                        if (procIdtemp1 > procIdtemp2) {
+                    else if (arrival1 == arrival2)
+                    {
+                        if (procIdtemp1 > procIdtemp2)
+                        {
                             shouldSwap = true;
                         }
                     }
@@ -159,57 +175,24 @@ namespace PlatechFCFSProdject
             }
 
             ganttChartPanel.Controls.Clear(); // CLEAR THE GANTCHART SO THAT IT WILL APPLY CLEARLY
-            int countHighBurstTime = 0;
+
+            // FROM HERE RESET THE VALUE
+            countHighBurstTime = 0;
             foreach (var list in pList.processList)
             {
                 // IF THE BURST TIME AND ARRIVAL TIME GREATER THAN 13 THEN ADJUST THE WIDTH
-                if (list.BurstTime >= 13 && list.ArrivalTime >= 13) {
+                if (list.BurstTime >= 13 && list.ArrivalTime >= 13)
+                {
                     countHighBurstTime++;
                 }
             }
-            
-            int sizeOfWidth = 0;
+            currentProcessIndex = 0;
+            sizeOfWidth = 0;
             if (countHighBurstTime == 5) sizeOfWidth = 13;
             else sizeOfWidth = 15;
-            
-            float x = 0;
-            float currentTime = 0f;
 
-            foreach (var proc in pList.processList)
-            {   
-                // THIS IS FOR STARTING PROCESS NO.
-                if (currentTime < proc.ArrivalTime)
-                {
-                    float EmptyDuration = proc.ArrivalTime - currentTime;
-                    AddGanttBox("", x, EmptyDuration * sizeOfWidth, Color.Gray, sizeOfWidth);
-                    x += EmptyDuration * sizeOfWidth;
-                    currentTime = proc.ArrivalTime;
-                }
-
-                // FOR BURST TIME
-                float width = proc.BurstTime * sizeOfWidth; 
-                float StartTime;
-                if (sizeOfWidth == 13) StartTime = x / 13f;
-                else StartTime = x / 15f;
-                
-                proc.StartTime = StartTime; 
-                AddGanttBox(proc.ProcessID, x, width, Color.Teal , sizeOfWidth);
-                x += width; 
-                currentTime += proc.BurstTime;
-                proc.CompletionTime = currentTime; 
-            }
-
-            float endTime = currentTime; 
-            float endPoint = endTime * sizeOfWidth;
-            Label timeEndLabel = new Label
-            {
-                BackColor = Color.Transparent,
-                Text = endTime % 1 == 0 ? ((int)endTime).ToString() : endTime.ToString("0.##"),
-                Location = new Point((int)endPoint, 115),
-                Font = new Font("Verdana", 10F, FontStyle.Bold),
-                AutoSize = true
-            };
-            ganttChartPanel.Controls.Add(timeEndLabel);
+            x = 0;
+            currentTime = 0f;
         }
         private void AddGanttBox(string label, float x, float width, Color color, int sizeOfWidth)
         {
@@ -219,7 +202,7 @@ namespace PlatechFCFSProdject
                 Width = (int)width,
                 Height = 90,
                 BackColor = color,
-                ForeColor = Color.White,
+                ForeColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Location = new Point((int)x, 20),
                 Font = new Font("Verdana", 10F, FontStyle.Bold),
@@ -227,18 +210,18 @@ namespace PlatechFCFSProdject
             };
             ganttChartPanel.Controls.Add(ganttBlock);
 
-            float time = x / 15f;
+            time = x / 15f;
             if (sizeOfWidth == 13) time = x / 13f;
             else time = x / 15f;
 
             Label timeLabel = new Label
-                {
-                    Text = time % 1 == 0 ? ((int)time).ToString() : time.ToString("0.##"),
-                    Location = new Point((int)x, 115),
-                    BackColor = Color.Transparent,
-                    Font = new Font("Verdana", 10F, FontStyle.Bold),
-                    AutoSize = true
-                };
+            {
+                Text = time % 1 == 0 ? ((int)time).ToString() : time.ToString("0.##"),
+                Location = new Point((int)x, 115),
+                BackColor = Color.Transparent,
+                Font = new Font("Verdana", 8F, FontStyle.Bold),
+                AutoSize = true
+            };
             ganttChartPanel.Controls.Add(timeLabel);
         }
         private void ClickedButton(Krypton.Toolkit.KryptonButton ActiveButtons, params Krypton.Toolkit.KryptonButton[] buttons)
@@ -284,7 +267,7 @@ namespace PlatechFCFSProdject
             }
         }
         private void AverageDisplay(string title, float totalAver)
-        {     
+        {
             AnimatedAverageDisplay();
             string TextResult = "(";
 
@@ -301,7 +284,8 @@ namespace PlatechFCFSProdject
             }
             TextResult += ")";
 
-            Invoke((MethodInvoker)(() => {
+            Invoke((MethodInvoker)(() =>
+            {
                 AverageDisplays.Controls.Clear();
 
                 int startX = 14; // Start with Location of X to 14
@@ -349,7 +333,7 @@ namespace PlatechFCFSProdject
                     Text = $"{(totalAver % 1 == 0 ? totalAver.ToString("0") : totalAver.ToString("F"))} msec.",
                     TextAlign = ContentAlignment.TopCenter
                 };
-                AverageDisplays.Controls.Add(TotalAverage); 
+                AverageDisplays.Controls.Add(TotalAverage);
             }));
         }
         private void displayMsec(string title)
@@ -392,7 +376,8 @@ namespace PlatechFCFSProdject
 
             int currentWidth = 94;
             int AddWidth = 154;
-            Invoke((MethodInvoker)(() => {
+            Invoke((MethodInvoker)(() =>
+            {
                 ProcessDisplay.Controls.Clear();
                 Label TitleProcess = new Label
                 {
@@ -424,13 +409,62 @@ namespace PlatechFCFSProdject
                 }
             }));
         }
-        private void EnableButtons(bool isEnable,params Krypton.Toolkit.KryptonButton[] buttons) {
-            foreach (var butt in buttons) {
+        private void EnableButtons(bool isEnable, params Krypton.Toolkit.KryptonButton[] buttons)
+        {
+            foreach (var butt in buttons)
+            {
                 butt.Enabled = isEnable;
             }
         }
 
         // CLICKABLE BUTTONS METHOD ===================================================================
+        private void NextGanttButt_Click(object sender, EventArgs e)
+        {
+            if (currentProcessIndex < pList.processList.Count)
+            {
+                var proc = pList.processList[currentProcessIndex];
+                // THIS IS FOR STARTING PROCESS NO.
+                if (currentTime < proc.ArrivalTime)
+                {
+                    EmptyDuration = proc.ArrivalTime - currentTime;
+                    AddGanttBox("", x, EmptyDuration * sizeOfWidth, Color.Gray, sizeOfWidth);
+                    x += EmptyDuration * sizeOfWidth;
+                    currentTime = proc.ArrivalTime;
+                }
+
+                // FOR BURST TIME
+                width = proc.BurstTime * sizeOfWidth;
+                if (sizeOfWidth == 13) StartTime = x / 13f;
+                else StartTime = x / 15f;
+
+                proc.StartTime = StartTime;
+                AddGanttBox(proc.ProcessID, x, width, proc.Color, sizeOfWidth);
+                x += width;
+                currentTime += proc.BurstTime;
+                proc.CompletionTime = currentTime;
+
+                if (currentProcessIndex == pList.processList.Count - 1)
+                {
+                    endTime = currentTime;
+                    endPoint = endTime * sizeOfWidth;
+                    Label timeEndLabel = new Label
+                    {
+                        BackColor = Color.Transparent,
+                        Text = endTime % 1 == 0 ? ((int)endTime).ToString() : endTime.ToString("0.##"),
+                        Location = new Point((int)endPoint, 115),
+                        Font = new Font("Verdana", 8F, FontStyle.Bold),
+                        AutoSize = true
+                    };
+                    ganttChartPanel.Controls.Add(timeEndLabel);
+                }
+                currentProcessIndex++;
+            }
+            else
+            {
+                MessageBox.Show("You're now in the last process.");
+            }
+
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             if (isGranttChartOpen && !isTableTop)
@@ -444,15 +478,17 @@ namespace PlatechFCFSProdject
                 closeGanttChart();
                 animatedCloseTable();
             }
-            else {
+            else
+            {
                 animatedCloseTable();
             }
-         
+
         }
         private void OpenButton_Click(object sender, EventArgs e)
         {
             isGranttChartOpen = false;
-            Invoke((MethodInvoker)(() => {
+            Invoke((MethodInvoker)(() =>
+            {
                 ClickedButton(GanttChartButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, PWTButt);
                 GanttChartButt.Enabled = true;
                 CloseAverDisAndProcDis(true);
@@ -472,16 +508,23 @@ namespace PlatechFCFSProdject
         {
             if (isGranttChartOpen)
             {
-                isOpenPWT = false; 
-                isOpenPCT = false;
-                isOpenPWT = true;
-                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
-                ClickedButton(PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt); 
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PWT");
+                if (currentProcessIndex == pList.processList.Count) {
+                    isOpenPWT = false;
+                    isOpenPCT = false;
+                    isOpenPWT = true;
+                    AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                    ClickedButton(PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
+                    CloseAverDisAndProcDis(false);
+                    ReArrangeProcessNo();
+                    displayMsec("PWT");
+                }
+                else
+                {
+                    MessageBox.Show($"The Gantt Chart is not yet complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else {
+            else
+            {
                 MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -501,12 +544,13 @@ namespace PlatechFCFSProdject
                 {
                     MessageBox.Show($"Open the Process Waiting Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else {
+                else
+                {
                     MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-             
+
             }
-           
+
         }
 
         // PCT ========================================================================================
@@ -517,21 +561,27 @@ namespace PlatechFCFSProdject
 
             if (isGranttChartOpen)
             {
-                isOpenPWT = false;
-                isOpenPTAT = false;
-                isOpenPCT = true;
-                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
-                ClickedButton(PCTButt, AWTButt, PWTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PCT");
+                if (currentProcessIndex == pList.processList.Count) {
+                    isOpenPWT = false;
+                    isOpenPTAT = false;
+                    isOpenPCT = true;
+                    AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                    ClickedButton(PCTButt, AWTButt, PWTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
+                    CloseAverDisAndProcDis(false);
+                    ReArrangeProcessNo();
+                    displayMsec("PCT");
+                }
+                else
+                {
+                    MessageBox.Show($"The Gantt Chart is not yet complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
                 MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-            
+
         }
         private void ACTButt_Click(object sender, EventArgs e)
         {
@@ -549,12 +599,13 @@ namespace PlatechFCFSProdject
                 {
                     MessageBox.Show($"Open the Process Complete Time first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else {
+                else
+                {
                     MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
             }
-           
+
         }
 
         // PTAT =======================================================================================
@@ -564,21 +615,28 @@ namespace PlatechFCFSProdject
         {
             if (isGranttChartOpen)
             {
-                isOpenPWT = false;
-                isOpenPCT = false;
-                isOpenPTAT = true;
-                AverOfWT = AverOfCT = AverTAT = 0; // reset the value
-                ClickedButton(PTATButt, AWTButt, PCTButt, ACTButt, PWTButt, ATATButt, GanttChartButt);
-                CloseAverDisAndProcDis(false);
-                ReArrangeProcessNo();
-                displayMsec("PTAT");
+                if (currentProcessIndex == pList.processList.Count)
+                {
+                    isOpenPWT = false;
+                    isOpenPCT = false;
+                    isOpenPTAT = true;
+                    AverOfWT = AverOfCT = AverTAT = 0; // reset the value
+                    ClickedButton(PTATButt, AWTButt, PCTButt, ACTButt, PWTButt, ATATButt, GanttChartButt);
+                    CloseAverDisAndProcDis(false);
+                    ReArrangeProcessNo();
+                    displayMsec("PTAT");
+                }
+                else {
+                    MessageBox.Show($"The Gantt Chart is not yet complete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
             else
             {
                 MessageBox.Show($"Show the Gantt Chart first. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-           
+
         }
         private void ATATButt_Click(object sender, EventArgs e)
         {
@@ -607,58 +665,88 @@ namespace PlatechFCFSProdject
             }
 
         }
-        
+
         // ANIMATED METHOD ============================================================================
-        private void displayGanttChart() {
+        private void displayGanttChart()
+        {
             OpenButton.Enabled = false;
             int WidthGoal = 1222;
-            Thread thread = new Thread(() => {
+            int LocGoal = 900;
+            Thread thread = new Thread(() =>
+            {
                 int CurrentWidth = ganttChartPanel.Width;
 
-                while (CurrentWidth < WidthGoal) {
+                while (CurrentWidth < WidthGoal)
+                {
                     CurrentWidth += 12;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         ganttChartPanel.Width = CurrentWidth;
                     }));
-                    Thread.Sleep(2);
+                    Thread.Sleep(1);
                 }
+
+                int CurrentLoc = 784;
+                while (CurrentLoc < LocGoal)
+                {
+                    CurrentLoc += 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        NextPanel.Location = new Point(CurrentLoc, 1);
+                    }));
+                    Thread.Sleep(20);
+                }
+
                 Invoke((MethodInvoker)(() =>
                 {
                     OpenButton.Enabled = true;
                     EnableButtons(true, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt);
+
                 }));
 
             });
             thread.Start();
-            
+
         }
         private void closeGanttChart()
         {
             OpenButton.Enabled = false;
             int WidthGoal = 0;
-            Thread thread = new Thread(() => {
-                int CurrentWidth = ganttChartPanel.Width ;
+            int LocGoal = 784;
+            Thread thread = new Thread(() =>
+            {
+                int CurrentLoc = 900;
+                while (CurrentLoc > LocGoal)
+                {
+                    CurrentLoc -= 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        NextPanel.Location = new Point(CurrentLoc, 1);
+                    }));
+                    Thread.Sleep(20);
+                }
+
+                int CurrentWidth = ganttChartPanel.Width;
 
                 while (CurrentWidth > WidthGoal)
                 {
                     CurrentWidth -= 12;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         ganttChartPanel.Width = CurrentWidth;
                     }));
 
                     Thread.Sleep(2);
                 }
-               
-                
+
                 Invoke((MethodInvoker)(() =>
                 {
                     animatePanel4Open();
-                    OpenButton.Enabled = true;
-                    
+                    OpenButton.Enabled = true;      
                 }));
             });
             thread.Start();
-          
+
 
         }
         private void panelPerformFindClose()
@@ -686,10 +774,10 @@ namespace PlatechFCFSProdject
                 }));
             });
             thread.Start();
-           
+
         }
         private void panelPerformFindOPen()
-        {   
+        {
             int GoalWidthSize = 354;
             Thread thread = new Thread(() =>
             {
@@ -709,14 +797,16 @@ namespace PlatechFCFSProdject
                 {
 
                     GanttChartButt.Visible = true;
-     
+
                 }));
             });
             thread.Start();
         }
-        private void AnimatedDisplayMsec() {
+        private void AnimatedDisplayMsec()
+        {
             int goalWidth = 849;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentWidth = 0;
 
                 while (currentWidth < goalWidth)
@@ -729,14 +819,15 @@ namespace PlatechFCFSProdject
                     }));
 
                     Thread.Sleep(6);
-                } 
+                }
             });
             thread.Start();
         }
         private void AnimatedAverageDisplay()
-        {   
+        {
             int goalWidth = 849;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentWidth = 0;
 
                 while (currentWidth < goalWidth)
@@ -757,7 +848,8 @@ namespace PlatechFCFSProdject
         {
             bool checker = false;
             int goalWidth = 0;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentWidth = 849;
 
                 while (currentWidth > goalWidth)
@@ -775,18 +867,21 @@ namespace PlatechFCFSProdject
                             }
                             checker = true;
                         }
-                        else {
-                            if (AverageDisplays.Width != 0) {
+                        else
+                        {
+                            if (AverageDisplays.Width != 0)
+                            {
                                 AverageDisplays.Width = currentWidth;
-                            } 
+                            }
                         }
                     }));
 
                     Thread.Sleep(6);
                 }
-                if(isFromButtonGanttChart && checker)
+                if (isFromButtonGanttChart && checker)
                 {
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         animateTableToDown();
                         isTableTop = false;
                     }));
@@ -794,7 +889,8 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-        private void animatePanel4() {
+        private void animatePanel4()
+        {
             int GoalHeight = 0;
 
             Thread thread = new Thread(() =>
@@ -808,7 +904,7 @@ namespace PlatechFCFSProdject
                     {
                         panel4.Height = CurrentHeight;
                     }));
-         
+
                     Thread.Sleep(20);
                 }
                 Invoke((MethodInvoker)(() =>
@@ -816,6 +912,7 @@ namespace PlatechFCFSProdject
                     OpenButton.Visible = true;
                     GenerateGanttChart();
                     displayGanttChart();
+
                 }));
             });
             thread.Start();
@@ -841,13 +938,13 @@ namespace PlatechFCFSProdject
                 Invoke((MethodInvoker)(() =>
                 {
                     panelPerformFindOPen();
-          
+
                 }));
             });
             thread.Start();
         }
-        private void animateTableToUp ()
-        {   
+        private void animateTableToUp()
+        {
             int GoalLocation = 9;
 
             Thread thread = new Thread(() =>
@@ -890,12 +987,14 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-        public void animatedOpenTable() {
+        public void animatedOpenTable()
+        {
             GanttChartButt.Enabled = false;
             BackButton.Enabled = false;
             int GoalSize = 0;
             int CloseSize = 546;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentSize = panel6.Width;
 
                 while (currentSize > GoalSize)
@@ -929,11 +1028,12 @@ namespace PlatechFCFSProdject
         }
         public void animatedCloseTable()
         {
-            EnableButtons(false,PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
+            EnableButtons(false, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
             BackButton.Enabled = false;
             int GoalSize = 0;
             int CloseSize = 546;
-            Thread thread = new Thread(() => {
+            Thread thread = new Thread(() =>
+            {
                 int currentSize = panel6.Width;
 
                 while (currentSize > GoalSize)
@@ -943,7 +1043,7 @@ namespace PlatechFCFSProdject
                     {
                         panel6.Width = currentSize;
                     }));
-                    Thread.Sleep(1);
+                    Thread.Sleep(6);
                 }
                 Invoke((MethodInvoker)(() =>
                 {
@@ -957,7 +1057,7 @@ namespace PlatechFCFSProdject
                     {
                         panel6.Width = currentSize;
                     }));
-                    Thread.Sleep(1);
+                    Thread.Sleep(6);
                 }
                 Invoke((MethodInvoker)(() =>
                 {
@@ -969,9 +1069,10 @@ namespace PlatechFCFSProdject
                     BackButton.Enabled = true;
                     EnableButtons(true, PWTButt, AWTButt, PCTButt, ACTButt, PTATButt, ATATButt, GanttChartButt);
                 }));
-              
+
             });
             thread.Start();
         }
+       
     }
-    }
+}

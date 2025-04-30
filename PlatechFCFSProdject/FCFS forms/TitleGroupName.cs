@@ -26,11 +26,27 @@ namespace PlatechFCFSProdject
             InputProcess InputProcess = new InputProcess(); // OPEN INPUT PROCESS FORM
             InputProcess.Show();
         }
-
+        private void ExampleButt_Click(object sender, EventArgs e)
+        {
+            ExamplePanelShown();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExamplePanel.Visible = false;
+        }
+        private void ExitDescription_Click(object sender, EventArgs e)
+        {
+            DescriptionPanel.Visible = false;
+        }
+        private void DescriptionButt_Click(object sender, EventArgs e)
+        {
+            DescriptionPanelShown();
+        }
         // ANIMATED METHOD =========================================================
         // OPEN
-        private void OpenTitleAnimated() {
-            isOpen = true; 
+        private void OpenTitleAnimated()
+        {
+            isOpen = true;
             int GoalTitleHeight = 346; // GOAL HEIGHT / THE TITLE PANEL WILL STOP HERE.
             int GoalMemberHeight = 267; // GOAL HEIGHT / THE MEMBER PANEL WILL STOP HERE.
             Thread thread = new Thread(() =>
@@ -38,9 +54,11 @@ namespace PlatechFCFSProdject
                 int CurrentTitleHeight = 0;
                 int CUrrentMemberHeight = 0;
 
-                while (CurrentTitleHeight < GoalTitleHeight) {
+                while (CurrentTitleHeight < GoalTitleHeight)
+                {
                     CurrentTitleHeight += 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         TitlePanel.Height = CurrentTitleHeight; // CHANGE HEIGHT OF TITLE PANEL BASE ON CurrentTitleHeight
                     }));
                     Thread.Sleep(10); // sleep 
@@ -51,7 +69,8 @@ namespace PlatechFCFSProdject
                 while (CUrrentMemberHeight < GoalMemberHeight)
                 {
                     CUrrentMemberHeight += 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         MemberPanel.Height = CUrrentMemberHeight;
                     }));
                     Thread.Sleep(10);
@@ -84,7 +103,8 @@ namespace PlatechFCFSProdject
                 while (CUrrentMemberHeight > GoalMemberHeight)
                 {
                     CUrrentMemberHeight -= 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         MemberPanel.Height = CUrrentMemberHeight;
                     }));
                     Thread.Sleep(10);
@@ -93,12 +113,14 @@ namespace PlatechFCFSProdject
                 while (CurrentTitleHeight > GoalTitleHeight)
                 {
                     CurrentTitleHeight -= 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         TitlePanel.Height = CurrentTitleHeight;
                     }));
                     Thread.Sleep(10);
                 }
-                Invoke((MethodInvoker)(() => {
+                Invoke((MethodInvoker)(() =>
+                {
 
                     AdditionalDesignAnimatedC();
                 }));
@@ -124,7 +146,8 @@ namespace PlatechFCFSProdject
                 while (CurrentGoalWidth < GoalWidth)
                 {
                     CurrentGoalWidth += 14;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         AdditionalDe.Width = CurrentGoalWidth;
 
                     }));
@@ -135,13 +158,15 @@ namespace PlatechFCFSProdject
                 {
                     CUrrentGoalLocation -= 6;
                     CurrentGoalButton -= 6;
-                    Invoke((MethodInvoker)(() => {
+                    Invoke((MethodInvoker)(() =>
+                    {
                         AdditionalDe.Location = new Point(0, CUrrentGoalLocation);
                         PanelWall.Location = new Point(452, CurrentGoalButton);
                     }));
                     Thread.Sleep(2);
                 }
-                Invoke((MethodInvoker)(() => {
+                Invoke((MethodInvoker)(() =>
+                {
                     OpenTitleAnimated();
                 }));
             });
@@ -187,7 +212,7 @@ namespace PlatechFCFSProdject
                 OpenButton.Values.Text = "Open";
                 OpenButton.Enabled = true;
             });
-         
+
             thread.Start();
         }
         //==========================================================================
@@ -230,7 +255,11 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(30);
                 }
-
+                Invoke((MethodInvoker)(() =>
+                {
+                    DescriptionButt.Visible = true;
+                    ExampleButt.Visible = true;
+                }));
             });
             thread.Start();
 
@@ -246,7 +275,7 @@ namespace PlatechFCFSProdject
             {
 
                 int currentLocation = 391;
-                int currentPosition = 51; 
+                int currentPosition = 51;
                 int currentPositionPanel2 = 936;
                 while (currentPosition < GoalLocationToLeft)
                 {
@@ -262,7 +291,7 @@ namespace PlatechFCFSProdject
                     Thread.Sleep(30);
                 }
 
-             
+
                 while (currentLocation < GoalLocationToUp)
                 {
 
@@ -281,10 +310,76 @@ namespace PlatechFCFSProdject
                 {
                     DesignPanel1.BorderStyle = BorderStyle.None;
                     DesignPanel2.BorderStyle = BorderStyle.None;
+                    DescriptionButt.Visible = false;
+                    ExampleButt.Visible = false;
                 }));
             });
             thread.Start();
 
         }
+        private void ExamplePanelShown()
+        {
+            ExampleButt.Enabled = false;
+            DescriptionButt.Enabled = false;
+            ExamplePanel.Visible = true;
+            int GoalLocationToLeft = 6;
+            Thread thread = new Thread(() =>
+            {
+
+                int currentPosition = 1340;
+
+                while (currentPosition > GoalLocationToLeft)
+                {
+
+                    currentPosition -= 10;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        ExamplePanel.Location = new Point(currentPosition, 3);
+                    }));
+
+                    Thread.Sleep(2);
+                }
+
+                ExampleButt.Enabled = true;
+                DescriptionButt.Enabled = true;
+            });
+            thread.Start();
+
+
+        }
+
+        private void DescriptionPanelShown()
+        {
+            ExampleButt.Enabled = false;
+            DescriptionButt.Enabled = false;
+            DescriptionPanel.Visible = true;
+            int GoalLocationToLeft = 3;
+            Thread thread = new Thread(() =>
+            {
+
+                int currentPosition = -1340;
+
+                while (currentPosition < GoalLocationToLeft)
+                {
+
+                    currentPosition += 10;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        DescriptionPanel.Location = new Point(currentPosition, 3);
+                    }));
+
+                    Thread.Sleep(2);
+                }
+
+                ExampleButt.Enabled = true;
+                DescriptionButt.Enabled = true;
+            });
+            thread.Start();
+
+
+        }
+
     }
 }

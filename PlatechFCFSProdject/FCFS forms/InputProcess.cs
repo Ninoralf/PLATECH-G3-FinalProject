@@ -58,7 +58,7 @@ namespace PlatechFCFSProdject
         }
         // THIS METHOD CREATE THE TABLE OF PROCESS
         private void ShowTable()
-            {
+        {           
                 panel1.Visible = true;
                 panel1.Controls.Clear();
 
@@ -66,9 +66,9 @@ namespace PlatechFCFSProdject
                 {
 
                     if (int.TryParse(TextBoxInputPross.Text, out processCount))
-                    {
+                    {   
                         if (processCount >= 2 && processCount <= 5)
-                        {
+                        {   
                             Panel[] arrayPanel = new Panel[processCount];
                             // HEADER PANEL =====
                             Panel header = new Panel
@@ -76,7 +76,6 @@ namespace PlatechFCFSProdject
                                 Width = panel1.Width - 25,
                                 Height = 40,
                                 Location = new Point(10, 0),
-
                             };
 
                             for (int i = 0; i < processCount; i++)
@@ -165,12 +164,18 @@ namespace PlatechFCFSProdject
                 {
                     ErrorLabel.Text = "Cannot be empty, please enter the process no.";
                 }
-
-
             }
         // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
         private void GetProcessData()
         {
+            Color[] colors = new Color[] {
+                    Color.SkyBlue,
+                    Color.Coral,
+                    Color.Yellow,
+                    Color.LightPink,
+                    Color.Lime
+            };
+            int CounterColor = 0;
             foreach (Control control in panel1.Controls)
             {
                 if (control is Panel rowPanel && rowPanel.Name.StartsWith("panelRow_"))
@@ -199,24 +204,19 @@ namespace PlatechFCFSProdject
                                 if (colIndex == 0)
                                 {
                                     proc.ProcessID = txtBox.Text;
+                                    proc.Color = colors[CounterColor];
                                 }
                                 else
                                 {
 
                                     if (float.TryParse(inputValue, out float value))
                                     {
-                                        if (value > 15 || value < 0)
-                                        {
-                                            MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 0.",
-                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                            txtBox.Focus();
-                                            return;
-                                        }
+                                        
                                         if (colIndex == 1)
                                         {
-                                            if (value > 15 || value < 1)
+                                            if (value > 15 || value < 3)
                                             {
-                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 1.",
+                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 3.",
                                                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                 txtBox.Focus();
                                                 return;
@@ -224,7 +224,17 @@ namespace PlatechFCFSProdject
                                             }
                                             else proc.BurstTime = value;
                                         }
-                                        if (colIndex == 2) proc.ArrivalTime = value;
+                                        if (colIndex == 2) {
+                                            if (value > 15 || value < 0)
+                                            {
+                                                MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 0.",
+                                                           "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                                txtBox.Focus();
+                                                return;
+
+                                            }else proc.ArrivalTime = value;
+                                        }
+                                     
                                     }
                                     else
                                     {
@@ -241,6 +251,7 @@ namespace PlatechFCFSProdject
                     }
                     // THIS IS THE SAME OF FOREACH LOOP. IT CHECK IF THE PROCESS ID ADDED MULTIPLE TIMES.
                     // IF USER CHANGE THE VALUE, THEN THE VALUE ONLY WILL CHANGE NOT THE PROCESS ID WILL ADD TO LIST.
+                    CounterColor++;
                     var isProcessAlreadyList = processList.Find(p => p.ProcessID == proc.ProcessID);
                     if (isProcessAlreadyList != null)
                     {
