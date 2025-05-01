@@ -37,10 +37,12 @@ namespace PlatechFCFSProdject
             {
                 FlowChartPanel.BackgroundImage = imagePaths[currentIndex];
                 FlowChartPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                Pageno.Text = $"Page {currentIndex + 1}";
             }
 
             PrevButt.Enabled = currentIndex > 0;
             NextButt.Enabled = currentIndex < imagePaths.Length - 1;
+
         }
 
         // CLICKABLE BUTTONS METHOD ================================================
@@ -444,6 +446,7 @@ namespace PlatechFCFSProdject
         private void ExitFlowButt_Click(object sender, EventArgs e)
         {
             FlowChartPanel.Visible = false;
+            currentIndex = 0;
         }
     }
 }

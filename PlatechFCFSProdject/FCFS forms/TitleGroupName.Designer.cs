@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Header = new Panel();
+            FlowChartButt = new Krypton.Toolkit.KryptonButton();
             TitlePanel = new Panel();
             GroupNo = new Label();
             Title = new Label();
@@ -45,7 +46,6 @@
             ExitFlowButt = new Button();
             NextButt = new Button();
             PrevButt = new Button();
-            FlowChartButt = new Krypton.Toolkit.KryptonButton();
             DescriptionPanel = new Panel();
             ExitDescription = new Button();
             ExamplePanel = new Panel();
@@ -61,6 +61,7 @@
             DescriptionButt = new Krypton.Toolkit.KryptonButton();
             AdditionalDe = new Panel();
             panel5 = new Panel();
+            Pageno = new Label();
             Header.SuspendLayout();
             TitlePanel.SuspendLayout();
             PanelWall.SuspendLayout();
@@ -84,6 +85,45 @@
             Header.Name = "Header";
             Header.Size = new Size(1286, 59);
             Header.TabIndex = 1;
+            // 
+            // FlowChartButt
+            // 
+            FlowChartButt.Cursor = Cursors.Hand;
+            FlowChartButt.Location = new Point(517, 9);
+            FlowChartButt.Name = "FlowChartButt";
+            FlowChartButt.OverrideDefault.Back.Color1 = Color.DimGray;
+            FlowChartButt.OverrideDefault.Back.Color2 = Color.White;
+            FlowChartButt.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            FlowChartButt.OverrideDefault.Border.Color1 = Color.White;
+            FlowChartButt.OverrideDefault.Border.Rounding = 10F;
+            FlowChartButt.OverrideDefault.Border.Width = 1;
+            FlowChartButt.Size = new Size(264, 42);
+            FlowChartButt.StateCommon.Back.Color1 = Color.DimGray;
+            FlowChartButt.StateCommon.Back.Color2 = Color.White;
+            FlowChartButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            FlowChartButt.StateCommon.Border.Color1 = Color.White;
+            FlowChartButt.StateCommon.Border.Rounding = 10F;
+            FlowChartButt.StateCommon.Border.Width = 1;
+            FlowChartButt.StateCommon.Content.ShortText.Color1 = Color.Black;
+            FlowChartButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 18.25F);
+            FlowChartButt.StateNormal.Back.Color1 = Color.DimGray;
+            FlowChartButt.StateNormal.Back.Color2 = Color.White;
+            FlowChartButt.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            FlowChartButt.StateNormal.Border.Color1 = Color.White;
+            FlowChartButt.StateNormal.Border.Rounding = 10F;
+            FlowChartButt.StateNormal.Border.Width = 1;
+            FlowChartButt.StatePressed.Back.Color1 = Color.Olive;
+            FlowChartButt.StatePressed.Back.Color2 = Color.Goldenrod;
+            FlowChartButt.StateTracking.Back.Color1 = Color.DarkGray;
+            FlowChartButt.StateTracking.Back.Color2 = Color.White;
+            FlowChartButt.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
+            FlowChartButt.StateTracking.Border.Color1 = Color.Olive;
+            FlowChartButt.StateTracking.Border.Rounding = 10F;
+            FlowChartButt.StateTracking.Border.Width = 1;
+            FlowChartButt.TabIndex = 1;
+            FlowChartButt.Values.DropDownArrowColor = Color.Empty;
+            FlowChartButt.Values.Text = "Show Flow Chart";
+            FlowChartButt.Click += FlowChartButt_Click;
             // 
             // TitlePanel
             // 
@@ -282,6 +322,7 @@
             // 
             FlowChartPanel.BackgroundImage = Properties.Resources.image8;
             FlowChartPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            FlowChartPanel.Controls.Add(Pageno);
             FlowChartPanel.Controls.Add(ExitFlowButt);
             FlowChartPanel.Controls.Add(NextButt);
             FlowChartPanel.Controls.Add(PrevButt);
@@ -330,45 +371,6 @@
             PrevButt.TabIndex = 0;
             PrevButt.UseVisualStyleBackColor = false;
             PrevButt.Click += PrevButt_Click;
-            // 
-            // FlowChartButt
-            // 
-            FlowChartButt.Cursor = Cursors.Hand;
-            FlowChartButt.Location = new Point(517, 9);
-            FlowChartButt.Name = "FlowChartButt";
-            FlowChartButt.OverrideDefault.Back.Color1 = Color.DimGray;
-            FlowChartButt.OverrideDefault.Back.Color2 = Color.White;
-            FlowChartButt.OverrideDefault.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
-            FlowChartButt.OverrideDefault.Border.Color1 = Color.White;
-            FlowChartButt.OverrideDefault.Border.Rounding = 10F;
-            FlowChartButt.OverrideDefault.Border.Width = 1;
-            FlowChartButt.Size = new Size(264, 42);
-            FlowChartButt.StateCommon.Back.Color1 = Color.DimGray;
-            FlowChartButt.StateCommon.Back.Color2 = Color.White;
-            FlowChartButt.StateCommon.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
-            FlowChartButt.StateCommon.Border.Color1 = Color.White;
-            FlowChartButt.StateCommon.Border.Rounding = 10F;
-            FlowChartButt.StateCommon.Border.Width = 1;
-            FlowChartButt.StateCommon.Content.ShortText.Color1 = Color.Black;
-            FlowChartButt.StateCommon.Content.ShortText.Font = new Font("Verdana", 18.25F);
-            FlowChartButt.StateNormal.Back.Color1 = Color.DimGray;
-            FlowChartButt.StateNormal.Back.Color2 = Color.White;
-            FlowChartButt.StateNormal.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
-            FlowChartButt.StateNormal.Border.Color1 = Color.White;
-            FlowChartButt.StateNormal.Border.Rounding = 10F;
-            FlowChartButt.StateNormal.Border.Width = 1;
-            FlowChartButt.StatePressed.Back.Color1 = Color.Olive;
-            FlowChartButt.StatePressed.Back.Color2 = Color.Goldenrod;
-            FlowChartButt.StateTracking.Back.Color1 = Color.DarkGray;
-            FlowChartButt.StateTracking.Back.Color2 = Color.White;
-            FlowChartButt.StateTracking.Back.ColorStyle = Krypton.Toolkit.PaletteColorStyle.Rounding5;
-            FlowChartButt.StateTracking.Border.Color1 = Color.Olive;
-            FlowChartButt.StateTracking.Border.Rounding = 10F;
-            FlowChartButt.StateTracking.Border.Width = 1;
-            FlowChartButt.TabIndex = 1;
-            FlowChartButt.Values.DropDownArrowColor = Color.Empty;
-            FlowChartButt.Values.Text = "Show Flow Chart";
-            FlowChartButt.Click += FlowChartButt_Click;
             // 
             // DescriptionPanel
             // 
@@ -587,6 +589,17 @@
             panel5.Size = new Size(312, 275);
             panel5.TabIndex = 13;
             // 
+            // Pageno
+            // 
+            Pageno.AutoSize = true;
+            Pageno.BackColor = Color.Transparent;
+            Pageno.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Pageno.Location = new Point(598, 691);
+            Pageno.Name = "Pageno";
+            Pageno.Size = new Size(88, 25);
+            Pageno.TabIndex = 5;
+            Pageno.Text = "Page 1";
+            // 
             // TitleGroupName
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -608,6 +621,7 @@
             panel4.PerformLayout();
             panel1.ResumeLayout(false);
             FlowChartPanel.ResumeLayout(false);
+            FlowChartPanel.PerformLayout();
             DescriptionPanel.ResumeLayout(false);
             ExamplePanel.ResumeLayout(false);
             ExamplePanel.PerformLayout();
@@ -650,5 +664,6 @@
         private Button NextButt;
         private Button PrevButt;
         private Button ExitFlowButt;
+        private Label Pageno;
     }
 }

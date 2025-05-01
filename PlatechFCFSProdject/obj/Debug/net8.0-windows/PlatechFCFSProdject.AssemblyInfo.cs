@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlatechFCFSProdject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2064d431780c967ef50115ad3f2332e884aa8c71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+821242a1a2a87ee617c76bc807a18b2bdf94b97c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlatechFCFSProdject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlatechFCFSProdject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
