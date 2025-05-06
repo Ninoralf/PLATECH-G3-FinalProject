@@ -147,6 +147,8 @@ namespace PlatechFCFSProdject
                             panel1.Controls.Add(row);
 
                         }
+                        marqueeLabel.Text = "Valid Input";
+                        marqueeLabel.ForeColor = Color.LightGreen;
                         LabelProcessNO.Text = TextBoxInputPross.Text;
                         panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
                         enterHandled = true;
@@ -320,6 +322,7 @@ namespace PlatechFCFSProdject
         private void BackButton_Click(object sender, EventArgs e)
         {
             marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
+            marqueeLabel.ForeColor = Color.FromArgb(192, 0, 0);
             GuideButton.Visible = false;
             guidePanel.Visible = false;
             SetButtonsVisibility(false);
