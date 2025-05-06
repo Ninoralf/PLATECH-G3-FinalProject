@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj": {}
+    "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (3)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj": {
+    "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (3)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (3)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
         "projectName": "PlatechFCFSProdject",
-        "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
+        "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (3)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (3)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

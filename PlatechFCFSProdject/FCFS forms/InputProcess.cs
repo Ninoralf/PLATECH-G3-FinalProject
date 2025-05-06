@@ -21,6 +21,7 @@ namespace PlatechFCFSProdject
         private bool isUpdating = false;
         private bool enterHandled = false;
         private bool isOpenGuide = false;
+        private Timer marqueeTimer;
         private int marqueee;
 
         public InputProcess()
@@ -147,8 +148,6 @@ namespace PlatechFCFSProdject
                             panel1.Controls.Add(row);
 
                         }
-                        marqueeLabel.Text = "Valid Input";
-                        marqueeLabel.ForeColor = Color.LightGreen;
                         LabelProcessNO.Text = TextBoxInputPross.Text;
                         panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
                         enterHandled = true;
@@ -171,6 +170,7 @@ namespace PlatechFCFSProdject
             }
             else
             {
+
                 marqueeLabel.Text = "Cannot be empty, please enter the process no.";
                 ErrorLabel.Text = "Cannot be empty, please enter the process no.";
             }
@@ -309,7 +309,7 @@ namespace PlatechFCFSProdject
         private void ContinueButt_Click(object sender, EventArgs e)
         {
             ShowTable();
-     
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -322,7 +322,7 @@ namespace PlatechFCFSProdject
         private void BackButton_Click(object sender, EventArgs e)
         {
             marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
-            marqueeLabel.ForeColor = Color.FromArgb(192, 0, 0);
+            panel4.BackColor = Color.Black;
             GuideButton.Visible = false;
             guidePanel.Visible = false;
             SetButtonsVisibility(false);
@@ -396,7 +396,7 @@ namespace PlatechFCFSProdject
                     GuideButton.Visible = true;
                     guidePanel.Visible = true;
                     isOpenGuide = false;
-                    guidePanel.Size = new Size(0,10);
+                    guidePanel.Size = new Size(0, 10);
                     panel3.Visible = true;
                     panelSlide.Visible = true;
                     PleaseWaitLabel.Visible = false;
@@ -564,20 +564,28 @@ namespace PlatechFCFSProdject
         }
         public void MarqueGuide()
         {
-            marqueee = panel4.Width;
-            marqueeLabel.Location = new Point(marqueee, 6);
-
-            Timer timer = new Timer();
-            timer.Interval = 5;
-            timer.Tick += (s, args) =>
+            if (marqueeTimer != null)
             {
-                marqueee -= 2;
+                marqueeTimer.Stop();
+                marqueeTimer.Dispose();
+            }
+
+            marqueee = panel4.Width;
+            marqueeLabel.Location = new Point(marqueee, marqueeLabel.Location.Y);
+
+            marqueeTimer = new Timer();
+            marqueeTimer.Interval = 4;
+            marqueeTimer.Tick += (s, args) =>
+            {
+                marqueee -= 3;
                 marqueeLabel.Location = new Point(marqueee, marqueeLabel.Location.Y);
 
                 if (marqueee + marqueeLabel.Width < 0)
+                {
                     marqueee = panel4.Width;
+                }
             };
-            timer.Start();
+            marqueeTimer.Start();
         }
 
         public void OpenGuideBurstArrival()
@@ -624,7 +632,7 @@ namespace PlatechFCFSProdject
             Thread thread = new Thread(() =>
             {
 
-                int curretHeight = 175; 
+                int curretHeight = 175;
                 while (curretHeight > goalHeight)
                 {
                     curretHeight -= 2;
@@ -658,9 +666,55 @@ namespace PlatechFCFSProdject
             {
                 OpenGuideBurstArrival();
             }
-            else {
+            else
+            {
                 CloseGuideBurstArrival();
             }
+        }
+
+        private void TextBoxInputPross_TextChanged(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
+            {
+
+                if (int.TryParse(TextBoxInputPross.Text.Trim(), out int valid))
+                {
+                    if (valid >= 2 && valid <= 5)
+                    {
+                        panel4.BackColor = Color.Lime;
+                        marqueeLabel.Text = "";
+                    }
+                    else
+                    {
+                        Invoke((MethodInvoker)(() =>
+                        {
+                            MarqueGuide();
+                            panel4.BackColor = Color.Black;
+                            marqueeLabel.Text = "Minimum of 2, Maximum of 5."; 
+                        }));
+
+                    }
+                }
+                else
+                {
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        MarqueGuide();
+                        panel4.BackColor = Color.Black;
+                        marqueeLabel.Text = "Integers only, please try again.";
+                    }));
+                }
+
+
+            }
+            else
+            {
+                MarqueGuide();
+                panel4.BackColor = Color.Black;
+                marqueeLabel.Text = "Cannot be empty, please enter the process no.";
+            }
+
         }
     }
 }

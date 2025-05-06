@@ -92,6 +92,7 @@
             TextBoxInputPross.StateCommon.Content.Font = new Font("Verdana", 30F);
             TextBoxInputPross.TabIndex = 1;
             TextBoxInputPross.TextAlign = HorizontalAlignment.Center;
+            TextBoxInputPross.TextChanged += TextBoxInputPross_TextChanged;
             TextBoxInputPross.KeyDown += TextBoxInputPross_KeyDown;
             TextBoxInputPross.MouseEnter += kryptonTextBox1_MouseEnter;
             // 
