@@ -330,7 +330,7 @@ namespace PlatechFCFSProdject
                     Font = new Font("Verdana", 20F, FontStyle.Bold),
                     ForeColor = Color.Black,
                     Location = new Point(startX, 13),
-                    Text = $"{(totalAver % 1 == 0 ? totalAver.ToString("0") : totalAver.ToString("F"))} msec.",
+                    Text = $"{(totalAver % 1 == 0 ? totalAver.ToString("0") : totalAver.ToString("0.##"))} msec.",
                     TextAlign = ContentAlignment.TopCenter
                 };
                 AverageDisplays.Controls.Add(TotalAverage);
@@ -502,7 +502,7 @@ namespace PlatechFCFSProdject
             panelPerformFindClose();
         }
         // PWT ========================================================================================
-        float AverOfWT = 0;
+        float AverOfWT = 0f;
         bool isOpenPWT = false;
         private void PWTButt_Click(object sender, EventArgs e)
         {
@@ -554,7 +554,7 @@ namespace PlatechFCFSProdject
         }
 
         // PCT ========================================================================================
-        float AverOfCT = 0;
+        float AverOfCT = 0f;
         bool isOpenPCT = false;
         private void PCTButt_Click(object sender, EventArgs e)
         {
@@ -609,7 +609,7 @@ namespace PlatechFCFSProdject
         }
 
         // PTAT =======================================================================================
-        float AverTAT = 0;
+        float AverTAT = 0f;
         bool isOpenPTAT = false;
         private void PTATButt_Click(object sender, EventArgs e)
         {

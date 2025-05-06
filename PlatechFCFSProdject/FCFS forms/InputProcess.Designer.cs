@@ -32,6 +32,12 @@
             TextBoxInputPross = new Krypton.Toolkit.KryptonTextBox();
             ContinueButt = new Krypton.Toolkit.KryptonButton();
             WhitePanel = new Panel();
+            guidePanel = new Panel();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            GuideButton = new Button();
             panel1 = new Panel();
             panelSlide = new Panel();
             Pbar = new Krypton.Toolkit.KryptonProgressBar();
@@ -50,6 +56,7 @@
             marqueeLabel = new Label();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             WhitePanel.SuspendLayout();
+            guidePanel.SuspendLayout();
             panelSlide.SuspendLayout();
             panel2.SuspendLayout();
             HandlePanel.SuspendLayout();
@@ -116,6 +123,8 @@
             WhitePanel.BackColor = Color.White;
             WhitePanel.BackgroundImage = Properties.Resources.SideBackground;
             WhitePanel.BackgroundImageLayout = ImageLayout.Stretch;
+            WhitePanel.Controls.Add(guidePanel);
+            WhitePanel.Controls.Add(GuideButton);
             WhitePanel.Controls.Add(panel1);
             WhitePanel.Controls.Add(panelSlide);
             WhitePanel.Controls.Add(panel3);
@@ -127,6 +136,75 @@
             WhitePanel.Name = "WhitePanel";
             WhitePanel.Size = new Size(0, 665);
             WhitePanel.TabIndex = 4;
+            // 
+            // guidePanel
+            // 
+            guidePanel.BackColor = Color.LightGray;
+            guidePanel.BorderStyle = BorderStyle.Fixed3D;
+            guidePanel.Controls.Add(label7);
+            guidePanel.Controls.Add(label6);
+            guidePanel.Controls.Add(label5);
+            guidePanel.Controls.Add(label4);
+            guidePanel.Location = new Point(992, 172);
+            guidePanel.Name = "guidePanel";
+            guidePanel.Size = new Size(0, 10);
+            guidePanel.TabIndex = 10;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Verdana", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Maroon;
+            label7.Location = new Point(18, 113);
+            label7.Name = "label7";
+            label7.Size = new Size(189, 36);
+            label7.TabIndex = 3;
+            label7.Text = "Minimun of 0 msec,\r\nMaximum of 15 msec.";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Verdana", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Maroon;
+            label6.Location = new Point(18, 34);
+            label6.Name = "label6";
+            label6.Size = new Size(189, 36);
+            label6.TabIndex = 2;
+            label6.Text = "Minimun of 3 msec,\r\nMaximum of 15 msec.";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Verdana", 11.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 89);
+            label5.Name = "label5";
+            label5.Size = new Size(132, 18);
+            label5.TabIndex = 1;
+            label5.Text = "ARRIVAL TIME";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Verdana", 11.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label4.Location = new Point(18, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(150, 18);
+            label4.TabIndex = 0;
+            label4.Text = "CPU BURST TIME";
+            // 
+            // GuideButton
+            // 
+            GuideButton.BackColor = Color.DarkGray;
+            GuideButton.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GuideButton.ForeColor = SystemColors.ActiveCaptionText;
+            GuideButton.Location = new Point(955, 172);
+            GuideButton.Name = "GuideButton";
+            GuideButton.Size = new Size(31, 126);
+            GuideButton.TabIndex = 9;
+            GuideButton.Text = "GUIDE";
+            GuideButton.UseVisualStyleBackColor = false;
+            GuideButton.Visible = false;
+            GuideButton.Click += GuideButton_Click;
             // 
             // panel1
             // 
@@ -398,6 +476,8 @@
             Text = "InputProcess";
             WhitePanel.ResumeLayout(false);
             WhitePanel.PerformLayout();
+            guidePanel.ResumeLayout(false);
+            guidePanel.PerformLayout();
             panelSlide.ResumeLayout(false);
             panelSlide.PerformLayout();
             panel2.ResumeLayout(false);
@@ -435,5 +515,11 @@
         private Label PleaseWaitLabel;
         private Panel panel4;
         private Label marqueeLabel;
+        private Button GuideButton;
+        private Panel guidePanel;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label7;
     }
 }

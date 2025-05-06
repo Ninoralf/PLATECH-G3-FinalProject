@@ -20,6 +20,7 @@ namespace PlatechFCFSProdject
         private int processCount = 0;
         private bool isUpdating = false;
         private bool enterHandled = false;
+        private bool isOpenGuide = false;
         private int marqueee;
 
         public InputProcess()
@@ -62,116 +63,117 @@ namespace PlatechFCFSProdject
         }
         // THIS METHOD CREATE THE TABLE OF PROCESS
         private void ShowTable()
-        {           
-                panel1.Visible = true;
-                panel1.Controls.Clear();
+        {
+            panel1.Visible = true;
+            panel1.Controls.Clear();
 
-                if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
+            if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
+            {
+
+                if (int.TryParse(TextBoxInputPross.Text, out processCount))
                 {
-                    
-                    if (int.TryParse(TextBoxInputPross.Text, out processCount))
-                    {   
-                        if (processCount >= 2 && processCount <= 5)
-                        {   
-                            Panel[] arrayPanel = new Panel[processCount];
-                            // HEADER PANEL =====
-                            Panel header = new Panel
-                            {
-                                Width = panel1.Width - 25,
-                                Height = 40,
-                                Location = new Point(10, 0),
-                            };
-
-                            for (int i = 0; i < processCount; i++)
-                            {
-                                string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
-                                // FOR LABEL OF HEADERS -----------------------
-                                for (int j = 0; j < headers.Length; j++)
-                                {
-                                    Label lbl = new Label
-                                    {
-                                        Text = headers[j],
-                                        Width = (header.Width / 3) - 3,
-                                        Location = new Point(j * (header.Width / 3), 10),
-                                        TextAlign = ContentAlignment.MiddleCenter,
-                                        Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                                    };
-
-                                    header.Controls.Add(lbl);
-                                }
-
-                                panel1.Controls.Add(header);
-
-                                // FOR ROW PANEL -----------------------
-                                Panel row = new Panel
-                                {
-                                    Size = new Size(492, 39),
-                                    TabIndex = 2,
-                                    Width = panel1.Width - 18,
-                                    Height = 40,
-                                    Location = new Point(10, (i + 1) * 45),
-                                    Name = $"panelRow_{i}",
-                                    BackColor = SystemColors.AppWorkspace
-                                };
-                                // FOR TEXTBOX INSIDE THE ROW PANEL-----------------------
-                                for (int j = 0; j < 3; j++)
-                                {
-                                    TextBox txt = new TextBox
-                                    {
-                                        Multiline = false,
-                                        Size = new Size(158, 38),
-                                        Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                                        TextAlign = HorizontalAlignment.Center,
-                                        Width = (row.Width / 3),
-                                        Location = new Point(j * (row.Width / 3), 5),
-                                        Name = $"Text_Box_{j}"
-                                    };
-
-                                    if (j == 0)
-                                    {
-                                        txt.Text = $"P{i + 1}";
-                                        txt.Enabled = false;
-                                        txt.TextAlign = HorizontalAlignment.Center;
-                                        txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-                                    }
-                                    else
-                                    {
-                                        txt.Leave += TextBox_Leave_AddMsec;
-                                        txt.Enter += TextBox_Enter;
-                                     
-                                    }
-                                row.Controls.Add(txt);
-                                }
-
-                                panel1.Controls.Add(row);
-
-                            }
-                            LabelProcessNO.Text = TextBoxInputPross.Text;
-                            panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
-                            enterHandled = true;
-                            ErrorLabel.Text = "";
-                            ChangeBackground();
-                            AnimateHandlePanelHide();
-                        }
-                        else
+                    if (processCount >= 2 && processCount <= 5)
+                    {
+                        Panel[] arrayPanel = new Panel[processCount];
+                        // HEADER PANEL =====
+                        Panel header = new Panel
                         {
-                            ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
-                             marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
-                    }
+                            Width = panel1.Width - 25,
+                            Height = 40,
+                            Location = new Point(10, 0),
+                        };
 
+                        for (int i = 0; i < processCount; i++)
+                        {
+                            string[] headers = { "Process ID", "CPU Burst Time", "Arrival Time" };
+                            // FOR LABEL OF HEADERS -----------------------
+                            for (int j = 0; j < headers.Length; j++)
+                            {
+                                Label lbl = new Label
+                                {
+                                    Text = headers[j],
+                                    Width = (header.Width / 3) - 3,
+                                    Location = new Point(j * (header.Width / 3), 10),
+                                    TextAlign = ContentAlignment.MiddleCenter,
+                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                };
+
+                                header.Controls.Add(lbl);
+                            }
+
+                            panel1.Controls.Add(header);
+
+                            // FOR ROW PANEL -----------------------
+                            Panel row = new Panel
+                            {
+                                Size = new Size(492, 39),
+                                TabIndex = 2,
+                                Width = panel1.Width - 18,
+                                Height = 40,
+                                Location = new Point(10, (i + 1) * 45),
+                                Name = $"panelRow_{i}",
+                                BackColor = SystemColors.AppWorkspace
+                            };
+                            // FOR TEXTBOX INSIDE THE ROW PANEL-----------------------
+                            for (int j = 0; j < 3; j++)
+                            {
+                                TextBox txt = new TextBox
+                                {
+                                    Multiline = false,
+                                    Size = new Size(158, 38),
+                                    Font = new Font("Verdana", 15F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                                    TextAlign = HorizontalAlignment.Center,
+                                    Width = (row.Width / 3),
+                                    Location = new Point(j * (row.Width / 3), 5),
+                                    Name = $"Text_Box_{j}"
+                                };
+
+                                if (j == 0)
+                                {
+                                    txt.Text = $"P{i + 1}";
+                                    txt.Enabled = false;
+                                    txt.TextAlign = HorizontalAlignment.Center;
+                                    txt.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                                }
+                                else
+                                {
+                                    txt.Leave += TextBox_Leave_AddMsec;
+                                    txt.Enter += TextBox_Enter;
+
+                                }
+                                row.Controls.Add(txt);
+                            }
+
+                            panel1.Controls.Add(row);
+
+                        }
+                        LabelProcessNO.Text = TextBoxInputPross.Text;
+                        panel1.Height = Math.Min(processCount * 45 + 10, this.ClientSize.Height - 50);
+                        enterHandled = true;
+                        ErrorLabel.Text = "";
+                        ChangeBackground();
+                        AnimateHandlePanelHide();
                     }
                     else
                     {
-                        ErrorLabel.Text = "Integers only, please try again.";
-                    marqueeLabel.Text = "Integers only, please try again.";
-                }
+                        ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
+                        marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
+                    }
+
                 }
                 else
                 {
-                marqueeLabel.Text = "Cannot be empty, please enter the process no.";
-                ErrorLabel.Text = "Cannot be empty, please enter the process no.";
+                    ErrorLabel.Text = "Integers only, please try again.";
+                    marqueeLabel.Text = "Integers only, please try again.";
                 }
             }
+            else
+            {
+                marqueeLabel.Text = "Cannot be empty, please enter the process no.";
+                ErrorLabel.Text = "Cannot be empty, please enter the process no.";
+            }
+
+        }
         // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
         private void GetProcessData()
         {
@@ -218,7 +220,7 @@ namespace PlatechFCFSProdject
 
                                     if (float.TryParse(inputValue, out float value))
                                     {
-                                        
+
                                         if (colIndex == 1)
                                         {
                                             if (value > 15 || value < 3)
@@ -231,7 +233,8 @@ namespace PlatechFCFSProdject
                                             }
                                             else proc.BurstTime = value;
                                         }
-                                        if (colIndex == 2) {
+                                        if (colIndex == 2)
+                                        {
                                             if (value > 15 || value < 0)
                                             {
                                                 MessageBox.Show($"Value in {proc.ProcessID} {txtBox.Name} cannot be more than 15\n and less than 0.",
@@ -239,9 +242,10 @@ namespace PlatechFCFSProdject
                                                 txtBox.Focus();
                                                 return;
 
-                                            }else proc.ArrivalTime = value;
+                                            }
+                                            else proc.ArrivalTime = value;
                                         }
-                                     
+
                                     }
                                     else
                                     {
@@ -303,7 +307,7 @@ namespace PlatechFCFSProdject
         private void ContinueButt_Click(object sender, EventArgs e)
         {
             ShowTable();
-
+     
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -316,6 +320,8 @@ namespace PlatechFCFSProdject
         private void BackButton_Click(object sender, EventArgs e)
         {
             marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
+            GuideButton.Visible = false;
+            guidePanel.Visible = false;
             SetButtonsVisibility(false);
             int GoalLHeightWhitePanel = 0;
             panelSlide.Visible = false;
@@ -360,6 +366,7 @@ namespace PlatechFCFSProdject
         // ANIMATED METHOD ================================================================
         private void ChangeBackground()
         {
+
             SetButtonsVisibility(false);
             panelSlide.Visible = false;
             panel3.Visible = false;
@@ -380,14 +387,21 @@ namespace PlatechFCFSProdject
 
                     Thread.Sleep(2);
                 }
-                panel3.Visible = true;
-                panelSlide.Visible = true;
-                PleaseWaitLabel.Visible = false;
-                Pbar.Visible = false;
+
+                Invoke((MethodInvoker)(() =>
+                {
+                    GuideButton.Visible = true;
+                    guidePanel.Visible = true;
+                    isOpenGuide = false;
+                    guidePanel.Size = new Size(0,10);
+                    panel3.Visible = true;
+                    panelSlide.Visible = true;
+                    PleaseWaitLabel.Visible = false;
+                    Pbar.Visible = false;
+                }));
+
                 SetButtonsVisibility(true);
             });
-
-            thread.IsBackground = true;
             thread.Start();
         }
         private void AnimateHandlePanelHide()
@@ -545,7 +559,8 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
-        public void MarqueGuide() {
+        public void MarqueGuide()
+        {
             marqueee = panel4.Width;
             marqueeLabel.Location = new Point(marqueee, 6);
 
@@ -561,6 +576,88 @@ namespace PlatechFCFSProdject
             };
             timer.Start();
         }
-    
+
+        public void OpenGuideBurstArrival()
+        {
+            GuideButton.Enabled = false;
+            int goalWitdh = 217;
+            int goalHeight = 175;
+            Thread thread = new Thread(() =>
+            {
+                int currentWidth = 0;
+
+                while (currentWidth < goalWitdh)
+                {
+                    currentWidth += 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        guidePanel.Width = currentWidth;
+                    }));
+                    Thread.Sleep(1);
+                }
+
+                int curretHeight = 10;
+                while (curretHeight < goalHeight)
+                {
+                    curretHeight += 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        guidePanel.Height = curretHeight;
+                    }));
+                    Thread.Sleep(1);
+                }
+                GuideButton.Enabled = true;
+                isOpenGuide = true;
+            });
+            thread.Start();
+
+        }
+
+        public void CloseGuideBurstArrival()
+        {
+            GuideButton.Enabled = false;
+            int goalWitdh = 0;
+            int goalHeight = 10;
+            Thread thread = new Thread(() =>
+            {
+
+                int curretHeight = 175; 
+                while (curretHeight > goalHeight)
+                {
+                    curretHeight -= 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        guidePanel.Height = curretHeight;
+                    }));
+                    Thread.Sleep(1);
+                }
+
+                int currentWidth = 217;
+
+                while (currentWidth > goalWitdh)
+                {
+                    currentWidth -= 2;
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        guidePanel.Width = currentWidth;
+                    }));
+                    Thread.Sleep(1);
+                }
+                GuideButton.Enabled = true;
+                isOpenGuide = false;
+            });
+            thread.Start();
+        }
+
+        private void GuideButton_Click(object sender, EventArgs e)
+        {
+            if (!isOpenGuide)
+            {
+                OpenGuideBurstArrival();
+            }
+            else {
+                CloseGuideBurstArrival();
+            }
+        }
     }
 }
