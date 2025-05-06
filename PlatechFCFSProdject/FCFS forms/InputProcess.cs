@@ -36,12 +36,12 @@ namespace PlatechFCFSProdject
             if (float.TryParse(txt.Text.Trim(), out float value))
             {
                 txt.Text = $"{value} msec";
-                txt.BackColor = Color.Teal;
+                txt.BackColor = Color.FromArgb(192, 192, 0);
             }
 
             if (txt.Text.Contains(" msec"))
             {
-                txt.BackColor = Color.Teal; // TURN TEAL COLOR IF THERE'S A INPUT VALUE
+                txt.BackColor = Color.FromArgb(192, 192, 0);// TURN TEAL COLOR IF THERE'S A INPUT VALUE
             }
             else
             {
@@ -682,7 +682,7 @@ namespace PlatechFCFSProdject
                 {
                     if (valid >= 2 && valid <= 5)
                     {
-                        panel4.BackColor = Color.Lime;
+                        panel4.BackColor = Color.FromArgb(192, 192, 0);
                         marqueeLabel.Text = "";
                     }
                     else
