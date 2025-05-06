@@ -159,7 +159,7 @@
             label7.Name = "label7";
             label7.Size = new Size(189, 36);
             label7.TabIndex = 3;
-            label7.Text = "Minimun of 0 msec,\r\nMaximum of 15 msec.";
+            label7.Text = "Minimum of 0 msec,\r\nMaximum of 15 msec.";
             // 
             // label6
             // 
@@ -170,7 +170,7 @@
             label6.Name = "label6";
             label6.Size = new Size(189, 36);
             label6.TabIndex = 2;
-            label6.Text = "Minimun of 3 msec,\r\nMaximum of 15 msec.";
+            label6.Text = "Minimum of 3 msec,\r\nMaximum of 15 msec.";
             // 
             // label5
             // 
