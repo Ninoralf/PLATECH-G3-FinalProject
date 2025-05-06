@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace PlatechFCFSProdject
 {
@@ -19,9 +20,12 @@ namespace PlatechFCFSProdject
         private int processCount = 0;
         private bool isUpdating = false;
         private bool enterHandled = false;
+        private int marqueee;
+
         public InputProcess()
         {
             InitializeComponent();
+            MarqueGuide();
         }
         // HELPER METHOD ==================================================================
         private void TextBox_Leave_AddMsec(object sender, EventArgs e)
@@ -64,7 +68,7 @@ namespace PlatechFCFSProdject
 
                 if (!string.IsNullOrEmpty(TextBoxInputPross.Text))
                 {
-
+                    
                     if (int.TryParse(TextBoxInputPross.Text, out processCount))
                     {   
                         if (processCount >= 2 && processCount <= 5)
@@ -152,17 +156,20 @@ namespace PlatechFCFSProdject
                         else
                         {
                             ErrorLabel.Text = "Minimum of 2, Maximum of 5.";
-                        }
+                             marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
+                    }
 
                     }
                     else
                     {
                         ErrorLabel.Text = "Integers only, please try again.";
-                    }
+                    marqueeLabel.Text = "Integers only, please try again.";
+                }
                 }
                 else
                 {
-                    ErrorLabel.Text = "Cannot be empty, please enter the process no.";
+                marqueeLabel.Text = "Cannot be empty, please enter the process no.";
+                ErrorLabel.Text = "Cannot be empty, please enter the process no.";
                 }
             }
         // THIS METHOD FOR INPUT VALUE AND STORE THE VALUE TO THE LIST PROCESS.
@@ -308,7 +315,7 @@ namespace PlatechFCFSProdject
         }
         private void BackButton_Click(object sender, EventArgs e)
         {
-
+            marqueeLabel.Text = "Minimum of 2, Maximum of 5.";
             SetButtonsVisibility(false);
             int GoalLHeightWhitePanel = 0;
             panelSlide.Visible = false;
@@ -538,7 +545,22 @@ namespace PlatechFCFSProdject
             });
             thread.Start();
         }
+        public void MarqueGuide() {
+            marqueee = panel4.Width;
+            marqueeLabel.Location = new Point(marqueee, 6);
 
+            Timer timer = new Timer();
+            timer.Interval = 5;
+            timer.Tick += (s, args) =>
+            {
+                marqueee -= 2;
+                marqueeLabel.Location = new Point(marqueee, marqueeLabel.Location.Y);
+
+                if (marqueee + marqueeLabel.Width < 0)
+                    marqueee = panel4.Width;
+            };
+            timer.Start();
+        }
     
     }
 }

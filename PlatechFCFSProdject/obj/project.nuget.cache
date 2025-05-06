@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KN6wsnRzeTg=",
+  "dgSpecHash": "fQ3bb+QBbIU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\OneDrive\\Desktop\\MyRepo\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\OneDrive\\Desktop\\New folder (2)\\PLATECH-G3-FinalProject\\PlatechFCFSProdject\\PlatechFCFSProdject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\krypton.toolkit\\90.25.2.55\\krypton.toolkit.90.25.2.55.nupkg.sha512"
   ],

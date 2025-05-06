@@ -46,11 +46,14 @@
             button1 = new Button();
             ErrorLabel = new Label();
             HandlePanel = new Panel();
+            panel4 = new Panel();
+            marqueeLabel = new Label();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             WhitePanel.SuspendLayout();
             panelSlide.SuspendLayout();
             panel2.SuspendLayout();
             HandlePanel.SuspendLayout();
+            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             SuspendLayout();
@@ -335,12 +338,34 @@
             // 
             HandlePanel.BackColor = Color.LightGray;
             HandlePanel.BorderStyle = BorderStyle.Fixed3D;
+            HandlePanel.Controls.Add(panel4);
             HandlePanel.Controls.Add(kryptonPanel1);
             HandlePanel.Controls.Add(label1);
             HandlePanel.Location = new Point(291, 71);
             HandlePanel.Name = "HandlePanel";
             HandlePanel.Size = new Size(682, 589);
             HandlePanel.TabIndex = 10;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Black;
+            panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.Controls.Add(marqueeLabel);
+            panel4.Location = new Point(104, 8);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(481, 50);
+            panel4.TabIndex = 8;
+            // 
+            // marqueeLabel
+            // 
+            marqueeLabel.AutoSize = true;
+            marqueeLabel.Font = new Font("Verdana", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            marqueeLabel.ForeColor = Color.FromArgb(192, 0, 0);
+            marqueeLabel.Location = new Point(10, 6);
+            marqueeLabel.Name = "marqueeLabel";
+            marqueeLabel.Size = new Size(455, 32);
+            marqueeLabel.TabIndex = 0;
+            marqueeLabel.Text = "Minimum of 2, Maximum of 5";
             // 
             // kryptonPanel1
             // 
@@ -379,6 +404,8 @@
             panel2.PerformLayout();
             HandlePanel.ResumeLayout(false);
             HandlePanel.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
@@ -406,5 +433,7 @@
         private Panel panel3;
         private Krypton.Toolkit.KryptonProgressBar Pbar;
         private Label PleaseWaitLabel;
+        private Panel panel4;
+        private Label marqueeLabel;
     }
 }

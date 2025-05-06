@@ -723,20 +723,20 @@ namespace PlatechFCFSProdject
                     {
                         NextPanel.Location = new Point(CurrentLoc, 1);
                     }));
-                    Thread.Sleep(20);
+                    Thread.Sleep(6);
                 }
 
                 int CurrentWidth = ganttChartPanel.Width;
 
                 while (CurrentWidth > WidthGoal)
                 {
-                    CurrentWidth -= 12;
+                    CurrentWidth -= 14;
                     Invoke((MethodInvoker)(() =>
                     {
                         ganttChartPanel.Width = CurrentWidth;
                     }));
 
-                    Thread.Sleep(2);
+                    Thread.Sleep(1);
                 }
 
                 Invoke((MethodInvoker)(() =>
