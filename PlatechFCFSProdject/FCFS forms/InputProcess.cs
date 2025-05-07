@@ -682,7 +682,7 @@ namespace PlatechFCFSProdject
                 {
                     if (valid >= 2 && valid <= 5)
                     {
-                        panel4.BackColor = Color.FromArgb(192, 192, 0);
+                        panel4.BackColor = Color.Lime;
                         marqueeLabel.Text = "";
                     }
                     else

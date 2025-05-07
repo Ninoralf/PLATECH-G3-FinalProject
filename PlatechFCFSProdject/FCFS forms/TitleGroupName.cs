@@ -26,7 +26,7 @@ namespace PlatechFCFSProdject
                 Properties.Resources.image7,
                 Properties.Resources.image8
             };
-
+            currentIndex = 0;
             ShowImage();
         }
 
@@ -40,7 +40,21 @@ namespace PlatechFCFSProdject
                 Pageno.Text = $"Page {currentIndex + 1}";
             }
 
-            PrevButt.Enabled = currentIndex > 0;
+            if (currentIndex == 7)
+            {
+                NextButt.Visible = false;
+            }
+            else if (currentIndex == 0)
+            {
+                PrevButt.Visible = false;
+            }
+            else {
+                PrevButt.Visible = true;
+                NextButt.Visible = true;
+            }
+
+
+                PrevButt.Enabled = currentIndex > 0;
             NextButt.Enabled = currentIndex < imagePaths.Length - 1;
 
         }
@@ -440,6 +454,8 @@ namespace PlatechFCFSProdject
 
         private void FlowChartButt_Click(object sender, EventArgs e)
         {
+            PrevButt.Visible = true;
+            NextButt.Visible = true;
             LoadImages();
         }
 

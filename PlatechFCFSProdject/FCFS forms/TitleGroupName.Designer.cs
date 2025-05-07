@@ -43,6 +43,7 @@
             ContinueButt = new Krypton.Toolkit.KryptonButton();
             panel1 = new Panel();
             FlowChartPanel = new Panel();
+            Pageno = new Label();
             ExitFlowButt = new Button();
             NextButt = new Button();
             PrevButt = new Button();
@@ -61,7 +62,6 @@
             DescriptionButt = new Krypton.Toolkit.KryptonButton();
             AdditionalDe = new Panel();
             panel5 = new Panel();
-            Pageno = new Label();
             Header.SuspendLayout();
             TitlePanel.SuspendLayout();
             PanelWall.SuspendLayout();
@@ -332,6 +332,17 @@
             FlowChartPanel.TabIndex = 18;
             FlowChartPanel.Visible = false;
             // 
+            // Pageno
+            // 
+            Pageno.AutoSize = true;
+            Pageno.BackColor = Color.Transparent;
+            Pageno.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Pageno.Location = new Point(598, 691);
+            Pageno.Name = "Pageno";
+            Pageno.Size = new Size(88, 25);
+            Pageno.TabIndex = 5;
+            Pageno.Text = "Page 1";
+            // 
             // ExitFlowButt
             // 
             ExitFlowButt.BackColor = Color.Transparent;
@@ -351,10 +362,11 @@
             NextButt.BackColor = Color.Transparent;
             NextButt.BackgroundImage = Properties.Resources.ToRideSide1;
             NextButt.BackgroundImageLayout = ImageLayout.Stretch;
+            NextButt.FlatAppearance.BorderSize = 0;
             NextButt.FlatStyle = FlatStyle.Flat;
-            NextButt.Location = new Point(702, 695);
+            NextButt.Location = new Point(1251, 322);
             NextButt.Name = "NextButt";
-            NextButt.Size = new Size(29, 25);
+            NextButt.Size = new Size(29, 43);
             NextButt.TabIndex = 1;
             NextButt.UseVisualStyleBackColor = false;
             NextButt.Click += NextButt_Click;
@@ -364,10 +376,11 @@
             PrevButt.BackColor = Color.Transparent;
             PrevButt.BackgroundImage = Properties.Resources.ToLeftSide;
             PrevButt.BackgroundImageLayout = ImageLayout.Stretch;
+            PrevButt.FlatAppearance.BorderSize = 0;
             PrevButt.FlatStyle = FlatStyle.Flat;
-            PrevButt.Location = new Point(552, 695);
+            PrevButt.Location = new Point(3, 322);
             PrevButt.Name = "PrevButt";
-            PrevButt.Size = new Size(29, 25);
+            PrevButt.Size = new Size(29, 43);
             PrevButt.TabIndex = 0;
             PrevButt.UseVisualStyleBackColor = false;
             PrevButt.Click += PrevButt_Click;
@@ -588,17 +601,6 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(312, 275);
             panel5.TabIndex = 13;
-            // 
-            // Pageno
-            // 
-            Pageno.AutoSize = true;
-            Pageno.BackColor = Color.Transparent;
-            Pageno.Font = new Font("Verdana", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Pageno.Location = new Point(598, 691);
-            Pageno.Name = "Pageno";
-            Pageno.Size = new Size(88, 25);
-            Pageno.TabIndex = 5;
-            Pageno.Text = "Page 1";
             // 
             // TitleGroupName
             // 
